@@ -34,8 +34,9 @@ sendLtvConversionメソッドを利用することで、広告流入別の課金
 |CC_LTV_PARAM_CURRENCY|Currency<br>（半角英字3文字の通貨コード）<br>通貨別で課金額を集計する際に使用してください。<br>通貨が設定されていない場合、PriceをJPY(日本円)として扱います。|
 |任意でパラメータを加える事も可能です。|FoxPlugin::addParameter(“パラメータ名”, “値”);<br>※1 同一パラメータ名を記述した場合は、後者が有効となります。<br>※2 アンダースコア（"_"）をパラメータ名の先頭に記述しないでください。<br>※3 半角英数字以外は使用できません。|
 
+CC_LTV_PARAM_CURRENCYには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+
 設定例：
 
 	FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);	FoxPlugin::addParameter(“my_param”, “ABC”);	FoxPlugin::sendLtv(70, “Taro”);
 
-[TOP](../../../)

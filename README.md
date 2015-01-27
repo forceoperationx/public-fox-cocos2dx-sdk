@@ -293,9 +293,6 @@ URLスキームで起動されるActivityのlaunchModeが"singleTask"または"s
 	}
 
 
-##4.2 その他計測
-* [（オプション）カスタムURLスキーム経由の起動計測設定](./doc/external_storage/ja)
-
 #5 LTV計測の実装
 
 
