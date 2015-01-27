@@ -228,15 +228,9 @@ Force Operation X SDKの実行に必要な情報を<application>タグ内に追�
 
 既に"com.android.vending.INSTALL_REFERRER"に対するレシーバークラスが定義されている場合には、[二つのINSTALL_REFERRERレシーバーを共存させる場合の設定](https://github.com/cyber-z/public_fox_android_sdk/blob/master/doc/install_referrer/ja/README.md)をご参照ください。
 
-###3.3.4 URLスキームの設定
-アプリを外部から起動する際に必須となります。起動させる対象の<activity>タグ内に追加します。
-例 ”smapleapp://”でアプリを起動させる
-
-	<intent-filter>		<action android:name="android.intent.action.VIEW" />		<category android:name="android.intent.category.DEFAULT" />		<category android:name="android.intent.category.BROWSABLE" />		<data android:scheme="sampleapp" />	</intent-filter>
-
-
-###3.3.5 その他
-* [広告IDを利用するためのGoogle Play Services SDKの導入](./doc/google_play_services/ja/)
+###3.3.4 AndroidManifest.xmlに関連するその他の設定
+* [URLスキームの設定](./doc/config_url_scheme/ja/)
+* [（オプション）広告IDを利用するためのGoogle Play Services SDKの導入](./doc/google_play_services/ja/)
 * [（オプション）外部ストレージを利用した重複排除設定](./doc/external_storage/ja)
 * [AndroidManifest.xmlの設定例](./doc/config_androidManifest/ja/AndroidManifest.xml)
 	
@@ -254,9 +248,26 @@ Force Operation X SDKの実行に必要な情報を<application>タグ内に追�
 Cocos2dxFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以下はその例）	#include <iostrem>	#inclued “cocos2d.h”	#include “Cocos2dxFox.h”	#include “../android/jni/JniHelper.h”
 
 
-##3.5 カスタムURLスキーム経由の起動計測設定
+#4 インストール計測の実装
+##4.1 インストールの計測
 
-Androidプロジェクトにおいて、カスタムURLスキーム経由の起動を計測するために、ActivityのonResume()にコードを追加します。また、AndroidManifest.xmlのメインとなるActivityにURLスキーム指定が設定されていることが前提となります。
+初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。初回起動時に、ブラウザを起動し、広告クリック時に付与されたCookieの情報を照合することで、成果の計測を行います。
+
+初回起動時にブラウザを起動するために、AppDelegate:applicationDidFinishLaunching:メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に効果測定用の処理を追加します。
+
+ヘッダファイルをインクルード
+
+	#include "Cocos2dxFox.h"
+	
+成果通知のコードを追加
+
+	FoxPlugin::sendConversion(“default”);
+
+sendConversionメソッドの引数には、通常は上記の通り"default"という文字列をそのまま指定してください。
+
+* [sendConversionの詳細](./doc/send_conversion/ja)
+	
+また、URLスキーム経由の起動を計測するために、URLスキームが設定されている全てのActivityのonResume()にsendConversionWithUrlSchemeメソッドを実装します。
 
 クラスをインポート
 
@@ -273,37 +284,17 @@ Androidプロジェクトにおいて、カスタムURLスキーム経由の起�
 		}
 	}
 
+URLスキームで起動されるActivityのlaunchModeが"singleTask"または"singleInstance"の場合は、URLスキーム経由でパラメータを受け取るためにonNewIntentメソッドをoverrideし、以下のようにsetIntentメソッドをコールしてください。
 
-#4 インストール計測の実装
-##4.1 インストールの計測
-
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。初回起動時に、ブラウザを起動し、広告クリック時に付与されたCookieの情報を照合することで、成果の計測を行います。
-
-初回起動時にブラウザを起動するために、AppDelegate:applicationDidFinishLaunching:メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に効果測定用の処理を追加します。
-
-ヘッダファイルをインクルード
-
-	#include "Cocos2dxFox.h"
-	
-成果通知のコードを追加
-
-	FoxPlugin::sendConversion(“http://example.com”);
-	
-> ※Android Cocos2dx SDK v2.10.4g以前の海外版/グローバル版SDK (バージョン末尾が u しくは g)からSDKをアップデートをする場合、必ず「v2.10.4g以前からのアップデート手順」の手順を追加してください。
+	@Override
+	protected void onNewIntent(Intent intent) {
+    	super.onNewIntent(intent);
+	    setIntent(intent);
+	}
 
 
-
-sendConversion:メソッドの引数には、アプリ起動後に表示するURLを指定してください。
-
-> ※自身のURLスキームを設定することで、ブラウザ起動後すぐにアプリケーションに戻る動作とすることもできますが、URLスキームを指定した場合にはHTMLページを経由しないため、HTML計測タグに対応できず、タグによる計測が必要となった際にアプリの更新が必要となるデメリットがありますので、HTMLページをご用意いただくことを推奨します。
-
-
-sendConversionメソッドの第二引数に広告主端末IDを渡すことができます。例えば、アプリ起動時にUUIDを生成し、初回起動の成果と紐付けて管理したい場合等に、利用できます。
-
-	FoxPlugin::sendConversion(“http://○○○○”, “your unique id”);
-	
-> ※sendConversionは起動直後の処理として実装いただくため、ログインIDなどを引数として渡すことはできません。
-
+##4.2 その他計測
+* [（オプション）カスタムURLスキーム経由の起動計測設定](./doc/external_storage/ja)
 
 #5 LTV計測の実装
 
@@ -312,33 +303,12 @@ LTV計測により、広告流入別の課金金額や入会数などを計測�
 	#include “Cocos2dxFox.h”
 成果を記述
 	FoxPlugin::sendLtv(成果地点ID);
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。※Android Cocos2dx SDK v2.10.4g以前の海外版/グローバル版SDK (バージョン末尾が u しくは g)からSDKをアップデートをする場合、必ず「v2.10.4g以前からのアップデート手順」の手順を追加してください。アプリ内部の成果に、広告主端末ID（会員IDなど）を含める事ができ、これを基準とした成果計測が行えます。LTV成果に広告主端末IDを付与したい場合は以下のように記述してください。
-	FoxPlugin::sendLtv(成果地点ID, "広告主端末ID");
-	
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。広告主端末ID(オプション)：広告主様が管理しているユニークな識別子（会員IDなど）です。指定できる値は64文字以内の半角英数字です。
-アプリ内計測時には、パラメータをオプションとして設定する事が可能です。
-
-	FoxPlugin::addParameter("パラメータ名", "値");
-
-指定できるパラメータは次の通りです。
-
-|パラメータ名|概要|
-|:------|:------|
-|CC_LTV_PARAM_SKU|Stock Keeping Unit(商品管理コード)<br>（半角英数字32文字まで）<br>商品の在庫管理する際に使用してください|
-|CC_LTV_PARAM_PRICE|Price<br>（整数値　日本円）<br>売上額を管理する際に使用してください。|
-|CC_LTV_PARAM_CURRENCY|Currency<br>（半角英字3文字の通貨コード）<br>通貨別で課金額を集計する際に使用してください。<br>通貨が設定されていない場合、PriceをJPY(日本円)として扱います。|
-|任意でパラメータを加える事も可能です。|FoxPlugin::addParameter(“パラメータ名”, “値”);<br>※1 同一パラメータ名を記述した場合は、後者が有効となります。<br>※2 アンダースコア（"_"）をパラメータ名の先頭に記述しないでください。<br>※3 半角英数字以外は使用できません。|
-
-設定例：
-
-	FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);	FoxPlugin::addParameter(“my_param”, “ABC”);	FoxPlugin::sendLtv(70, “Taro”);
+> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。※Android Cocos2dx SDK v2.10.4g以前の海外版/グローバル版SDK (バージョン末尾が u しくは g)からSDKをアップデートをする場合、必ず「v2.10.4g以前からのアップデート手順」の手順を追加してください。* [sendLtvConversionの詳細](./doc/send_ltv_conversion/ja)
 
 
 #6 アクセス解析
 
-アクセス解析を導入することで、自然流入・広告流入別の起動数、アクティブユーザー数(DAU/MAU)や継続率を計測することができます。アクセス解析では、アプリケーションが起動、もしくはバックグラウンドから復帰する際にセッション計測を行うコードを追加します。
-
-##6.1 起動計測の実装
+アクセス解析を導入することで、自然流入・広告流入別の起動数、アクティブユーザー数(DAU/MAU)や継続率を計測することができます。アクセス解析では、アプリケーションが起動、もしくはバックグラウンドから復帰する際にセッション計測を行うコードを追加します。不要の場合には、本項目の実装を省略できます。
 
 ####iPhone プロジェクト
 iPhoneの場合、以下の設定が必要です。
@@ -370,14 +340,7 @@ Androidの場合、以下の設定が必要です。
 	
 	FoxPlugin::sendStartSession();
 	
-> ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>※JavaのonResume()とC++のapplicationWillEnterForegroundの両方でsendStartSession()が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。##6.2 課金イベントトラッキング
-本機能では広告経由および自然流入経由での売上をそれぞれ計測可能です。※広告経由の売上のみを計測したい場合はLTV計測で計測可能ですので本機能の実装は必要ありません。<br>※主に自然流入経由の売上を計測したい場合などに本機能を実装してください。|パラメータ|タイプ|最大長|必須|概要|
-|:---|:---:|:---:|:---:|:---|
-|eventName|String|255|必須|トラッキングを行うイベントを識別できる任意の名前を設定します。<br>イベント名は自由に設定可能です。<br>イベント単位でグルーピングされ、それぞれのイベントごとに集計を行うことができます。||action|String|255|オプション|イベントに属するアクション名を設定します。<br>アクション名は自由に設定可能です。<br>各イベントをドリルダウンすることで、アクションごとに集計を行うことができます。<br>特に指定しない場合は””を設定してください。|
-|label|String|255|オプション|アクションに属するラベル名を設定します。<br>ラベル名は自由に設定可能です。<br>各アクションをドリルダウンすることで、ラベルごとに集計を行うことができます。<br>特に指定しない場合は””を設定してください。||orderID|String|255|オプション|注文番号。特に指定いない場合は""を設定してください。|
-|sku|String|255|オプション|商品コード。特に指定しない場合は””を設定してください。||itemName|String|255|必須|商品名||price|double||必須|商品単価|
-|quantity|int||必須|購入数||currency|String||オプション|通貨コード。指定しなかった場合は"JPY"|以下のように記述してください
-	FoxPlugin::sendEvent(eventName, action, label, orderId, sku, itemName, price, quantity, currency);#7 AndroidプロジェクトでProGuardを利用する場合
+> ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>※JavaのonResume()とC++のapplicationWillEnterForegroundの両方でsendStartSession()が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。[アクセス解析による課金計測](./doc/analytics_purchase)#7 AndroidプロジェクトでProGuardを利用する場合
 ProGuardを利用してF.O.X SDKを導入したアプリケーションを難読化する際に、警告が発生する場合があります。その際には、警告を回避するため以下の設定を追加してください。
 	-libraryjars libs/AppAdForce.jar	-keep interface jp.appAdForce.** { *; }	-keep class jp.appAdForce.** { *; }	-keep class jp.co.dimage.** { *; }	-keep class com.google.android.gms.ads.identifier.* { *; }	-dontwarn jp.appAdForce.android.ane.AppAdForceContext	-dontwarn jp.appAdForce.android.ane.AppAdForceExtension	-dontwarn com.adobe.fre.FREContext	-dontwarn com.adobe.fre.FREExtension	-dontwarn com.adobe.fre.FREFunction	-dontwarn com.adobe.fre.FREObject	-dontwarn com.ansca.**	-dontwarn com.naef.jnlua.**※GooglePlayServiceSDKを導入されている場合、以下のページで記載されているkeep指定が記述されているかご確認ください。
 [Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)#8 疎通テストの実施マーケットへの申請までに、Force Operation Xを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。効果測定テストの手順については、管理者よりご連絡いたしますのでその手順に従いテストを実施してください。成果のための通信は、起動後に一度のみ行わるため、二回目以降の起動では通信が発生しません。続けて効果測定テストを行いたい場合には、アプリケーションをアンインストールし、再度インストールから行ってください。##8.1 テストの手順
