@@ -199,7 +199,8 @@ Force Operation X SDKの実行に必要なパーミッションの設定を<mani
 
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />	
 ###3.3.2 メタデータの設定
 |パラメータ名|必須|概要|
 |:------|:------|:------|
@@ -337,7 +338,7 @@ Androidの場合、以下の設定が必要です。
 	
 	FoxPlugin::sendStartSession();
 	
-> ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>※JavaのonResume()とC++のapplicationWillEnterForegroundの両方でsendStartSession()が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。[アクセス解析による課金計測](./doc/analytics_purchase)#7 AndroidプロジェクトでProGuardを利用する場合
+> ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>※JavaのonResume()とC++のapplicationWillEnterForegroundの両方でsendStartSession()が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。[アクセス解析によるイベント計測](./doc/analytics_event/ja)#7 AndroidプロジェクトでProGuardを利用する場合
 ProGuardを利用してF.O.X SDKを導入したアプリケーションを難読化する際に、警告が発生する場合があります。その際には、警告を回避するため以下の設定を追加してください。
 	-libraryjars libs/AppAdForce.jar	-keep interface jp.appAdForce.** { *; }	-keep class jp.appAdForce.** { *; }	-keep class jp.co.dimage.** { *; }	-keep class com.google.android.gms.ads.identifier.* { *; }	-dontwarn jp.appAdForce.android.ane.AppAdForceContext	-dontwarn jp.appAdForce.android.ane.AppAdForceExtension	-dontwarn com.adobe.fre.FREContext	-dontwarn com.adobe.fre.FREExtension	-dontwarn com.adobe.fre.FREFunction	-dontwarn com.adobe.fre.FREObject	-dontwarn com.ansca.**	-dontwarn com.naef.jnlua.**※GooglePlayServiceSDKを導入されている場合、以下のページで記載されているkeep指定が記述されているかご確認ください。
 [Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)#8 疎通テストの実施マーケットへの申請までに、Force Operation Xを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。効果測定テストの手順については、管理者よりご連絡いたしますのでその手順に従いテストを実施してください。成果のための通信は、起動後に一度のみ行わるため、二回目以降の起動では通信が発生しません。続けて効果測定テストを行いたい場合には、アプリケーションをアンインストールし、再度インストールから行ってください。##8.1 テストの手順
