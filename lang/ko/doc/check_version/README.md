@@ -13,14 +13,14 @@ didLoadVersion()의 호출시에 관리화면에 등록한 번들버전이 실�
 이하, 본 기능의 구현 예입니다.
 checkVersionWithDelegate() 메서드를 호출하여 서버에 질의를 하고 있습니다.
 
-```c#
+```cs
 FoxPlugin.setListenerGameObject(this.gameObject.name);
 FoxPlugin.checkVersionWithDelegate();
 ```
 
 delegate메소드인 didLoadVersion()를 구현합니다.
 
-```c#
+```cs
 public void didLoadVersion(string result)
 {
 	// 일치하지 않는 경우(예를 들어 테스트중인 버전)의 처리의 설명.
@@ -31,3 +31,6 @@ public void didLoadVersion(string result)
 ```
 
 >이 메소드에 의한 F.O.X 서버에 대한 질문은 부하 경감을 위한 1클라이언트에서 각 버전마다 5회까지로 제한됩니다. 5회를 초과하면 서버에 쿼리하지 않고 didLoadVersion()이 호출되지 않습니다. 번들버전을 업데이트하여 다시 5회를 상한으로 서버에 요청이 이루어집니다.
+
+---
+[TOP](../../README.md)

@@ -13,7 +13,9 @@ iOS에서는 APNs라는 Apple의 서버를 경유해 푸시 알림을 각 단말
 구현은 기동시에 실행되는 스크립트에서 아래의 메소드를 호출합니다.
 반드시 sendConversion메소드가 호출된 이후에 호출되도록 구현하십시오.
 
+```cpp
 	FoxPlugin::notifyManager();
+```
 
 이 메소드는 처음 기동시에 Apple에 디바이스 토큰을 문의에 F.O.X에 등록하는 메소드입니다.
 이 디바이스 토큰을 사용하여 F.O.X에서 푸시 알림을 보낼 수 있습니다.
@@ -26,19 +28,19 @@ iOS에서는 APNs라는 Apple의 서버를 경유해 푸시 알림을 각 단말
 FoxNotifyPlugin.m을 편집하여 이용하시기 바랍니다. (46번째 줄)
 · devicetoken를 받을때의 처리
 
-
-	void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, id application, id devToken)
-	{
+```objective-c
+void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, id application, id devToken)
+{
     	if ([self respondsToSelector:@selector(application:registerDevToken:)])
 	    {
     	    [self application:application registerDevToken:devToken];
     	}
-    
-		[[Notify sharedManager] manageDevToken:devToken];
-    
-		// devtoken취득 후 처리를 여기에 기재하십시오.
-	}
 
+		[[Notify sharedManager] manageDevToken:devToken];
+
+		// devtoken취득 후 처리를 여기에 기재하십시오.
+}
+```
 ## Android 용 설정
 
 Android에서도 마찬가지로 Google 서버를 통해 푸시 알림을 보낼 수 있습니다.
@@ -50,28 +52,29 @@ Android에서도 마찬가지로 Google 서버를 통해 푸시 알림을 보낼
 아래와 같이 푸시 알림을 받을데 필요한 권한 설정을 \<manifest\> 태그에 추가하십시오. <br>
 이미 GCM이나 C2DM에 대한 권한을 기술을 끝낸 경우에는 필요하지 않습니다.
 
-
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="앱의 패키지명.permission.C2D_MESSAGE" />
-	<permission android:name="앱의 패키지명.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
+```xml
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="앱의 패키지명.permission.C2D_MESSAGE" />
+<permission android:name="앱의 패키지명.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
 
 ### 푸시 알림용 receiver설정
 
 아래와 같이 푸시 알림을받을 데 필요한 receiver의 설정을 \<application\> 태그에 추가하십시오. <br>
 이미 GCM이나 C2DM용 receiver를 기술이 끝난경우에는 Receiver를 아래와 같이 변경하십시오.
 
-
-	<receiver android:name="jp.appAdForce.android.NotifyReceiver"
-		android:permission="com.google.android.c2dm.permission.SEND">
-		<intent-filter>
+```xml
+<receiver
+	android:name="jp.appAdForce.android.NotifyReceiver"
+	android:permission="com.google.android.c2dm.permission.SEND">
+	<intent-filter>
 			<action android:name="com.google.android.c2dm.intent.RECEIVE" />
 			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 			<category android:name="앱의 패캐지명" />
 		</intent-filter>
-	</receiver>
-
+</receiver>
+```
 
 ### receiver를 여러개 동시사용
 
@@ -82,17 +85,21 @@ Force Operation X receiver클래스가 공존하고 싶은 receiver클래스의 
 AndroidManifest.xml에 도입하는 receiver클래스를 meta-data에 추가합니다. <br>
 아래의 예는 추가 receiver클래스가 "com.example.NotifyReceiver"의 경우입니다.
 
-	<meta-data android:name="APPADFORCE_NOTIFY_RECEIVER"
-			   android:value="com.example.NotifyReceiver" />
-
+```xml
+<meta-data
+		android:name="APPADFORCE_NOTIFY_RECEIVER"
+		android:value="com.example.NotifyReceiver" />
+```
 
 
 ### 메소드 호출
 
 구현은 기동시 실행되는 스크립트에서 아래의 메소드를 호출합니다.
 
-	// XXXXXX는 GCM의 ProjectNumber을 지정합니다
-	FoxPlugin::notifyManager(XXXXXX);
+```cpp
+// XXXXXX는 GCM의 ProjectNumber을 지정합니다
+FoxPlugin::notifyManager(XXXXXX);
+```
 
 ### Project Number, API KEY를 만드는 방법
 
@@ -108,16 +115,21 @@ AndroidManifest.xml에 도입하는 receiver클래스를 meta-data에 추가합�
 
 iOS와 Android 모두에서 푸시 알림을 구현할 때 아래의 예와 같이 OS별로 실행
 
-	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-		// iOS
-		FoxPlugin::notifyManager();
+```cpp
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+	// iOS
+	FoxPlugin::notifyManager();
 
-	#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-		// Android
-	   FoxPlugin::notifyManager(XXXXXX);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	// Android
+	FoxPlugin::notifyManager(XXXXXX);
 
-	#endif
+#endif
+```
 
 ### 전환 기능
 
 F.O.X 관리 화면에서 설정한 URL주소 또는 URL스키마의 해당처에 푸시 알림 개봉시에 전환합니다.
+
+---
+[TOP](../../README.md)

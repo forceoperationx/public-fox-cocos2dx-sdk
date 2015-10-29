@@ -162,7 +162,7 @@ SDK의 동작에 필요한 설정을 plist에 추가합니다. 「AppAdForce.pli
 
 ![프레임 워크 설정 01](./doc/config_plist/img05.png)
 
-[SDK 설정상세](./doc/config_plist/)
+[SDK 설정상세](./doc/config_plist/README.md)
 
 [AppAdForce.plist 샘플](./doc/config_plist/AppAdForce.plist)
 
@@ -186,9 +186,9 @@ SDK의 동작에 필요한 설정을 plist에 추가합니다. 「AppAdForce.pli
 
 다운로드 한 SDK 「FOX_Android_SDK_<version>.zip을 전개해 「AppAdForce.jar」를 앱의 프로젝트에 포함 시키십시오.
 
-[Eclipse 프로젝트에 도입 방법](./doc/integration/eclipse/)
+[Eclipse 프로젝트에 도입 방법](./doc/integration/eclipse/README.md)
 
-[AndroidStudio 프로젝트에 도입 방법](./doc/integration/android_studio/)
+[AndroidStudio 프로젝트에 도입 방법](./doc/integration/android_studio/README.md)
 
 
 ## 3.3 AndroidManifest.xml의 편집
@@ -200,7 +200,7 @@ Force Operation X SDK를 실행하는 데 필요한 권한 설정을<manifest>�
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    
+
 ### 3.3.2 메타 데이터 설정
 |매개변수명|필수|개요|
 |:------|:------|:------|
@@ -229,12 +229,12 @@ Force Operation X SDK의 실행에 필요한 정보를 <application> 태그에 �
 		</intent-filter>
 	</receiver>
 
-이미 "com.android.vending.INSTALL_REFERRER"에 대한 receiver 클래스가 정의되어있는 경우에는, [2개의 INSTALL_REFERRER receiver를 공존시키는 경우 설정](./doc/install_referrer/)를 참조하십시오.
+이미 "com.android.vending.INSTALL_REFERRER"에 대한 receiver 클래스가 정의되어있는 경우에는, [2개의 INSTALL_REFERRER receiver를 공존시키는 경우 설정](./doc/install_referrer/README.md)를 참조하십시오.
 
 ### 3.3.4 AndroidManifest.xml에 관련된 다른 설정
 * [URL스키마 설정](./doc/config_url_scheme/)
-* [(옵션)광고 ID를 이용하기위한 Google Play Services SDK의 도입](./doc/google_play_services/)
-* [(옵션)외부 스토리지를 이용한 중복 제거 설정](./doc/external_storage/)
+* [(옵션)광고 ID를 이용하기위한 Google Play Services SDK의 도입](./doc/google_play_services/README.md)
+* [(옵션)외부 스토리지를 이용한 중복 제거 설정](./doc/external_storage/README.md)
 * [AndroidManifest.xml 설정 예](./doc/config_androidManifest/AndroidManifest.xml)
 
 
@@ -273,7 +273,7 @@ Cocos2dxFox.cpp의 JniHelper.h의 include 경로를 개발 환경에 맞추기 (
 
 sendConversion 메소드의 인수는 일반적으로 위와 같이 "default" 라는 문자열을 그대로 지정하십시오.
 
-* [sendConversion의 상세](./doc/send_conversion/)
+* [sendConversion의 상세](./doc/send_conversion/README.md)
 
 또한 URL스키마 경유의 기동을 측정하기 위해 URL스키마가 설정되어있는 모든 Activity의 onResume()에 sendConversionWithUrlScheme 메소드를 구현합니다.
 
@@ -313,11 +313,11 @@ LTV측정에 의해 광고 유입별 과금 금액 및 가입 횟수 등을 측�
 헤더를 include
 
 	#include "Cocos2dxFox.h"
-	
+
 성과를 기술
 
 	FoxPlugin::sendLtv(성과지점ID);
-	
+
 > 성과 지점 ID(필수):관리자에 의해 연락합니다. 그 값을 입력하십시오.
 ※ Android Cocos2dx SDK v2.10.4g 이전 해외판/글로벌 버전 SDK (버전 끝이 u 내용은 g)에서 SDK를 업데이트하려면 반드시 「v2.10.4g 이전의 업데이트 지침」의 단계를 추가 하십시오.
 
@@ -361,32 +361,38 @@ Android의 경우 아래와 같은 설정이 필요합니다.
 엡 기동 지점의 applicationDidFinishLaunching 및 applicationWillEnterForeground 내에서 아래와 같이 실행합니다.
 
 	#include “Cocos2dxFox.h”
-	
+
 ---
-	
+
 	FoxPlugin::sendStartSession();
 
 > ※ 앱이 백그라운드에서 복귀했을 때 그 Activity에 기동 측정의 구현이되어 있지 않은 경우 등 정확한 액티브 유저수가 측정 할 수 없습니다. <br>
 ※ Java의 onResume()와 C++ applicationWillEnterForeground 모두 sendStartSession()이 실행되지 않은 경우, 첫번째 유저로부터 이중 앱 시작 정보가 전송되므로 반드시 어느 쪽인지를 구현 하십시오.
 
 
-[액세스 해석에 의한 이벤트 계측](./doc/analytics_event/)
+[액세스 해석에 의한 이벤트 계측](./doc/analytics_event/README.md)
 
 # 7 Android 프로젝트에서 ProGuard를 이용하는 경우
 ProGuard를 이용하여 F.O.X SDK를 도입한 앱을 난독화 할 때 경고가 발생할 수 있습니다. 그 때 경고를 방지하기 위해 아래 설정을 추가하십시오.
-	-libraryjars libs/AppAdForce.jar
-	-keep interface jp.appAdForce.** { *; }
-	-keep class jp.appAdForce.** { *; }
-	-keep class jp.co.dimage.** { *; }
-	-keep class com.google.android.gms.ads.identifier.* { *; }
-	-dontwarn jp.appAdForce.android.ane.AppAdForceContext
-	-dontwarn jp.appAdForce.android.ane.AppAdForceExtension
-	-dontwarn com.adobe.fre.FREContext
-	-dontwarn com.adobe.fre.FREExtension
-	-dontwarn com.adobe.fre.FREFunction
-	-dontwarn com.adobe.fre.FREObject
-	-dontwarn com.ansca.**
-	-dontwarn com.naef.jnlua.**
+
+```
+-keepattributes *Annotation*
+
+-libraryjars libs/AppAdForce.jar
+-keep interface jp.appAdForce.** { *; }
+-keep class jp.appAdForce.** { *; }
+-keep class jp.co.dimage.** { *; }
+-keep class com.google.android.gms.ads.identifier.* { *; }
+-dontwarn jp.appAdForce.android.**
+-dontwarn jp.co.dimage.**
+-dontwarn jp.co.cyberz.fox.**
+-dontwarn com.adobe.fre.FREContext
+-dontwarn com.adobe.fre.FREExtension
+-dontwarn com.adobe.fre.FREFunction
+-dontwarn com.adobe.fre.FREObject
+-dontwarn com.ansca.**
+-dontwarn com.naef.jnlua.**
+```
 
 ※ GooglePlayServiceSDK를 도입하는 경우 아래 페이지에 기재되어 keep지정이 기술되어 있는지 확인하십시오.
 [Google Play Services 도입시 Proguard대응](https://developer.android.com/google/play-services/setup.html#Proguard)
@@ -423,7 +429,7 @@ ProGuard를 걸고 출시를 할 경우 반드시 ProGuard를 건 상태에서 �
 11. 당사측의 확인에서 문제가 없다면 테스트 완료됩니다.
 
 #9 기타 기능의 구현
-* [푸시 알림 구현](./doc/notify/)
+* [푸시 알림 구현](./doc/notify/README.md)
 
 
 # 10 마지막에 반드시 확인하시기 바랍니다 (지금까지 발생한 문제점들)
@@ -441,6 +447,8 @@ URL스키마는 모두 소문자로 설정해야합니다.
 ### F.O.X에서 확인 할 수 있는 설치수의 값이 마켓의 숫자보다 크다
 F.O.X는 몇개의 방식을 조합하여 단말기의 중복 설치 검사를 실시하고 있습니다. 중복 감지 할 수 없는 설정은 동일한 단말기에서도 다시 설치 될 때마다 F.O.X는 신규 설치라고 판정해 버립니다. 중복 탐지의 정확성을 향상시키기 위해 아래와 같이 설정하십시오.
 
-* [광고 ID를 이용하기 위한 Google Play Services SDK의 도입](./doc/google_play_services/)
+* [광고 ID를 이용하기 위한 Google Play Services SDK의 도입](./doc/google_play_services/README.md)
+* [(옵션) 외부 스토리지를 이용한 중복 제거 설정](./doc/external_storage/README.md)
 
-* [(옵션) 외부 스토리지를 이용한 중복 제거 설정](./doc/external_storage/)
+---
+[TOP MENU](/README.md)
