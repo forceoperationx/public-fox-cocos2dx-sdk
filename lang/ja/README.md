@@ -72,8 +72,9 @@ FoxPlugin::sendConversion(“default”);
 
 sendConversionメソッドの引数には、通常は上記の通り"default"という文字列をそのまま指定してください。
 
-* [sendConversionの詳細](./doc/send_conversion/README.md)
+> iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。 F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
 
+* [sendConversionの詳細](./doc/send_conversion/README.md)
 
 ## 3. LTV計測の実装
 

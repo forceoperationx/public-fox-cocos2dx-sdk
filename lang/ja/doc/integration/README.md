@@ -13,16 +13,18 @@
 :--------|:-------------:|:--------:
 Cocos2dxFox.h|必須|ヘッダファイル。Cocos2d-xからSDKを使用するためのラッパー
 Cocos2dxFox.mm|	iOS専用	|ライブラリファイル。Cocos2d-xからFOX SDKを使用するためのiOS用のラッパー
-Cocos2dxFox.cpp|オプション|ライブラリファイル。Cocos2d-xからPush通知を行うためのラッパー
+Cocos2dxFox.cpp|Android専用|ライブラリファイル。Cocos2d-xからFOX SDKを使用するためのAndroid用のラッパー
 FoxNotifyPlugin.m|オプション|ライブラリファイル。Cocos2d-xからPush通知を行うためのラッパー
 FoxVersionPlugin.h|オプション|ヘッダファイル。Cocos2d-xからバンドルバージョンを制御するラッパー
 FoxVersionDelegate.m|オプション|ライブラリファイル。Cocos2d-xからバンドルバージョンを制御するラッパー|
 FoxVersionPlugin.h|オプション|ヘッダファイル。Cocos2d-xからバンドルバージョンを制御するラッパー|
 FoxVersionPlugin.m|オプション|ライブラリファイル。Cocos2d-xからバンドルバージョンを制御するラッパー|
-FoxReengagePlugin.h|オプション|ヘッダファイル。Cocos2d-xからURLスキーム経由の起動計測を行うためのラッパー|
-FoxReengagePlugin.m|オプション|ライブラリファイル。Cocos2d-xからURLスキーム経由の起動計測を行うためのラッパー|
+FoxReengagePlugin.h|必須|ヘッダファイル。Cocos2d-xからURLスキーム経由の起動計測を行うためのラッパー(※1)|
+FoxReengagePlugin.m|必須|ライブラリファイル。Cocos2d-xからURLスキーム経由の起動計測を行うためのラッパー(※1)|
 
 上記のファイルはラッパーですので、実装ファイルはネイティブSDKを組み合わせます。
+
+> ※1 iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。 F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測を行います。`FoxReengagePlugin`は内部でSFSafariViewControllerの制御を行うために必要となりますので、アプリがiOS9をサポートしている場合は必須となります。
 
 以下のファイル群が、iOSのネイティブSDKとなっており「FOX_iOS_SDK_<version>」フォルダに同梱されています。
 
@@ -45,7 +47,7 @@ SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウン
 * Cocos2dxFox.h、Cocos2dxFox.mmを組み込んでください。Cocos2dxFox.cppはAndroid用ライブラリであるため、追加の必要はありません。
 * プッシュ通知機能を使う場合は、FoxNotifyPlugin.h、FoxNotifyPlugin.mの2ファイルを組み込んでください。
 * バンドルバージョン判定機能を使う場合は、FoxVersionDelegate.h、FoxVersionDelegate .mmとFoxVersionPlugin.h、FoxVersionPlugin.mmの計4ファイルを組み込んでください。
-* リエンゲージメント計測を行う場合はFoxReengagePlugin.hとFoxReengagePlugin.mの2ファイルを組み込んでください。
+* iOS9をサポートする場合、またはリエンゲージメント計測を行う場合はFoxReengagePlugin.hとFoxReengagePlugin.mの2ファイルを組み込んでください。
 * 「Copy items into destination group’s folder」にチェック
 
 ![インストール01](./ios/img01.png)

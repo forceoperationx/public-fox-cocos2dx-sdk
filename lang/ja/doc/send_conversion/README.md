@@ -1,12 +1,9 @@
 ## sendConversionの詳細
 
-sendConversionメソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザが起動されます。この際、外部ブラウザの遷移先をsendConversionの引数にURL文字列を指定することができます。
+sendConversionメソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザが起動されます。この際、外部ブラウザの遷移先をsendConversionの引数にURL文字列を指定することができます。<br>
+　iOSの場合、iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。 F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
 
 プロジェクトのソースコードを編集し、アプリケーションの起動時に呼び出される画面のAppDelegate:applicationDidFinishLaunching:メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に対して、次の通り実装を行ってください。
-
-> 【ご注意】
-sendConversionは、特に理由がない限りはアプリケーションの起動時に呼び出されるAppDelegate:applicationDidFinishLaunching内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
-アプリケーションの起動時に呼び出されるAppDelegate:applicationDidFinishLaunching内に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
 ```cpp
 #include "Cocos2dxFox.h"
@@ -30,7 +27,13 @@ sendConversionメソッドの第二引数に広告主端末IDを渡すことが�
 	FoxPlugin::sendConversion("default", "your unique id");
 ```
 
-> sendConversionは起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
+> ※ sendConversionは起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
+
+> ※ 端末がiOS9の場合にSafariではなく、SFSafariViewControllerが起動します。SFSafariViewControllerの制御を`FoxReengagePlugin.m`で行いますので、リエンゲージメント計測を実施しない場合でも必ず組み込んでください。組み込まれていない場合、自動でSFSafariViewControllerが閉じなくなります。
+
+> 【ご注意】
+sendConversionは、特に理由がない限りはアプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+アプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
 
 ---
