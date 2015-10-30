@@ -12,15 +12,18 @@ F.O.X の管理画面上に登録しているバージョンと実行中�
 以下、本機能の実装例です。
 checkVersionWithDelegate()メソッドをコールし、サーバーに問い合わせを行います。
 
-```c#
+```cs
 FoxPlugin.setListenerGameObject(this.gameObject.name);FoxPlugin.checkVersionWithDelegate();
 ```
 
 デリゲートメソッドであるdidLoadVersion()を実装します。
 
-```c#
+```cs
 public void didLoadVersion(string result){	// 一致しなかった場合(例えばテスト中のバージョン)の処理の記述。
 	if (result=="NO") {		....	}}
 ```
 
 >本メソッドによる F.O.X サーバーへの問い合わせは、負荷軽減のため1クライアントにおいて各 バージョンごとに5回までに制限されます。5 回を超えるとサーバーへの問い合わせは行われず、 didLoadVersion()がコールされません。バンドルバージョンを更新することで再度 5 回を上限 にサーバーへ問い合わせが行われます。
+
+---
+[iOS TOP](../README.md)

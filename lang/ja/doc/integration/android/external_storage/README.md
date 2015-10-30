@@ -27,9 +27,9 @@ Environment.getExternalStorageDirectory().getPath()で取得できるパス/ア�
 <meta-data android:name="APPADFORCE_ID_FILE" android:value="任意のファイル名" />
 ```
 
-> 任意のディレクトリ名やファイル名を指定した場合でも、Environment.getExternalStorageDirectory().getPath()の返り値のパス配下に作成します。Environment.getExternalStorageDirectory().getPath()の返り値は端末やOSバージョンによって異なります。 
-> "APPADFORCE_ID_DIR"(任意のディレクトリ名)を指定せず、任意のファイル名のみを指定した場合、アプリのパッケージ名のディレクトリが作成され、その配下に任意のファイル名で保存されます。 
-> ※"APPADFORCE_ID_FILE"(任意のファイル名)を指定せず、任意のディレクトリ名のみを指定した場合、任意の名前でディレクトリが作成され、その配下に"__FOX_XUNIQ__"で保存されます。
+> 任意のディレクトリ名やファイル名を指定した場合でも、Environment.getExternalStorageDirectory().getPath()の返り値のパス配下に作成します。Environment.getExternalStorageDirectory().getPath()の返り値は端末やOSバージョンによって異なります。
+> "APPADFORCE_ID_DIR"(任意のディレクトリ名)を指定せず、任意のファイル名のみを指定した場合、アプリのパッケージ名のディレクトリが作成され、その配下に任意のファイル名で保存されます。
+> ※"APPADFORCE_ID_FILE"(任意のファイル名)を指定せず、任意のディレクトリ名のみを指定した場合、任意の名前でディレクトリが作成され、その配下に`__FOX_XUNIQ__`で保存されます。
 通常は設定の必要はありません。
 
 
@@ -40,15 +40,14 @@ AndroidManifest.xmlの設定例を次に記載します。
 ```xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-<application 
+<application
 	android:icon="@drawable/ic_launcher"
 	android:label="@string/app_name" >
-	
+
 	<meta-data android:name="APPADFORCE_ID_DIR" android:value="fox_id_dir" />
 	<meta-data android:name="APPADFORCE_ID_FILE" android:value="fox_id_file" />
-	
-</application>
 
+</application>
 ```
 
 上記の例の場合に、保存されるファイルのパスは次になります。
@@ -65,3 +64,15 @@ Force Operation X SDKによる外部ストレージへのアクセスを停止�
 ```
 
 本設定を行うことで外部ストレージに対する記録が停止しますが、アプリケーションの削除によりデータが常に初期化されるため、正確なインストール計測が行われなくなります。
+
+### Android M(6.0)における注意点
+
+protectionLevelがdangerousに指定されているパーミッションを必要とする機能を利用するには、ユーザーの許可が必要となります。
+ユーザーの許可がない場合、ストレージ領域へのデータ保存が行えなくなるため重複排除設定が利用出来なくなります。
+前述の`READ_EXTERNAL_STORAGE`と`WRITE_EXTERNAL_STORAGE`においてもdangerousとなっており、ユーザーに許可を貰うための実装を行う必要があります。
+
+* [実装の参考](https://developer.android.com/training/permissions/requesting.html#perm-request)
+
+
+---
+[Android TOP](../README.md)

@@ -12,18 +12,24 @@ sendLtvConversionメソッドを利用することで、広告流入別の課金
 
 成果通知のコードを追加
 
+```cpp
 	FoxPlugin::sendLtv(成果地点ID);
+```
 
 > 成果地点ID(必須)：管理者より連絡します。その値を入力してください。※Android Cocos2dx SDK v2.10.4g以前の海外版/グローバル版SDK (バージョン末尾が u しくは g)からSDKをアップデートをする場合、必ず「v2.10.4g以前からのアップデート手順」の手順を追加してください。
 
 
 アプリ内部の成果に、広告主端末ID（会員IDなど）を含める事ができ、これを基準とした成果計測が行えます。LTV成果に広告主端末IDを付与したい場合は以下のように記述してください。
+```cpp
 	FoxPlugin::sendLtv(成果地点ID, "広告主端末ID");
-	
+```
+
 > 成果地点ID(必須)：管理者より連絡します。その値を入力してください。広告主端末ID(オプション)：広告主様が管理しているユニークな識別子（会員IDなど）です。指定できる値は64文字以内の半角英数字です。
 アプリ内計測時には、パラメータをオプションとして設定する事が可能です。
 
+```cpp
 	FoxPlugin::addParameter("パラメータ名", "値");
+```
 
 指定できるパラメータは次の通りです。
 
@@ -38,5 +44,9 @@ CC_LTV_PARAM_CURRENCYには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で�
 
 設定例：
 
-	FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);	FoxPlugin::addParameter(“my_param”, “ABC”);	FoxPlugin::sendLtv(70, “Taro”);
+```cpp
+FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);FoxPlugin::addParameter(“my_param”, “ABC”);FoxPlugin::sendLtv(70, “Taro”);
+```
 
+---
+[TOP](../../README.md)

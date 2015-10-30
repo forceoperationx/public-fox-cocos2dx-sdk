@@ -21,3 +21,6 @@ Engagement측정을 실시하는 iOS 앱의 경우는 FoxReengagePlugin.m/h를 �
 
 SDK 업데이트 후에는 반드시 효과 측정 테스트를 실시하고 계측 및 앱의 작동에 문제가 없음을 확인하십시오.
 또한 Engagement측정을 실시하는 경우는 Engagement측정을 위한 테스트를 실시해야합니다.
+
+---
+[TOP](../../README.md)

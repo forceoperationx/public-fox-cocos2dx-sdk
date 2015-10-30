@@ -10,23 +10,30 @@ sendConversion는 특별한 이유가없는 한 앱이 시작될 때 호출되�
 
 헤더 파일을 import
 
-	#include "Cocos2dxFox.h"
+```cpp
+#include "Cocos2dxFox.h"
+```
 
 성과 통지의 코드를 추가
-
-	FoxPlugin::sendConversion("default");
+```cpp
+FoxPlugin::sendConversion("default");
+```
 
 sendConversion의 인수는 일반적으로 위와 같이 "default"라는 문자열을 입력하십시오. 기본적으로 표준으로 준비된 페이지가 표시되지만 링크URL을 F.O.X 관리 화면에서 임의로 설정할 수 있습니다.
 
 
 특정 URL에 랑크시키고 싶은 경우나 앱에서 동적으로 URL을 생성하고자하는 경우에는 URL문자열을 설정하십시오.
-
+```cpp
 	FoxPlugin::sendConversion("http://yourhost.com/yourpage.html");
-
+```
 
 sendConversion 메소드의 두 번째 인수에 광고주 단말 ID를 전달할 수 있습니다. 예를 들어 앱 시작시 UUID를 생성하고 초기기동의 성과와 연결하여 관리하고 싶은 경우 등에 사용할 수 있습니다.
 
-
+```cpp
 	FoxPlugin::sendConversion("default", "your unique id");
+```
 
 > sendConversion는 기동 직후의 처리로써 구현될 필요가 있기 때문에 로그인 ID등의 유저 액션이 동반하는 값을 인수로 전달할 수 없습니다.
+
+---
+[TOP](../../README.md)

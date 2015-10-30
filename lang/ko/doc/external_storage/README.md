@@ -42,13 +42,13 @@ AndroidManifest.xml의 설정예를 기재합니다.
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-<application 
+<application
 	android:icon="@drawable/ic_launcher"
 	android:label="@string/app_name" >
-	
+
 	<meta-data android:name="APPADFORCE_ID_DIR" android:value="fox_id_dir" />
 	<meta-data android:name="APPADFORCE_ID_FILE" android:value="fox_id_file" />
-	
+
 </application>
 ```
 
@@ -67,3 +67,6 @@ Force Operation X SDK를 사용하여 외부 저장 장치에 대한 액세스�
 ```
 
 본 설정을함으로써 외부 스토리지에 대한 기록이 중지되지만 앱을 제거하면 데이터가 항상 초기화되기 때문에 정확한 설치 측정을 하지 않게됩니다.
+
+---
+[TOP](../../README.md)
