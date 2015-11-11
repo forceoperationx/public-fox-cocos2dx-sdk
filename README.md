@@ -1,4 +1,4 @@
-# Force Opetaion X Cocos2d-x SDK Integration Guide
+# Force Operation X Cocos2d-x SDK Integration Guide
 
 ###LANGUAGE
 * [Japanese](./lang/ja/README.md)
