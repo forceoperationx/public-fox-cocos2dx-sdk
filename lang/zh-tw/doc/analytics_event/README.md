@@ -1,25 +1,24 @@
-# アクセス解析によるイベント計測
-本機能では広告経由および自然流入経由でのイベントや売り上げをそれぞれ計測可能です。
-アクセス解析によるイベント計測や課金計測を行うために、次のsendEventメソッドを実装します。
+# 依靠流量分析進行Event計測
+能夠計測按不同廣告流入和自然流入的用戶進行的Event和收益。請在想要做Event計測的全部地點追加代碼。
+為了進行依據流量分析的Event計測，請安裝下面的sendEvent方法。
 
-※広告経由の売上のみを計測したい場合はLTV計測で計測可能ですので本機能の実装は必要ありません。<br>※主に自然流入経由の売上を計測したい場合などに本機能を実装してください。|パラメータ|タイプ|最大長|必須|概要|
+※如果只是希望計測經由廣告流入的利益，可以靠LTV計測來實現，不需要安裝這個功能。<br>※如果是希望计测經由自然流入的收益，请安装这个功能。|參數|類型|最大長度|必須|概要|
 |:---|:---:|:---:|:---:|:---|
-|eventName|String|255|必須|トラッキングを行うイベントを識別できる任意の名前を設定します。<br>イベント名は自由に設定可能です。<br>イベント単位でグルーピングされ、それぞれのイベントごとに集計を行うことができます。||action|String|255|オプション|イベントに属するアクション名を設定します。<br>アクション名は自由に設定可能です。<br>各イベントをドリルダウンすることで、アクションごとに集計を行うことができます。<br>特に指定しない場合は””を設定してください。|
-|label|String|255|オプション|アクションに属するラベル名を設定します。<br>ラベル名は自由に設定可能です。<br>各アクションをドリルダウンすることで、ラベルごとに集計を行うことができます。<br>特に指定しない場合は””を設定してください。||orderID|String|255|オプション|注文番号。特に指定いない場合は""を設定してください。|
-|sku|String|255|オプション|商品コード。特に指定しない場合は””を設定してください。||itemName|String|255|必須|商品名||price|double||必須|商品単価|
-|quantity|int||必須|購入数||currency|String||オプション|通貨コード。指定しなかった場合は"JPY"|チュートリアル突破や会員登録などのイベント計測の場合には以下のように記述してください。
-```cppFoxPlugin::sendEvent(eventName, action, label, quantity);```課金計測の場合には以下のように記述してください
-```cppFoxPlugin::sendEvent(eventName, action, label, orderId, sku, itemName, price, quantity, currency);```LTV計測においても課金を成果地点としている場合には、同一の箇所にLTVとアクセス解析のそれぞれの計測処理を実装します。
-サンプルとして、以下にアメリカドルで9.99ドルの課金を行った場合の実装例を記載致します。
-
+|eventName|String|255|必須|設定能夠識別計測Event的任意名稱。<br>按Event單位來分組，能夠按各自Event進行匯總。||action|String|255|任意|設定屬於Event的Action名。可以自由設定。<br>指定各Event的數據範圍按各Action進行匯總。<br>如果不做特別指定，請設定為""。|
+|label|String|255|任意|設定屬於Event的Label名。可以自由設定。<br>指定各Action的數據範圍按各Label進行匯總<br>如果不做特別指定，請設定為""。||orderID|String|255|任意|訂單號。如果不做特別指定，請設定為""。|
+|sku|String|255|任意|商品代號sku。如果不做特別指定，請設定為""。||itemName|String|255|必須|商品名||price|double||必須|商品單價|
+|quantity|int||必須|購入數量||currency|String||任意|指定貨幣代碼。如果不指定默認為"JPY"|如果做教程突破或會員登錄這樣的Event計測，請按下面那樣來書寫。
+```cppFoxPlugin::sendEvent(eventName, action, label, quantity);```如果想做消費計測，請按下面那樣來書寫。
+```cppFoxPlugin::sendEvent(eventName, action, label, orderId, sku, itemName, price, quantity, currency);```如果希望同時做LTV計測和消費計測，請在同一個地點安裝LTV和流量分析的各自計測處理。
+下面給出了一個消費了9.99美元的計測安裝實例。
 
 ```cpp
 #include “Cocos2dxFox.h”---
 
-	// LTV計測による課金計測	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “9.99”);	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, “USD”);	FoxPlugin::sendLtv(成果地点ID);
-	// アクセス解析による課金計測
+	// 依靠LTV計測進行消費計測	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “9.99”);	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, “USD”);	FoxPlugin::sendLtv(成果地点ID);
+	// 依靠流量分析進行消費計測
 	FoxPlugin::sendEvent(eventName, action, null, orderId, sku, itemName, 9.99, 1, "USD");
 ```
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](/lang/zh-tw/README.md)
