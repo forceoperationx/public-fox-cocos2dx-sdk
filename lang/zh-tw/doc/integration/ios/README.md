@@ -1,17 +1,17 @@
-# iOSプロジェクトの設定
+# iOS項目的設定
 
-## **Xcodeプロジェクトの設定**
+## **Xcode項目的設定**
 
-### Xcodeプロジェクトの編集
+### Xcode項目的編輯
 
-パブリッシュされたXcodeプロジェクトを開き、編集します。
+打開並編輯發布的Xcode項目。
 
-* **フレームワーク設定**
+* **Framework設定**
 
-次のフレームワークをプロジェクトにリンクしてください。
+請把下面的Framework追加到開發項目裡。
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><th>Framework名</th><th>Status</th></tr>
 <tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
@@ -19,56 +19,56 @@
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
 </table>
 
-> AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※SafariServices.framework是在iOS 9之後被追加的Framework，如果要讓APP在iOS 8之前版本也能運行（將iOS Deployment Target設定為8.4以下），為了設定為weak link，請修改設置為”Optional”
 
-> ※SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+![Framework設定01](/lang/zh-tw/doc/integration/ios/config_framework/img01.png)
 
-![フレームワーク設定01](/lang/ja/doc/integration/ios/config_framework/img01.png)
-
-[フレームワーク設定の詳細](/lang/ja/doc/integration/ios/config_framework/README.md)
+[Framework設定的詳細](/lang/zh-tw/doc/integration/ios/config_framework/README.md)
 
 * **SDK設定**
 
-SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist」というファイルをプロジェクトの任意の場所に作成し、次のキーと値を入力してください。
+追加必要的設定到plist裡讓SDK發揮作用。新建「AppAdForce.plist」這樣一個Property List文件放到項目的任意一個地方，並輸入下面的Key和Value。
 
 Key | Type | Value
 :---: | :---: | :---
-APP_ID | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-SERVER_URL | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_SALT | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_OPTIONS | String | 何も入力せず、空文字の状態にしてください。
-CONVERSION_MODE | String | 1
-ANALYTICS_APP_KEY | String | Force Operation X管理者より連絡しますので、その値を入力してください。<br />アクセス解析を利用しない場合は設定の必要はありません。
+APP_ID | String | 請將由Force Operation X管理者通知的數值輸入。
+SERVER_URL | String | 請將由Force Operation X管理者通知的數值輸入。
+APP_SALT | String | 請將由Force Operation X管理者通知的數值輸入。
+APP_OPTIONS | String | 請空白。
+CONVERSION_MODE | String | 請輸入1
+ANALYTICS_APP_KEY | String | 請將由Force Operation X管理者通知的數值輸入。<br />不利用流量分析的場合沒有必要設定
 
-![フレームワーク設定01](/lang/ja/doc/integration/ios/config_plist/img05.png)
 
-* **App Transport Securityについて**
+![Framework設定01](/lang/zh-tw/doc/integration/ios/config_plist/img05.png)
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
+* **關於App Transport Security**
 
-キー | タイプ | 概要
+由iOS9提供的AppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
+
+Key | Type | 概要
 :---: | :---: | :---
-NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
-NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
+NSExceptionDomains|Dictionary|指定ATS例外的dictionary
+指定的域名字符串|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
+NSExceptionAllowsInsecureHTTPLoads|Boolean|請指定成YES，設置成ATS的例外。
+NSIncludesSubdomains|Boolean|指定成YES，把ATS的例外設定也適用到子域名。
 
-![ATS設定](/lang/ja/doc/integration/ios/config_plist/img06.png)
+![ATS設定](/lang/zh-tw/doc/integration/ios/config_plist/img06.png)
 
-[SDK設定の詳細](/lang/ja/doc/integration/ios/config_plist/README.md)
+[SDK設定的詳細](/lang/zh-tw/doc/integration/ios/config_plist/README.md)
 
-[AppAdForce.plistサンプル](/lang/ja/doc/integration/ios/config_plist/AppAdForce.plist)
+[AppAdForce.plist例子](/lang/zh-tw/doc/integration/ios/config_plist/AppAdForce.plist)
 
-**iOS9における導入の注意点**
 
-> Cookie計測を実施する際に、iOS9ではSFSafariViewControllerが使用します。
-F.O.X Unity SDK v2.16以降では、SFSafariViewController起動後の制御をFoxReengagePluginで行うため導入が必須となります。
+**在iOS9環境導入的注意點**
 
-> これまで外されていた場合には、本Unity SDKのunitypackageファイルに同梱のFoxReengagePluginをご導入ください。
+> 進行Cookie計測的時候，在iOS9環境裡使用SFSafariViewController。
+F.O.X Unity SDK v2.16及以後版本，是靠FoxReengagePlugin做SFSafariViewController啟動後的控制，所以必須導入。
 
-### その他
+> 如果到此都沒有安裝，請導入同捆的FoxReengagePlugin到這個Unity SDK的unitypackage文件裡。
 
-* [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./check_version/README.md)
+### 其他
+
+* [登錄到管理畫面的BundleVersion相對應的不同處理](./check_version/README.md)
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](/lang/zh-tw/README.md)
