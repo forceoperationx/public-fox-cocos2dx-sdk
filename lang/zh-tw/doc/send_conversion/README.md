@@ -1,40 +1,38 @@
 ## sendConversionの詳細
 
-sendConversionメソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザが起動されます。この際、外部ブラウザの遷移先をsendConversionの引数にURL文字列を指定することができます。<br>
-　iOSの場合、iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。 F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
+利用`sendConversion:`方法能夠進行Install計測。如果使用Cookie計測手法，外部瀏覽器將被啟動。這個時候，可以把外部瀏覽器的跳轉目的地用字符串形式指定到`sendConversion:`的參數裡。<br>
+從iOS9開始，從初回啟動時的瀏覽器啟動到返回APP的時候，會彈出對話框。F.O.X SDK從iOS9開始發布了新的WebView形式，在初回啟動時啟動這個新形式的“SFSafariViewController”來進行計測。这样有效防止了因弹出对话框带来的用户体验下降。
 
-プロジェクトのソースコードを編集し、アプリケーションの起動時に呼び出される画面のAppDelegate:applicationDidFinishLaunching:メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に対して、次の通り実装を行ってください。
+編輯項目的源代碼，對於APP啟動時調用畫面的`AppDelegate:applicationDidFinishLaunching:`方法等，請按下面那样来安装在APP啟動時肯定處理的地方。
 
 ```cpp
 #include "Cocos2dxFox.h"
 
-// 成果通知のコードを追加
+// 添加成果通知的代碼
 FoxPlugin::sendConversion(“default”);
 ```
 
-sendConversionの引数には、通常は上記の通り"default"という文字列を入力してください。デフォルトでは標準で用意されたページが表示されますが、遷移先のURLをF.O.X管理画面上で任意に設定することが可能です。
+通常在sendConversion的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在FOX管理畫面裡任意設定跳轉目標頁面的URL。
 
-
-特定のURLヘ遷移させたい場合や、アプリケーションで動的にURLを生成したい場合には、URLの文字列を設定してください。
+想要跳轉至特定URL，或者想用APP動態生成URL的時候，請設定URL字符串。
 
 ```cpp
 	FoxPlugin::sendConversion(“http://yourhost.com/yourpage.html”);
 ```
 
-sendConversionメソッドの第二引数に広告主端末IDを渡すことができます。例えば、アプリ起動時にUUIDを生成し、初回起動の成果と紐付けて管理したい場合等に、利用できます。
+可以在sendConversion方法的第二個參數裡傳遞廣告主終端ID。比如，如果想用APP起動時生成的UUID和初次啟動的成果綁定到一起做管理，可以利用這個方法。
 
 ```cpp
 	FoxPlugin::sendConversion("default", "your unique id");
 ```
 
-> ※ sendConversionは起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
+> ※ 作為剛啟動後的處理需要實際安裝`sendConversion`，像登錄ID這樣的用戶行為相伴的值無法通過參數傳遞。
 
-> ※ 端末がiOS9の場合にSafariではなく、SFSafariViewControllerが起動します。SFSafariViewControllerの制御を`FoxReengagePlugin.m`で行いますので、リエンゲージメント計測を実施しない場合でも必ず組み込んでください。組み込まれていない場合、自動でSFSafariViewControllerが閉じなくなります。
+> ※如果終端是iOS9環境，那麼啟動的不是Safari而是SFSafariViewController。SFSafariViewController的控制需要依靠`FoxReengagePlugin.m`類庫，即使不進行Reengagement計測也需要導入，沒有導入的話SFSafariViewController將會自動被關閉。
 
-> 【ご注意】
-sendConversionは、特に理由がない限りはアプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
-アプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
-
+> 【注意事项】
+沒有特別的理由請將`sendConversion`安裝在APP啟動時調用的`AppDelegate:applicationDidFinishLaunching`方法裡。安裝在別的地點可能無法正確計測安裝數。
+在沒有安裝`AppDelegate:applicationDidFinishLaunching`的狀態下投放安裝成果型廣告的時候，請一定事先通知廣告代理店或者媒體負責人。不能正常計測的狀態下投放安裝成果型廣告，可能被要求支付超過計測安裝數的廣告費用。
 
 ---
 [TOP](../../README.md)
