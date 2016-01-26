@@ -1,53 +1,56 @@
-## AndroidManifest.xml メタデータ オプション詳細
+## AndroidManifest.xml meta-data 選項詳細
 
-|パラメータ名|必須|概要|
+|參數名|必須|概要|
 |:------|:------|:------|
-|APPADFORCE_APP_ID|必須|Force Operation X管理者より連絡しますので、その値を入力してください。|
-|APPADFORCE_SERVER_URL|必須|Force Operation X管理者より連絡しますので、その値を入力してください。|
-|APPADFORCE_CRYPTO_SALT|必須|Force Operation X管理者より連絡しますので、その値を入力してください。|
-|ANALYTICS_APP_KEY|必須|Force Operation X管理者より連絡しますので、その値を入力してください。|
-|APPADFORCE_ID_DIR|オプション|内(外)部ストレージを利用する際、任意の保存するディレクトリ名を指定できます。<br>未指定の場合、パッケージ名でディレクトリが作成されます。|
-|APPADFORCE_ID_FILE|オプション|内(外)部ストレージを利用する際、任意の保存する識別子ファイル名を指定できます。<br>未指定の場合、”__FOX_XUNIQ__”でファイルが作成されます。|
-|APPADFORCE_USE_EXTERNAL_STORAGE|オプション|0を指定した場合、内(外)部ストレージへの保存は実行しません。|
+|APPADFORCE_APP_ID|必須|請輸入Force Operation X管理員告知的值。|
+|APPADFORCE_SERVER_URL|必須|請輸入Force Operation X管理員告知的值。|
+|APPADFORCE_CRYPTO_SALT|必須|請輸入Force Operation X管理員告知的值。|
+|ANALYTICS_APP_KEY|必須|請輸入Force Operation X管理員告知的值。|
+|APPADFORCE_ID_DIR|任意|使用內(外)部存儲時，能夠指定任意的保存目錄名。<br>沒有指定的時候，會用PACKAGE名生成目錄。|
+|APPADFORCE_ID_FILE|任意|使用內(外)部存儲時，能夠指定任意的保存識別子文件名。<br>沒有指定的時候，會用”__FOX_XUNIQ__”生成文件。|
+|APPADFORCE_USE_EXTERNAL_STORAGE|任意|設定為0的時候，不會保存在內(外)部存儲裡。|
 
-#### 内部及び外部ストレージを利用した重複排除
-アプリケーションの初回起動時にSDKが生成した識別IDをローカルストレージまたはSDカードに保存することで、アプリケーション再インストール時に重複判定を行うことができます。外部ストレージへのファイル読み書きに必要なパーミッションの設定を<manifest>タグ内に追加します。本設定は必須ではありませんが、アプリケーションの再インストールにおける重複検知の精度が大きく向上するため、できる限り設定を行ってください。
+#### 利用內部和外部存儲實現重複排除
 
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />上記パーミッションが設定されていることにより、自動で以下のデフォルトパスに識別IDファイルが保存されます。
-	Environment.getExternalStorageDirectory().getPath()/アプリのパッケージ名/__FOX_XUNIQ__
-<デフォルト保存されるパスの例>
-　(※端末やOSバージョンによって異なります。)
+將APP初次啟動時，SDK生成的識別ID會保存在本地存儲和外部存儲（SD card）裡，在APP再安裝時能做重複判定。在<manifest>tag裡追加對外部存儲的文件讀寫所需要的Permission設定。雖然本設定並非必須，但為了提高再安裝APP時的重複監測精度，推薦設定。
 
-	/mnt/shell/emulated/0/アプリのパッケージ名/__FOX_XUNIQ__
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />根據上面設定的PERMISSION，識別ID文件會自動保存在下面默認路徑裡
+	Environment.getExternalStorageDirectory().getPath()/APP的PACKAGE名/__FOX_XUNIQ__
+	<默認保存路徑的範例>	　(※根據終端或OS版本會有差異。)
+	/mnt/shell/emulated/0/APP的PACKAGE名/__FOX_XUNIQ__
 
-保存されるファイルのディレクトリ名は標準でパッケージ名で作成されますが、任意のディレクトリ名及びファイル名に変更することができます。また、本機能によりファイルが生成されることを抑制することが可能です。識別子ファイルの保存先をコントロールしたい場合には、<application>タグ内に以下設定を追加することができます。通常は設定の必要はありません。<br>
-任意のディレクトリ名やファイル名を指定した場合でも、Environment.getExternalStorageDirectory().getPath()の返り値のパス配下に作成します。
+默認使用Package名作為用於保存文件的目錄名，也可以改變為任意的目錄名和文件名。當然也可以選擇不保存文件。
+如果需要控制識別ID保存的路徑，需要在&lt;application&gt;tag裏添加如下的設定。通常是不需要設定的。<br>
+指定的任意目錄名或文件名，會生成在Environment.getExternalStorageDirectory().getPath()的返回值的路徑下面。
 
-	<meta-data android:name="APPADFORCE_ID_DIR" android:value="任意のディレクトリ名" />
-	<meta-data android:name="APPADFORCE_ID_FILE" android:value="任意のファイル名" />
 
-<設定例>
+	<meta-data android:name="APPADFORCE_ID_DIR" android:value="任意的目錄名" />
+	<meta-data android:name="APPADFORCE_ID_FILE" android:value="任意的文件名" />
+
+<設定範例>
 
 	<meta-data android:name="APPADFORCE_ID_DIR" android:value="fox_id_dir" />
 	<meta-data android:name="APPADFORCE_ID_FILE" android:value="fox_id_file" />
 
-<デフォルト保存されるパスの例>
+<默認保存路徑的範例>
 
-　(※端末やOSバージョンによって異なります。)
+　(※根據終端或OS版本會有差異。)
 
-	/mnt/shell/emulated/0/アプリのパッケージ名/__FOX_XUNIQ__
+	/mnt/shell/emulated/0/APP的PACKAGE名/__FOX_XUNIQ__
 
-> ※ Environment.getExternalStorageDirectory().getPath()の返り値は端末やOSバージョンによって異なります。<br>
-> ※ ”APPADFORCE_ID_DIR”(任意のディレクトリ名)を指定せず、任意のファイル名のみを指定した場合、アプリのパッケージ名のディレクトリが作成され、その配下に任意のファイル名で保存されます。<br>
-> ※ ”APPADFORCE_ID_FILE”(任意のファイル名)を指定せず、任意のディレクトリ名のみを指定した場合、任意の名前でディレクトリが作成され、その配下に”__XUNIQ__”で保存されます。
+> 指定的任意的目錄名和文件名，會在Environment.getExternalStorageDirectory().getPath()返回路徑值的下面生成。在不同的設備或系統版本中Envrionment.getExternalStorageDirectory().getPath()的返回值不總是一樣的。<br>
 
-####AndroidManifest.xmlの設定例
+> 沒有指定”APPADFORCE_ID_DIR”（任意的目錄名），只指定了文件名的話，會自動創建APP的Package名的目錄，在目錄下按指定名文件保存。<br>
 
-	<?xml version="1.0" encoding="utf-8"?>	<manifest xmlns:android="http://schemas.android.com/apk/res/android"    	package="com.example.aaa"		android:versionCode="1"		android:versionName="1.0" >	    <uses-sdk    	    android:minSdkVersion="8"        	android:targetSdkVersion="16" />	    <application    	    android:allowBackup="true"        	android:icon="@drawable/ic_launcher"	        android:label="@string/app_name"    	    android:theme="@style/AppTheme" >        	<activity            	android:name="com.example.aaa.MainActivity"            	android:label="@string/app_name" >            	<intent-filter>                	<action android:name="android.intent.action.MAIN" />                	<category android:name="android.intent.category.LAUNCHER" />            	</intent-filter>            	<!-- ① URLスキームの設定 （sampleapp://）  -->	            <intent-filter>    	            <action android:name="android.intent.action.VIEW" />        	        <category android:name="android.intent.category.DEFAULT" />            	    <category android:name="android.intent.category.BROWSABLE" />                	<data android:scheme="sampleapp" />	            </intent-filter>    	    </activity>         	<!-- ② インストールリファラー計測のreceiver設定 -->	         <receiver android:exported="true"　android:name="jp.appAdForce.android.InstallReceiver" >    	        <intent-filter>        	        <action android:name="com.android.vending.INSTALL_REFERRER" />            	</intent-filter>	        </receiver>    	     <!-- ③ 必須meta-dataの設定 -->        	<meta-data android:name="APPADFORCE_APP_ID" android:value="123" />	        <meta-data android:name="APPADFORCE_SERVER_URL" android:value="0123456" />    	    <meta-data android:name="APPADFORCE_CRYPTO_SALT" android:value="abcdefg" />        	<meta-data android:name="ANALYTICS_APP_KEY" android:value="xxxxxx" />	        <!-- ④ストレージ保存機能を使わない場合の例 -->    	    <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
-    	    <!-- ⑤GooglePlayServicesを用いてAdvertisingIDを取得する場合 -->
+> 沒有指定”APPADFORCE_ID_FILE”（任意的文件名），只指定了目錄名的話，在指定的目錄下會創建以”__XUNIQ__”為名的文件。通常不需要設定。
+
+####AndroidManifest.xml設定實例
+
+	<?xml version="1.0" encoding="utf-8"?>	<manifest xmlns:android="http://schemas.android.com/apk/res/android"    	package="com.example.aaa"		android:versionCode="1"		android:versionName="1.0" >	    <uses-sdk    	    android:minSdkVersion="8"        	android:targetSdkVersion="16" />	    <application    	    android:allowBackup="true"        	android:icon="@drawable/ic_launcher"	        android:label="@string/app_name"    	    android:theme="@style/AppTheme" >        	<activity            	android:name="com.example.aaa.MainActivity"            	android:label="@string/app_name" >            	<intent-filter>                	<action android:name="android.intent.action.MAIN" />                	<category android:name="android.intent.category.LAUNCHER" />            	</intent-filter>            	<!-- ① URL Scheme的設定 (sampleapp://)   -->	            <intent-filter>    	            <action android:name="android.intent.action.VIEW" />        	        <category android:name="android.intent.category.DEFAULT" />            	    <category android:name="android.intent.category.BROWSABLE" />                	<data android:scheme="sampleapp" />	            </intent-filter>    	    </activity>         	<!-- ② Install Referrer計測的receiver設定  -->	         <receiver android:exported="true"　android:name="jp.appAdForce.android.InstallReceiver" >    	        <intent-filter>        	        <action android:name="com.android.vending.INSTALL_REFERRER" />            	</intent-filter>	        </receiver>    	     <!-- ③ 必須: meta-data 的設定 -->        	<meta-data android:name="APPADFORCE_APP_ID" android:value="123" />	        <meta-data android:name="APPADFORCE_SERVER_URL" android:value="0123456" />    	    <meta-data android:name="APPADFORCE_CRYPTO_SALT" android:value="abcdefg" />        	<meta-data android:name="ANALYTICS_APP_KEY" android:value="xxxxxx" />	        <!-- ④不使用内(外)部存儲保存功能的設定的範例 -->    	    <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
+    	    <!-- ⑤利用GooglePlayServices取得AdvertisingID -->
 	        <meta-data android:name="com.google.android.gms.version"
-				android:value="@integer/google_play_services_version" />    	</application>    	<uses-permission android:name="android.permission.INTERNET" />    	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />	</manifest>①	URLスキームの設定 → Webブラウザでsampleapp:// にアクセスでMainActivityが起動するよう設定<br>②	インストールリファラー計測のreceiver設定<br>
-③	必須meta-dataの設定<br>
-④	内(外)部ストレージ保存機能を使用しない設定：ON
-⑤	プロジェクトにGooglePlayServicesライブラリを導入している場合に必ず設定
----[Android TOP](../README.md)
+				android:value="@integer/google_play_services_version" />    	</application>    	<uses-permission android:name="android.permission.INTERNET" />    	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />	</manifest>①	URL Scheme的設定 → 用Web瀏覽器訪問sampleapp://，設定成讓MainActivity啟動<br>②	Install Referrer計測的receiver設定<br>
+③	必須meta-data的設定<br>
+④	不使用内(外)部存儲保存功能的設定：ON
+⑤	在項目裡導入GooglePlayServices類庫時需設定
+---[Android TOP](../README.md)
