@@ -173,17 +173,21 @@ FoxPlugin::sendStartSession();
 
 # 7. 最後請務必確認（到現在發生過的問題集）
 
-### 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
+### 7.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
 為了進行Cookie計測，在啟動外部瀏覽器以後，要利用URL Scheme跳轉到APP來返回到原來的畫面。
 這時有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
-### URL Scheme裡包含了大寫字母，無法正常跳轉回APP
+### 7.2. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
 由於環境的不同，可能無法判別URL Scheme裡的大小寫字母，進而引起不能正常跳轉。
 因此URL Scheme請全部使用小寫字母來設定。
 
-###用F.O.X計測的Install數值比Market計測的數值要大
+### 7.3. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
+
+在iOS裡，如果設定同一個URL Scheme到多個APP，啟動哪個APP是不確定的。因此設定URL Scheme的時候，請使用唯一的有一定複雜度的字符串。
+
+### 7.4. 用F.O.X計測的Install數值比Market計測的數值要大
 
 F.O.X使用了多種方式來監測終端的重複安裝。倘若設定了不進行重複監測，在相同終端再安裝時F.O.X會判定為新的安裝。為了提高重複監測的精度，請進行如下設定。
 
