@@ -1,7 +1,7 @@
 # URL Scheme的設定
 
 從外部啟動APP時必須設定。添加到啟動對象的&lt;activity&gt;標簽內。
-#### 例 ”smapleapp://”でアプリを起動させる
+#### 例如 用”smapleapp://”來啟動APP
 
 ```xml
 <intent-filter>		<action android:name="android.intent.action.VIEW" />		<category android:name="android.intent.category.DEFAULT" />		<category android:name="android.intent.category.BROWSABLE" />		<data android:scheme="sampleapp" /></intent-filter>
