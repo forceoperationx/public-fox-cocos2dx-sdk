@@ -44,7 +44,7 @@
         <meta-data android:name="APPADFORCE_CRYPTO_SALT" android:value="abcdefg" />
         <meta-data android:name="ANALYTICS_APP_KEY" android:value="xxxxxx" />
 
-        <!-- ④不使用外部存儲保存功能的範例 -->
+        <!-- ④不使用內（外）部存儲保存功能的範例 -->
         <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
         <!-- ⑤利用GooglePlayServices取得AdvertisingID -->
         <meta-data android:name="com.google.android.gms.version"
