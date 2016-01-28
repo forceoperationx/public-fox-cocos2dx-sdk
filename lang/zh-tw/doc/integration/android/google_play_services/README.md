@@ -1,4 +1,4 @@
-#導入Google Play Services SDK來使用廣告ID
+# 導入Google Play Services SDK來使用廣告ID
 
 ## Google Play開發程序準則
 
@@ -32,8 +32,9 @@ Force Operation X Android SD遵循Google Play developer programme policy的準�
 為了利用Google Play Services，請在AndroidManifest.xml的&lt;application&gt;tag内追加下面的設定。
 
 ```xml
-<meta-data android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
+<meta-data
+    android:name="com.google.android.gms.version"
+    android:value="@integer/google_play_services_version" />
 ```
 
 #### Proguard的設定

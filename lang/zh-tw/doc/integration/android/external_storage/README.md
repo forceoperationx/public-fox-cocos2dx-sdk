@@ -76,9 +76,7 @@
 為了利用ProtectionLevel設定為`dangerous`權限的機能，需要獲得用戶許可。如果用戶不許可，數據無法保存到存儲領域，進而無法利用重複排除設定。
 前面說到的READ_EXTERNAL_STORAGE和WRITE_EXTERNAL_STORAGE的級別也屬於dangerous，需要做實際安裝來獲得用戶許可。
 
-
 * [安裝參考](https://developer.android.com/training/permissions/requesting.html#perm-request)
-
 
 ---
 [Android TOP](../README.md)

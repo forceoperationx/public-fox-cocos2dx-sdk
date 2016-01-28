@@ -16,15 +16,15 @@
 
 > [参考設定](https://developer.android.com/training/backup/autosyncapi.html)
 
-**[個別指定備份APP數據的時候]**
+**[個別指定備份APP數據]**
 
-  請做設定以使下面文件包含在備份對象裡
+  設定讓下面文件包含在備份對象裡
 
 ```
 <include domain="file" path="__ADMAGE_RANDOM_DEVICE_ID__" />
 ```
 
-**[備份全部APP數據的時候]**
+**[備份全部APP數據]**
 
   如果想要設定成備份全部APP數據，請把下面文件設定成例外。
 
@@ -34,4 +34,5 @@
 ```
 
 ---
+[Android TOP](/lang/zh-tw/doc/integration/android/README.md)
 [TOP](/lang/zh-tw/README.md)

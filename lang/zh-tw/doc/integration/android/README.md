@@ -70,7 +70,7 @@ WRITE_EXTERNAL_STORAGE ※1|Dangerous|任意|利用外部存儲提高重複排�
 
 為了進行Reengagement廣告的計測（經由定製URL Scheme啟動的計測），需在&lt;application&gt;標簽裡添加必要的設定。
 Reengagement計測是利用定製URLScheme來調用Activity的方式進行計測。
-這個定製URL Scheme裡，請設定和其他Activity裡使用的不一樣的值。
+這個定製的URL Scheme，請區別開其他Activity裡的值來設定。
 
 [設定例]
 
