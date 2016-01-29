@@ -14,7 +14,6 @@
 Cocos2dxFox.h|必須|頭文件。為從Cocos2d-x使用SDK做的封裝
 Cocos2dxFox.mm|	iOS専用	|類庫文件。在iOS環境為從Cocos2d-x使用FOX SDK做的封裝
 Cocos2dxFox.cpp|Android専用|類庫文件。在Android環境為從Cocos2d-x使用FOX SDK做的封裝
-FoxNotifyPlugin.m|任意|類庫文件。為從Cocos2d-x進行PUSH通知做的封裝
 FoxVersionPlugin.h|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝
 FoxVersionDelegate.m|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝|
 FoxVersionPlugin.h|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝|
@@ -34,10 +33,9 @@ AdManager.h|必須|頭文件。進行廣告的效果測定。|
 libAppAdForce.a|必須|類庫文件。進行廣告的效果測定。|
 Ltv.h|任意|頭文件。進行LTV計測。|
 AnalyticsManager.h|任意|頭文件。進行流量分析。|
-Notify.h|任意|頭文件。進行PUSH通知。
 
 ※如果「FOX_iOS\_SDK_&lt;version&gt;」文件夾沒有包含在「FOX_Cocos2dx\_SDK_&lt;version&gt;.zip」裡
-請從SDK下載網站下載FOX_iOS\_SDK_&lt;version&gt;.zip來使用。
+請從SDK下載網站下載FOX_iOS_SDK_&lt;version&gt;.zip來使用。
 
 ### 類庫的導入
 
@@ -69,7 +67,6 @@ Notify.h|任意|頭文件。進行PUSH通知。
 |文件名|必須|概要|
 |:------:|:------:|:------|
 |AppAdForce.jar|必須|Android的Native SDK。能夠計測通常成果・LTV成果・流量分析。|
-|gcm.jar|任意|利用PUSH通知功能時需要導入。|
 
 ※如果「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」裡不包含「FOX_Android_SDK_&lt;version&gt;」文件夾，請從SDK下載頁面下載FOX_Android_SDK_&lt;version&gt;.zip後使用。
 

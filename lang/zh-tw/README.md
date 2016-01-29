@@ -63,7 +63,7 @@ Include header file.
 FoxPlugin::sendConversion(“default”);
 ```
 
-在sendConversion方法的參數裡，通常請按上面那樣一模一樣地指定"default"這個字符串。
+在sendConversion方法的參數裡，通常請完全按上面那樣指定"default"這個字符串。
 
 > 另外，在iOS9環境初回啟動時，從瀏覽器啟動到返回APP的時候，會跳出對話框。
 在F.O.X SDK裡，從iOS9開始提供新WebView形式，在初回啟動時使用這個新形式的“SFSafariViewController”來計測的話，可以禁止彈出對話框來提高用戶體驗。
@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
 #### ＜iPhone 項目＞
 iPhone需要進行以下設定。
 
-如同以下記述在APP啟動地點`applicationDidFinishLaunching`和`applicationWillEnterForeground`。
+按照下面那樣添加在APP啟動地點`applicationDidFinishLaunching`和`applicationWillEnterForeground`。
 （另外，在前面基於Android環境Java的Activity上，如果不能實際安裝`onResume`就進行如下的安裝。）
 
 ```cpp

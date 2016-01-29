@@ -126,7 +126,7 @@ protected void onNewIntent(Intent intent)
 
 ## 使用ProGuard
 
-使用ProGuard進行APP讀取混淆化時，請進行以下設定，將F.O.X SDK的method排除在對象外。
+使用ProGuard進行APP代码混淆化時，請進行以下設定，將F.O.X SDK的method排除在對象外。
 
 ```
 -keepattributes *Annotation*
@@ -147,7 +147,7 @@ protected void onNewIntent(Intent intent)
 -dontwarn com.naef.jnlua.**
 ```
 
-如果已導入GooglePlayServiceSDK，請確認下面網頁所記載的keep指定是否有被記述。
+如果已導入GooglePlayServiceSDK，請確認是否添加了下面網頁所記載的keep規則。
 
 [導入Google Play Services時的Proguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
 
