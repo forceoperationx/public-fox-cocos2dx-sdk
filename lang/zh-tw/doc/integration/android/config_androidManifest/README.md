@@ -11,7 +11,6 @@
 |APPADFORCE_USE_EXTERNAL_STORAGE|任意|設定為0的時候，不會保存在內(外)部存儲裡。|
 
 #### 利用內部和外部存儲實現重複排除
-
 將APP初次啟動時，SDK生成的識別ID會保存在本地存儲和外部存儲（SD card）裡，在APP再安裝時能做重複判定。在<manifest>tag裡追加對外部存儲的文件讀寫所需要的Permission設定。雖然本設定並非必須，但為了提高再安裝APP時的重複監測精度，推薦設定。
 
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />根據上面設定的PERMISSION，識別ID文件會自動保存在下面默認路徑裡

@@ -10,7 +10,7 @@
 |quantity|int||必須|購入數量||currency|String||任意|指定貨幣代碼。如果不指定默認為"JPY"|如果做教程突破或會員登錄這樣的Event計測，請按下面那樣來書寫。
 ```cppFoxPlugin::sendEvent(eventName, action, label, quantity);```如果想做消費計測，請按下面那樣來書寫。
 ```cppFoxPlugin::sendEvent(eventName, action, label, orderId, sku, itemName, price, quantity, currency);```如果希望同時做LTV計測和消費計測，請在同一個地點安裝LTV和流量分析的各自計測處理。
-下面給出了一個消費了9.99美元的計測安裝實例。
+下面給出了一個消費了9.99美元的計測安裝範例。
 
 ```cpp
 #include “Cocos2dxFox.h”---
