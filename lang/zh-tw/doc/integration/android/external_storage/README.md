@@ -36,9 +36,9 @@
 > 沒有指定”APPADFORCE_ID_FILE”（任意的文件名），只指定了目錄名的話，在指定的目錄下會創建以”__XUNIQ__”為名的文件。通常不需要設定。
 
 
-### 設定例
+### 設定範例
 
-下面記述了AndroidManifest.xml設定實例。
+下面記述了AndroidManifest.xml設定範例。
 
 ```xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -70,7 +70,6 @@
 ```
 
 通過這個設定可以停止紀錄到外部存儲，但因為刪除APP會初始化數據，將無法進行正確的Install計測。
-
 
 ### Android M(6.0)的注意事項
 
