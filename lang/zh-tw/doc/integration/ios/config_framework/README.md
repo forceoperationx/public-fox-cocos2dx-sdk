@@ -2,7 +2,7 @@
 
 點擊編譯對象，「Build Phases」→選擇「Link Binary With Libraries」。點擊「＋」按鈕，請選擇各Framework。
 
-![Framework設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_framework/ja/img01.png)
+![Framework設定01](./img01.png)
 
 請把下面的Framework追加到開發項目裡。
 
@@ -15,7 +15,7 @@
 <tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
-![Framework設定02](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_framework/ja/img02.png)
+![Framework設定02](./img02.png)
 
 ---
 [iOS TOP](../README.md)
