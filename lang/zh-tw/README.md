@@ -69,7 +69,7 @@ FoxPlugin::sendConversion(“default”);
 在F.O.X SDK裡，從iOS9開始提供新WebView形式，在初回啟動時使用這個新形式的“SFSafariViewController”來計測的話，可以禁止彈出對話框來提高用戶體驗。
 
 
-* [sendConversionの詳細](./doc/send_conversion/README.md)
+* [sendConversion的詳細](./doc/send_conversion/README.md)
 
 ## 3. LTV計測的安裝
 
@@ -143,7 +143,7 @@ FoxPlugin::sendStartSession();
 請按照管理員會通知的測試步驟進行測試。
 由於在啟動後只發生一次Install計測的通信，如果想要再次進行Install計測的話，請卸載APP再次安裝
 
-* **テスト手順**
+* **測試步驟**
 
 下面提供了能確認是否正常導入SDK的測試步驟。
 如果要進行開啟ProGuard的發布，請一定要在開啟ProGuard的狀態下進行測試。
@@ -166,35 +166,29 @@ FoxPlugin::sendStartSession();
 1. 請告訴鄙司3，6，7，9的時間。在鄙司這邊會確認是否正常被計測。
 1. 待鄙司確認沒有問題的時候，測試算正式完成。
 
+# 6. 最後請務必確認（到現在發生過的問題集）
 
-# 6. 其他機能的安裝
-
-* [Opt-Out的安裝](./doc/optout/README.md)
-
-# 7. 最後請務必確認（到現在發生過的問題集）
-
-### 7.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
+### 6.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
 為了進行Cookie計測，在啟動外部瀏覽器以後，要利用URL Scheme跳轉到APP來返回到原來的畫面。
 這時有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
-### 7.2. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
+### 6.2. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
 由於環境的不同，可能無法判別URL Scheme裡的大小寫字母，進而引起不能正常跳轉。
 因此URL Scheme請全部使用小寫字母來設定。
 
-### 7.3. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
+### 6.3. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
 
 在iOS裡，如果設定同一個URL Scheme到多個APP，啟動哪個APP是不確定的。因此設定URL Scheme的時候，請使用唯一的有一定複雜度的字符串。
 
-### 7.4. 用F.O.X計測的Install數值比Market計測的數值要大
+### 6.4. 用F.O.X計測的Install數值比Market計測的數值要大
 
 F.O.X使用了多種方式來監測終端的重複安裝。倘若設定了不進行重複監測，在相同終端再安裝時F.O.X會判定為新的安裝。為了提高重複監測的精度，請進行如下設定。
 
 * [導入Google Play Services SDK來使用廣告ID](./doc/integration/android/google_play_services/README.md)
 * [利用外部存儲設定重複排除](./doc/integration/android/external_storage/README.md)
 * [Android M(6.0) 利用自動備份功能](./doc/integration/android/auto_backup/README.md)
-
 
 ---
 [TOP MENU](/README.md)

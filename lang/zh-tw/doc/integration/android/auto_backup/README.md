@@ -35,4 +35,3 @@
 
 ---
 [Android TOP](/lang/zh-tw/doc/integration/android/README.md)
-[TOP](/lang/zh-tw/README.md)
