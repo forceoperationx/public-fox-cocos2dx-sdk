@@ -117,7 +117,7 @@ protected void onNewIntent(Intent intent)
 
 * [導入Google Play Services SDK來使用廣告ID](/lang/zh-tw/doc/integration/android/google_play_services/README.md)
 
-* [AndroidManifest.xml設定範例](/lang/zh-tw/doc/integration/android/config_android_manifest/AndroidManifest.xml)
+* [AndroidManifest.xml設定範例](/lang/zh-tw/doc/integration/android/config_androidManifest/AndroidManifest.xml)
 
 * [（任意）利用外部存儲設定重複排除](/lang/zh-tw/doc/integration/android/external_storage/README.md)
 
