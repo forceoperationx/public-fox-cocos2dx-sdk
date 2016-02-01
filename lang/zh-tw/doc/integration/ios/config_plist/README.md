@@ -6,7 +6,7 @@
 
 ![SDK設定01](./img01.png)
 
-「Property List」を選択。
+選擇「Property List」。
 
 ![SDK設定02](./img02.png)
 

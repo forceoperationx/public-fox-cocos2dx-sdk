@@ -6,7 +6,7 @@
 
 ![integration01](./img01.png)
 
-打開APP的Module Directory裡的build.gradle，追加訪問AppAdForce.jar的路徑。
+打開APP的Module Directory裡的build.gradle，添加訪問AppAdForce.jar的路徑。
 
 ```
 dependencies {
