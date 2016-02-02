@@ -12,7 +12,7 @@
 FoxPlugin::sendConversion(“default”);
 ```
 
-通常在sendConversion的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在FOX管理畫面裡任意設定跳轉目標頁面的URL。
+通常在sendConversion的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在F.O.X管理畫面裡任意設定跳轉目標頁面的URL。
 
 想要跳轉至特定URL，或者想用APP動態生成URL的時候，請設定URL字符串。
 

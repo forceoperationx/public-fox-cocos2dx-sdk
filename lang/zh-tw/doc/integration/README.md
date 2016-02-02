@@ -12,8 +12,8 @@
 文件名|必須|概要
 :--------|:-------------:|:--------:
 Cocos2dxFox.h|必須|頭文件。為從Cocos2d-x使用SDK做的封裝
-Cocos2dxFox.mm|	iOS専用	|類庫文件。在iOS環境為從Cocos2d-x使用FOX SDK做的封裝
-Cocos2dxFox.cpp|Android専用|類庫文件。在Android環境為從Cocos2d-x使用FOX SDK做的封裝
+Cocos2dxFox.mm|	iOS専用	|類庫文件。在iOS環境為從Cocos2d-x使用F.O.X SDK做的封裝
+Cocos2dxFox.cpp|Android専用|類庫文件。在Android環境為從Cocos2d-x使用F.O.X SDK做的封裝
 FoxVersionPlugin.h|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝
 FoxVersionDelegate.m|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝|
 FoxVersionPlugin.h|任意|類庫文件。為從Cocos2d-x控制BundleVersion做的封裝|
