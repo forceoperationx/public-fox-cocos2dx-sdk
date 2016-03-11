@@ -105,4 +105,6 @@ Cocos2dxFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（�
 [Android SDKの詳細設定](./android/README.md)
 
 ---
+[戻る](/lang/ja/doc/integration/README.md)
+
 [TOP](/lang/ja/README.md)

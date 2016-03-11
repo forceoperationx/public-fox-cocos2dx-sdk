@@ -37,4 +37,4 @@ sendConversionは、特に理由がない限りはアプリケーションの起
 
 
 ---
-[TOP](../../README.md)
+[TOP](/lang/ja/README.md)

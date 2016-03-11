@@ -89,4 +89,4 @@ F.O.X管理画面において、設定したURL先、或いはURLスキームの
 
 
 ---
-[TOP](../../README.md)
+[TOP](/lang/ja/README.md)

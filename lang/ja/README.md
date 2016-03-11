@@ -4,6 +4,25 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
 
+## 目次
+
+* **[1. インストール](#install_sdk)**
+	* [SDKダウンロード](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+	* [Cocos2d-x プラグインの導入方法](./doc/integration/README.md)
+	* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
+	* [Androidプロジェクトの設定](./doc/integration/android/README.md)
+* **[2. インストール計測の実装](#tracking_install)**
+	* [sendConversionの詳細](./doc/send_conversion/README.md)
+* **[3. LTV計測の実装](#tracking_ltv)**
+	* [sendLtvConversionの詳細](./doc/send_ltv_conversion/README.md)
+* **[4. アクセス解析の実装](#tracking_analytics)**
+	* [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
+* **[5. 疎通テストの実施](#integration_test)**
+* **[6. その他機能の実装](#other_function)**
+	* [プッシュ通知の実装](./doc/notify/README.md)
+	* [オプトアウトの実装](./doc/optout/README.md)
+* **[7. 最後に必ずご確認ください](#trouble_shooting)**
+
 ## F.O.X SDKとは
 
 F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
@@ -24,6 +43,8 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
 
+
+<div id="install_sdk"></div>
 ## 1. インストール
 
 以下のページより最新のSDKをダウンロードしてください。
@@ -54,6 +75,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 > Force Operation X SDK Cocos2d-x プラグインは、ネイティブ版SDKへのブリッジを行うラッパーとして実装しています。SDK導入には、プラグインと、iOS及びAndroidのネイティブ版SDKが必要となります。_
 
 
+<div id="tracking_install"></div>
 ## 2. インストール計測の実装
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。初回起動時に、ブラウザを起動し、広告クリック時に付与されたCookieの情報を照合することで、成果の計測を行います。
@@ -76,6 +98,8 @@ sendConversionメソッドの引数には、通常は上記の通り"default"と
 
 * [sendConversionの詳細](./doc/send_conversion/README.md)
 
+
+<div id="tracking_ltv"></div>
 ## 3. LTV計測の実装
 
 LTV計測により、広告流入別の課金金額や入会数などを計測することができます。計測のために、任意の地点にLTV成果通信を行うコードを追加します。
@@ -100,6 +124,7 @@ FoxPlugin::sendLtv(成果地点ID);
 * [sendLtvConversionの詳細](./doc/send_ltv_conversion/README.md)
 
 
+<div id="tracking_analytics"></div>
 ## 4. アクセス解析
 
 アクセス解析を導入することで、自然流入・広告流入別の起動数、アクティブユーザー数(DAU/MAU)や継続率を計測することができます。アクセス解析では、アプリケーションが起動、もしくはバックグラウンドから復帰する際にセッション計測を行うコードを追加します。不要の場合には、本項目の実装を省略できます。
@@ -144,6 +169,8 @@ FoxPlugin::sendStartSession();
 
 [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
 
+
+<div id="integration_test"></div>
 ## 5. 疎通テストの実施
 
 マーケットへの申請までに、Force Operation Xを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
@@ -175,29 +202,32 @@ ProGuardを掛けてリリースを行う場合、必ずProGuardを掛けた状�
 10. 弊社へ3,6,7,9の時間をお伝えください。正常に計測が行われているか確認致します。
 11. 弊社側の確認にて問題がなければテスト完了となります。
 
+
+<div id="other_function"></div>
 # 6. その他機能の実装
 
 * [プッシュ通知の実装](./doc/notify/README.md)
 * [オプトアウトの実装](./doc/optout/README.md)
 
 
+<div id="trouble_shooting"></div>
 # 7. 最後に必ずご確認ください（これまで発生したトラブル集）
 
-###URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
 Cookie計測を行いブラウザを起動した場合には、URLスキームを利用してアプリケーションに遷移します。
 
 この際、独自のURLスキームが設定されている必要があります。
 
 
-###URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### URLスキームに大文字が含まれ、正常にアプリに遷移されない
 
 環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。
 
 URLスキームは全て小文字で設定を行ってください。
 
 
-###F.O.Xで確認できるインストール数の値がマーケットの数字より大きい
+### F.O.Xで確認できるインストール数の値がマーケットの数字より大きい
 
 F.O.Xではいくつかの方式を組み合わせて端末の重複インストール検知を行っています。重複検知が行えない設定では、同一端末で再インストールされる度にF.O.Xは新規のインストールと判定してしまいます。重複検知の精度を向上するために、以下の設定を行ってください。
 
