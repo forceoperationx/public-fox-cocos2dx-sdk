@@ -120,7 +120,9 @@ protected void onNewIntent(Intent intent)
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](/lang/ja/doc/integration/android/google_play_services/README.md)
 
-* [AndroidManifest.xml 設定サンプル](/lang/ja/doc/integration/android/config_android_manifest/AndroidManifest.xml)
+* [AndroidManifest.xml メタデータ オプション詳細](/lang/ja/doc/integration/android/config_androidManifest/README.md)
+
+*	[AndroidManifest.xml 設定サンプル](/lang/ja/doc/integration/android/config_androidManifest/AndroidManifest.xml)
 
 * [（オプション）外部ストレージを利用した重複排除設定](/lang/ja/doc/integration/android/external_storage/README.md)
 
