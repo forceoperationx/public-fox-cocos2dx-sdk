@@ -120,7 +120,9 @@ protected void onNewIntent(Intent intent)
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](/lang/ja/doc/integration/android/google_play_services/README.md)
 
-* [AndroidManifest.xml 設定サンプル](/lang/ja/doc/integration/android/config_android_manifest/AndroidManifest.xml)
+* [AndroidManifest.xml メタデータ オプション詳細](/lang/ja/doc/integration/android/config_androidManifest/README.md)
+
+*	[AndroidManifest.xml 設定サンプル](/lang/ja/doc/integration/android/config_androidManifest/AndroidManifest.xml)
 
 * [（オプション）外部ストレージを利用した重複排除設定](/lang/ja/doc/integration/android/external_storage/README.md)
 
@@ -142,10 +144,7 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 -dontwarn jp.appAdForce.android.**
 -dontwarn jp.co.dimage.**
 -dontwarn jp.co.cyberz.fox.**
--dontwarn com.adobe.fre.FREContext
--dontwarn com.adobe.fre.FREExtension
--dontwarn com.adobe.fre.FREFunction
--dontwarn com.adobe.fre.FREObject
+-dontwarn com.adobe.fre.**
 -dontwarn com.ansca.**
 -dontwarn com.naef.jnlua.**
 ```
@@ -156,4 +155,6 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 
 ---
+[戻る](/lang/ja/doc/integration/README.md)
+
 [TOP](/lang/ja/README.md)

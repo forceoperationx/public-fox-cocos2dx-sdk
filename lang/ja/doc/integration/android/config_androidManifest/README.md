@@ -50,4 +50,4 @@
 ③	必須meta-dataの設定<br>
 ④	内(外)部ストレージ保存機能を使用しない設定：ON
 ⑤	プロジェクトにGooglePlayServicesライブラリを導入している場合に必ず設定
----[Android TOP](../README.md)
+---[Android TOP](/lang/ja/doc/integration/android/README.md)[TOP](/lang/ja/README.md)

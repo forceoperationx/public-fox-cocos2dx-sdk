@@ -71,4 +71,6 @@ F.O.X Unity SDK v2.16以降では、SFSafariViewController起動後の制御をF
 * [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./check_version/README.md)
 
 ---
+[戻る](/lang/ja/doc/integration/README.md)
+
 [TOP](/lang/ja/README.md)

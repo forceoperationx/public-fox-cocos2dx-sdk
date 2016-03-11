@@ -26,4 +26,6 @@ public void didLoadVersion(string result){	// 一致しなかった場合(例�
 >本メソッドによる F.O.X サーバーへの問い合わせは、負荷軽減のため1クライアントにおいて各 バージョンごとに5回までに制限されます。5 回を超えるとサーバーへの問い合わせは行われず、 didLoadVersion()がコールされません。バンドルバージョンを更新することで再度 5 回を上限 にサーバーへ問い合わせが行われます。
 
 ---
-[iOS TOP](../README.md)
+[iOS TOP](/lang/ja/doc/integration/ios/README.md)
+
+[TOP](/lang/ja/README.md)

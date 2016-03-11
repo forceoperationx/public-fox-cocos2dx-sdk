@@ -49,4 +49,4 @@ FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);FoxPlugin::addParamete
 ```
 
 ---
-[TOP](../../README.md)
+[TOP](/lang/ja/README.md)

@@ -18,4 +18,6 @@ dependencies {
 ![integration02](./img02.png)
 
 ---
-[Android TOP](../../README.md)
+[Android TOP](/lang/ja/doc/integration/android/README.md)
+
+[TOP](/lang/ja/README.md)

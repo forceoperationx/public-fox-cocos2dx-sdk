@@ -69,4 +69,6 @@ Proguardを利用して難読化している場合は、以下の設定を追加
 ```
 
 ---
-[Android TOP](../README.md)
+[Android TOP](/lang/ja/doc/integration/android/README.md)
+
+[TOP](/lang/ja/README.md)
