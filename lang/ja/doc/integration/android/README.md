@@ -153,4 +153,6 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 
 ---
+[戻る](/lang/ja/doc/integration/README.md)
+
 [TOP](/lang/ja/README.md)

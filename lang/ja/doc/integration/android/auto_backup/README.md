@@ -35,4 +35,6 @@ Android M(6.0)より追加されたオートバックアップを用いること
 ```
 
 ---
-[Android TOP](../README.md)
+[Android TOP](/lang/ja/doc/integration/android/README.md)
+
+[TOP](/lang/ja/README.md)

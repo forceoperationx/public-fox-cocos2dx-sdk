@@ -66,4 +66,6 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 
 ---
-[iOS TOP](../README.md)
+[iOS TOP](/lang/ja/doc/integration/ios/README.md)
+
+[TOP](/lang/ja/README.md)

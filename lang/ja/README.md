@@ -20,7 +20,6 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 * **[5. 疎通テストの実施](#integration_test)**
 * **[6. その他機能の実装](#other_function)**
 	* [プッシュ通知の実装](./doc/notify/README.md)
-	* [オプトアウトの実装](./doc/optout/README.md)
 * **[7. 最後に必ずご確認ください](#trouble_shooting)**
 
 ## F.O.X SDKとは
@@ -207,7 +206,6 @@ ProGuardを掛けてリリースを行う場合、必ずProGuardを掛けた状�
 # 6. その他機能の実装
 
 * [プッシュ通知の実装](./doc/notify/README.md)
-* [オプトアウトの実装](./doc/optout/README.md)
 
 
 <div id="trouble_shooting"></div>

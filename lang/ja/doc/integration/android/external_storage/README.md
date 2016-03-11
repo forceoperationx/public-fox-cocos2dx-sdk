@@ -75,4 +75,6 @@ protectionLevelがdangerousに指定されているパーミッションを必�
 
 
 ---
-[Android TOP](../README.md)
+[Android TOP](/lang/ja/doc/integration/android/README.md)
+
+[TOP](/lang/ja/README.md)
