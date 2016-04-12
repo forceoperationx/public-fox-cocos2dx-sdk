@@ -1,4 +1,4 @@
-# - F.O.X Trade Cocos2d-x Integration Guide -
+# 広告配信機能
 
 ## 1. 環境設定
 
@@ -16,7 +16,7 @@ zipファイルを解凍し、以下のファイルを下記に従ってコピ�
 |FOX_Android_SDK_{VERSION}/libs/FOX_Android_SDK_{VERSION}.jar|Androidプロジェクトのlibsフォルダ|
 |Classes/Trade/DLCoBanner.h|Classes|
 |Classes/Trade/DLCoInterstitial.h|Classes|
-|Classes/Android/全てのファイル|Classes|
+|Classes/Trade/Android/\*.\* (全てのファイル)|Classes|
 
 **[Gradleでビルドする場合のGooglePlayServicesのdependenciesの設定]**
 ```
@@ -79,7 +79,7 @@ zipファイルを解凍し、以下のファイルをXcodeプロジェクトに
 |Classes/iOS/全てのファイル|
 |Classes/Trade/DLCoBanner.h|
 |Classes/Trade/DLCoInterstitial.h|
-|Classes/Trade/iOS/全てのファイル|
+|Classes/Trade/iOS/\*.\* (全てのファイル)|
 
 **必要なframework**
 * UIKit.framework
@@ -106,7 +106,7 @@ __設定項目__
 |-|BannerView ( String placementId, int position )<br><br>`placementID` : 広告表示ID (管理者より発行されます)<br><br>`position` : 表示位置|コンストラクター|
 |void|show ( )<br><br>`placementID` : 広告表示ID (管理者より発行されます)|バナー広告を表示します。|
 |void|hide ( )|表示したバナー広告を閉じます。|
-|-|position : <br>`AdPosition.TOP` : 画面上部の中心に配置<br>`DLC_POSITION_TOP` : 画面上部中心に配置<br>`DLC_POSITION_BOTTOM` : 画面下部中心に配置<br>`DLC_POSITION_TOP_LEFT` : 画面上部左に配置<br>`DLC_POSITION_TOP_RIGHT` : 画面上部右に配置<br>`DLC_POSITION_BOTTOM_LEFT` : 画面下部左に配置<br>`DLC_POSITION_BOTTOM_RIGHT` : 画面下部右に配置|表示位置コンスタント|
+|-|position : <br>　`DLC_POSITION_TOP` : 画面上部中心に配置<br>　`DLC_POSITION_BOTTOM` : 画面下部中心に配置<br>　`DLC_POSITION_TOP_LEFT` : 画面上部左に配置<br>　`DLC_POSITION_TOP_RIGHT` : 画面上部右に配置<br>　`DLC_POSITION_BOTTOM_LEFT` : 画面下部左に配置<br>　`DLC_POSITION_BOTTOM_RIGHT` : 画面下部右に配置|表示位置コンスタント|
 
 ### DLCoInterstitial
 
@@ -122,29 +122,16 @@ __設定項目__
 
 表示させるタイミングでDLCoBannerインストタンスを生成し、showメソッドを実行します。
 
-Sample.h
-```cpp
-#include "DLCoBanner.h"
-
-class Sample
-{
-...
-
-    DLCoBanner* dlb;
-
-};
-```
-
 Sample.cpp
 ```cpp
-#include "Sample.h"
+#include "DLCoBanner.h"
 
 Fox::DLCoBanner* dlb;
 
 // 画面上部に表示する
 void Sample::showBannerTop(Ref* pSender)
 {
-    int position = dlb->DLC_POSITION_TOP_RIGHT;
+    int position = DLC_POSITION_TOP_RIGHT;
     char* placementId = ((char*)"広告表示ID");
     dlb = new DLCoBanner(placementId, position);
     dlb->onCocosAdSuccess = CC_CALLBACK_0(Sample::onBannerSuccess, this);
@@ -177,22 +164,9 @@ void Sample::onBannerFailed()
 
 表示させるタイミングでDLCoInterstitialインスタンスを生成し、showメソッドを実行します。
 
-Sample.h
-```cpp
-#include "DLCoInterstitial.h"
-
-class Sample
-{
-...
-
-    DLCoInterstitial* dli;
-
-};
-```
-
 Sample.cpp
 ```cpp
-#include "Sample.h"
+#include "DLCoInterstitial.h"
 
 // インタースティシャル広告の表示
 void Sample::showInterstitial(Ref* pSender)

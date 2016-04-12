@@ -189,29 +189,17 @@ FoxPlugin::sendStartSession();
 表示させるタイミングでDLCoBannerインストタンスを生成し、showメソッドを実行します。<br>
 実行すると、現在表示されている画面上にバナーが表示されます。
 
-Sample.h
-```cpp
-#include "DLCoBanner.h"
-
-class Sample
-{
-...
-    DLCoBanner* dlb;
-};
-```
-
 Sample.cpp
 ```cpp
-#include "Sample.h"
+#include "DLCoBanner.h"
 
 Fox::DLCoBanner* dlb;
 
 // 画面上部に表示する
 void Sample::showBannerTop(Ref* pSender)
 {
-
 // バナーを表示するタイミングで以下の処理を実行
-	int position = 0;
+	int position = DLC_POSITION_TOP;
 	char* placementId = ((char*)"広告表示ID");
 	dlb = new DLCoBanner(placementId, position);
 	dlb->show();
@@ -227,7 +215,6 @@ void Samle::hideBanner(Ref* pSender)
 > DLCoBannerコンストラクタの第一引数には管理者より発行される広告表示IDを指定してください。
 
 > DLCoBannerコンストラクタの第二引数にはバナー広告の表示位置オプションを指定します。<br>
-　・`AdPosition.TOP` : 画面上部の中心に配置<br>
 　・`DLC_POSITION_TOP` : 画面上部中心に配置<br>
 　・`DLC_POSITION_BOTTOM` : 画面下部中心に配置<br>
 　・`DLC_POSITION_TOP_LEFT` : 画面上部左に配置<br>
@@ -241,20 +228,9 @@ void Samle::hideBanner(Ref* pSender)
 
 インタースティシャル広告の表示対象となる画面にてDahliaInterstitialAdsインスタンスを生成し、showメソッドを実装してください。
 
-Sample.h
-```cpp
-#include "DLCoInterstitial.h"
-
-class Sample
-{
-...
-    DLCoInterstitial* dli;
-};
-```
-
 Sample.cpp
 ```cpp
-#include "Sample.h"
+#include "DLCoInterstitial.h"
 
 // インタースティシャル広告の表示
 void Sample::showInterstitial(Ref* pSender)
