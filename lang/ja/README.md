@@ -17,10 +17,12 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [sendLtvConversionの詳細](./doc/send_ltv_conversion/README.md)
 * **[4. アクセス解析の実装](#tracking_analytics)**
 	* [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
-* **[5. 疎通テストの実施](#integration_test)**
-* **[6. その他機能の実装](#other_function)**
+* **[5. 広告配信機能](#fox_trade)**
+	* [広告配信機能の詳細](./doc/fox_trade/README.md)
+* **[6. 疎通テストの実施](#integration_test)**
+* **[7. その他機能の実装](#other_function)**
 	* [プッシュ通知の実装](./doc/notify/README.md)
-* **[7. 最後に必ずご確認ください](#trouble_shooting)**
+* **[8. 最後に必ずご確認ください](#trouble_shooting)**
 
 ## F.O.X SDKとは
 
@@ -41,6 +43,10 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 * **プッシュ通知**
 
 F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
+
+* **広告配信**
+
+アプリ内に相互集客広告を表示させることができます。尚、広告表示が不要の場合には、本項目の実装を省略できます。
 
 
 <div id="install_sdk"></div>
@@ -168,9 +174,104 @@ FoxPlugin::sendStartSession();
 
 [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
 
+<div id="fox_trade"></div>
+## 5. 広告配信機能
+
+本機能を利用することで相互集客広告を表示させることができます。
+尚、広告表示が不要の場合には、本項目の実装を省略できます。
+表示する広告の種類は以下の２つとなります。
+
+* バナー広告
+* インタースティシャル広告
+
+### 5.1 バナー広告表示の実装
+
+表示させるタイミングでDLCoBannerインストタンスを生成し、showメソッドを実行します。<br>
+実行すると、現在表示されている画面上にバナーが表示されます。
+
+Sample.h
+```cpp
+#include "DLCoBanner.h"
+
+class Sample
+{
+...
+    DLCoBanner* dlb;
+};
+```
+
+Sample.cpp
+```cpp
+#include "Sample.h"
+
+Fox::DLCoBanner* dlb;
+
+// 画面上部に表示する
+void Sample::showBannerTop(Ref* pSender)
+{
+
+// バナーを表示するタイミングで以下の処理を実行
+	int position = 0;
+	char* placementId = ((char*)"広告表示ID");
+	dlb = new DLCoBanner(placementId, position);
+	dlb->show();
+}
+
+// バナー広告を閉じる
+void Samle::hideBanner(Ref* pSender)
+{
+    dlb->hide();
+}
+```
+
+> DLCoBannerコンストラクタの第一引数には管理者より発行される広告表示IDを指定してください。
+
+> DLCoBannerコンストラクタの第二引数にはバナー広告の表示位置オプションを指定します。<br>
+　・`AdPosition.TOP` : 画面上部の中心に配置<br>
+　・`DLC_POSITION_TOP` : 画面上部中心に配置<br>
+　・`DLC_POSITION_BOTTOM` : 画面下部中心に配置<br>
+　・`DLC_POSITION_TOP_LEFT` : 画面上部左に配置<br>
+　・`DLC_POSITION_TOP_RIGHT` : 画面上部右に配置<br>
+　・`DLC_POSITION_BOTTOM_LEFT` : 画面下部左に配置<br>
+　・`DLC_POSITION_BOTTOM_RIGHT` : 画面下部右に配置
+
+[広告配信機能の詳細](./doc/fox_trade/README.md)
+
+### 5.2 インタースティシャル広告表示の実装
+
+インタースティシャル広告の表示対象となる画面にてDahliaInterstitialAdsインスタンスを生成し、showメソッドを実装してください。
+
+Sample.h
+```cpp
+#include "DLCoInterstitial.h"
+
+class Sample
+{
+...
+    DLCoInterstitial* dli;
+};
+```
+
+Sample.cpp
+```cpp
+#include "Sample.h"
+
+// インタースティシャル広告の表示
+void Sample::showInterstitial(Ref* pSender)
+{
+    char* placementId = ((char*)"広告表示ID");
+    DLCoInterstitial* dli = new DLCoInterstitial(placementId);
+    dli->show();
+}
+```
+
+> DLCoInterstitialコンストラクタの引数には管理者より発行される広告表示IDを指定してください。
+
+[広告配信機能の詳細](./doc/fox_trade/README.md)
+
 
 <div id="integration_test"></div>
-## 5. 疎通テストの実施
+## 6. 疎通テストの実施
 
 マーケットへの申請までに、Force Operation Xを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
 
@@ -203,13 +304,13 @@ ProGuardを掛けてリリースを行う場合、必ずProGuardを掛けた状�
 
 
 <div id="other_function"></div>
-# 6. その他機能の実装
+# 7. その他機能の実装
 
 * [プッシュ通知の実装](./doc/notify/README.md)
 
 
 <div id="trouble_shooting"></div>
-# 7. 最後に必ずご確認ください（これまで発生したトラブル集）
+# 8. 最後に必ずご確認ください（これまで発生したトラブル集）
 
 ### URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
