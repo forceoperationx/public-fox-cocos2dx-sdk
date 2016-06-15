@@ -1,8 +1,6 @@
 # Android項目的設定
 為使SDK發揮作用請在AndroidManifest.xml裡添加必要的設定。
-Android 用の設定は Unity プロジェクト上で行うことができます。Unity プロジェクトに組み込まれた
-AndroidManifest.xml を編集します。プロジェクトに AndroidManifest.xml が存在しない場合は、 「Plugins/Android/AndroidManifest-sample.xml」を「AndroidManifest.xml」にリネームしてご利用ください。
-
+如果项目里没有AndroidManifest.xml，请拷贝「Plugins/Android/AndroidManifest-sample.xml」并改名为「AndroidManifest.xml」来使用。
 
 ## permission的設定
 
@@ -119,7 +117,7 @@ protected void onNewIntent(Intent intent)
 
 * [導入Google Play Services SDK來使用廣告ID](/lang/zh-tw/doc/integration/android/google_play_services/README.md)
 
-* [AndroidManifest.xml メタデータ オプション詳細](/lang/ja/doc/integration/android/config_androidManifest/README.md)
+* [AndroidManifest.xml meta-data option詳細](/lang/zh-tw/doc/integration/android/config_androidManifest/README.md)
 
 * [AndroidManifest.xml設定範例](/lang/zh-tw/doc/integration/android/config_androidManifest/AndroidManifest.xml)
 
