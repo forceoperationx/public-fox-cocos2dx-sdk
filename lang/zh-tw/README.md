@@ -6,21 +6,21 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 ## 目次
 
-* **[1. インストール](#install_sdk)**
-	* [SDKダウンロード](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
-	* [Cocos2d-x プラグインの導入方法](./doc/integration/README.md)
-	* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
-	* [Androidプロジェクトの設定](./doc/integration/android/README.md)
-* **[2. インストール計測の実装](#tracking_install)**
-	* [sendConversionの詳細](./doc/send_conversion/README.md)
-* **[3. LTV計測の実装](#tracking_ltv)**
-	* [sendLtvConversionの詳細](./doc/send_ltv_conversion/README.md)
-* **[4. アクセス解析の実装](#tracking_analytics)**
-	* [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
-* **[5. 広告配信機能](#fox_trade)**
+* **[1. 導入](#install_sdk)**
+	* [SDK下載](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+	* [Cocos2d-x插件的導入方法](./doc/integration/README.md)
+  * [iOS項目的設定](./doc/integration/ios/README.md)
+  * [Android項目的設定](./doc/integration/android/README.md)
+* **[2. Install計測的安裝](#tracking_install)**
+	* [sendConversion的詳細](./doc/send_conversion/README.md)
+* **[3. LTV計測的安裝](#tracking_ltv)**
+	* [sendLtvConversion的詳細](./doc/send_ltv_conversion/README.md)
+* **[4. 流量分析的安裝](#tracking_analytics)**
+	* [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
+* **[5. 廣告投放功能](#fox_trade)**
 	* [広告配信機能の詳細](./doc/fox_trade/README.md)
-* **[6. 疎通テストの実施](#integration_test)**
-* **[7. 最後に必ずご確認ください](#trouble_shooting)**
+* **[6. 進行疏通測試](#integration_test)**
+* **[7. 最後請務必確認](#trouble_shooting)**
 
 ## F.O.X SDK是什麼
 
@@ -38,10 +38,9 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-* **広告配信**
+* **廣告投放**
 
-アプリ内に相互集客広告を表示させることができます。尚、広告表示が不要の場合には、本項目の実装を省略できます。
-
+能夠在APP內部表示互動推廣廣告。如果不需要顯示該廣告，可以省略本章節的安裝。
 
 <div id="install_sdk"></div>
 ## 1. 導入
@@ -162,19 +161,19 @@ FoxPlugin::sendStartSession();
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
 <div id="fox_trade"></div>
-## 5. 広告配信機能
+## 5. 廣告投放機能
 
-本機能を利用することで相互集客広告を表示させることができます。
-尚、広告表示が不要の場合には、本項目の実装を省略できます。
-表示する広告の種類は以下の２つとなります。
+能夠在APP內部表示相互推廣獲得客源的廣告。
+如果不需要顯示該廣告，可以省略本章節的安裝。
+可以顯示的廣告種類有以下兩種。
 
-* バナー広告
-* インタースティシャル広告
+* 橫幅廣告（Banner Ad）
+* 插播廣告（Interstitial Ad）
 
-### 5.1 バナー広告表示の実装
+### 5.1 橫幅廣告表示的安裝
 
-表示させるタイミングでDLCoBannerインストタンスを生成し、showメソッドを実行します。<br>
-実行すると、現在表示されている画面上にバナーが表示されます。
+請在希望表示的時候生成DLCoBanner實例，並安裝show方法。
+安裝後，橫幅廣告會在現在表示的畫面上顯示出來。
 
 Sample.cpp
 ```cpp
@@ -182,44 +181,44 @@ Sample.cpp
 
 Fox::DLCoBanner* dlb;
 
-// 画面上部に表示する
+// 表示在畫面上部
 void Sample::showBannerTop(Ref* pSender)
 {
-// バナーを表示するタイミングで以下の処理を実行
+// 在表示橫幅廣告的時機進行如下處理
 	int position = DLC_POSITION_TOP;
-	char* placementId = ((char*)"広告表示ID");
+	char* placementId = ((char*)"廣告表示ID");
 	dlb = new DLCoBanner(placementId, position);
 	dlb->show();
 }
 
-// バナー広告を閉じる
+// 關閉橫幅廣告
 void Samle::hideBanner(Ref* pSender)
 {
     dlb->hide();
 }
 ```
 
-> DLCoBannerコンストラクタの第一引数には管理者より発行される広告表示IDを指定してください。
+> 在DLCoBanner構造函數的第一個參數裡指定由管理員發行的廣告表示ID。
 
-> DLCoBannerコンストラクタの第二引数にはバナー広告の表示位置オプションを指定します。<br>
-　・`DLC_POSITION_TOP` : 画面上部中心に配置<br>
-　・`DLC_POSITION_BOTTOM` : 画面下部中心に配置<br>
-　・`DLC_POSITION_TOP_LEFT` : 画面上部左に配置<br>
-　・`DLC_POSITION_TOP_RIGHT` : 画面上部右に配置<br>
-　・`DLC_POSITION_BOTTOM_LEFT` : 画面下部左に配置<br>
-　・`DLC_POSITION_BOTTOM_RIGHT` : 画面下部右に配置
+> 在DLCoBanner構造函數的第二個參數裡指定橫幅廣告的表示位置option。<br>
+　・`DLC_POSITION_TOP` : 配置到畫面上部中心<br>
+　・`DLC_POSITION_BOTTOM` : 配置到畫面下部中心<br>
+　・`DLC_POSITION_TOP_LEFT` : 配置到畫面上部左側<br>
+　・`DLC_POSITION_TOP_RIGHT` : 配置到畫面上部右側<br>
+　・`DLC_POSITION_BOTTOM_LEFT` : 配置到畫面下部左側<br>
+　・`DLC_POSITION_BOTTOM_RIGHT` : 配置到畫面下部右側
 
-[広告配信機能の詳細](./doc/fox_trade/README.md)
+[廣告投放機能的詳細](./doc/fox_trade/README.md)
 
-### 5.2 インタースティシャル広告表示の実装
+### 5.2 插播廣告表示的安裝
 
-インタースティシャル広告の表示対象となる画面にてDahliaInterstitialAdsインスタンスを生成し、showメソッドを実装してください。
+請在插播廣告表示對象的畫面裡生成下面的DahliaInterstitialAds實例，並安裝show方法。
 
 Sample.cpp
 ```cpp
 #include "DLCoInterstitial.h"
 
-// インタースティシャル広告の表示
+// 插播廣告的表示
 void Sample::showInterstitial(Ref* pSender)
 {
     char* placementId = ((char*)"広告表示ID");
@@ -228,10 +227,9 @@ void Sample::showInterstitial(Ref* pSender)
 }
 ```
 
-> DLCoInterstitialコンストラクタの引数には管理者より発行される広告表示IDを指定してください。
+> 請在DLCoInterstitial構造函數的參數裡指定管理員發行的廣告表示ID。
 
-[広告配信機能の詳細](./doc/fox_trade/README.md)
-
+[廣告投放機能的詳細](./doc/fox_trade/README.md)
 
 <div id="integration_test"></div>
 ## 6. 進行疏通測試
