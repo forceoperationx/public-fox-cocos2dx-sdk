@@ -101,8 +101,8 @@ __設定項目__
 
 |返回值類型|方法|詳細|
 |:---:|:---|:---|
-|-|BannerView ( String placementId, int position )<br><br>`placementID` : 廣告表示ID (管理員發行)<br><br>`position` : 表示位置|構造函數|
-|void|show ( )<br><br>`placementID` : 廣告表示ID (管理員發行)|表示橫幅廣告。|
+|-|BannerView ( String placementId, int position )<br>`placementID` : 廣告表示ID (管理員發行)<br>`position` : 表示位置|構造函數|
+|void|show ( )<br>`placementID` : 廣告表示ID (管理員發行)|表示橫幅廣告。|
 |void|hide ( )|關閉表示的橫幅廣告。|
 |-|position : <br>　`DLC_POSITION_TOP` : 配置到畫面上部中心<br>　`DLC_POSITION_BOTTOM` : 配置到畫面下部中心<br>　`DLC_POSITION_TOP_LEFT` : 配置到畫面上部左側<br>　`DLC_POSITION_TOP_RIGHT` : 配置到畫面上部右側<br>　`DLC_POSITION_BOTTOM_LEFT` : 配置到畫面下部左側<br>　`DLC_POSITION_BOTTOM_RIGHT` : 配置到畫面下部右側|表示位置定數|
 
