@@ -110,7 +110,7 @@ __設定項目__
 
 |返回值類型|方法|詳細|
 |:---:|:---|:---|
-|-|Interstitial ( String placementId )<br><br>`placementID` : 廣告表示ID (管理員發行)|構造函數|
+|-|Interstitial ( String placementId )<br>`placementID` : 廣告表示ID (管理員發行)|構造函數|
 |void|show ( )|表示插播廣告。|
 
 
