@@ -1,52 +1,59 @@
-## sendLtvConversionの詳細
+## sendLtvConversion的詳細
 
-sendLtvConversionメソッドを利用することで、広告流入別の課金金額や入会数などを計測することができます。計測のために、任意の地点にLTV成果通信を行うコードを追加します。
+利用sendLtvConversion方法，能夠計測廣告流入別的消費金額和加入會員數等。為了計測，須在任意地點添加进行LTV成果通信的代码。
 
-ソースの編集は、成果が上がった後に実行されるスクリプトに処理を記述します。例えば、会員登録やアプリ内課金後の課金計測では、登録・課金処理実行後のコールバック内にLTV計測処理を記述します。
+在成果到達後執行的程式中加入SDK的處理程式。譬如說，會員登錄和APP內消費後的消費計測，是將LTV計測處理記述在登錄、消費處理實行後的回調方法內。
 
-成果がアプリ内部で発生する場合、成果処理部に以下のように記述してください。
+如果成果發生在APP內部，請如同以下記述在成果處理裡面。
 
-ヘッダファイルをインクルード
+包含頭文件
 
 	#include “Cocos2dxFox.h”
 
-成果通知のコードを追加
+添加成果通知的代碼
 
 ```cpp
 	FoxPlugin::sendLtv(成果地点ID);
 ```
 
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。※Android Cocos2dx SDK v2.10.4g以前の海外版/グローバル版SDK (バージョン末尾が u しくは g)からSDKをアップデートをする場合、必ず「v2.10.4g以前からのアップデート手順」の手順を追加してください。
+> 成果地點ID(必須)：請輸入由管理員所告知的數值。
+＊如果更新的是Android Cocos2dx SDK v2.10.4g及以前的海外版/世界版SDK(版本號末尾是u或g)，請按「v2.10.4g及以前版本的更新步驟」來執行。
 
-
-アプリ内部の成果に、広告主端末ID（会員IDなど）を含める事ができ、これを基準とした成果計測が行えます。LTV成果に広告主端末IDを付与したい場合は以下のように記述してください。
-```cpp
-	FoxPlugin::sendLtv(成果地点ID, "広告主端末ID");
-```
-
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。広告主端末ID(オプション)：広告主様が管理しているユニークな識別子（会員IDなど）です。指定できる値は64文字以内の半角英数字です。
-アプリ内計測時には、パラメータをオプションとして設定する事が可能です。
+在APP內部的成果裡能夠包含廣告主終端ID（會員ID等），以此為基準進行成果計測。如果想要添加廣告主終端ID到LTV成果裡，請按下面那樣來記述。
 
 ```cpp
-	FoxPlugin::addParameter("パラメータ名", "値");
+	FoxPlugin::sendLtv(成果地点ID, "廣告主終端ID");
 ```
 
-指定できるパラメータは次の通りです。
+> 成果地點ID(必須)：請輸入由管理員所告知的數值。
+廣告主終端ID（任意）：廣告主管理的唯一識別子（會員ID等）。
+能指定的值是64文字以內的半角數字。
 
-|パラメータ名|概要|
+APP內計測時，可以把參數作為可選項來設定。
+
+```cpp
+	FoxPlugin::addParameter("參數名", "值");
+```
+
+能指定的參數如下。
+
+|參數名|概要|
 |:------|:------|
-|CC_LTV_PARAM_SKU|Stock Keeping Unit(商品管理コード)<br>（半角英数字32文字まで）<br>商品の在庫管理する際に使用してください|
-|CC_LTV_PARAM_PRICE|Price<br>（整数値　日本円）<br>売上額を管理する際に使用してください。|
-|CC_LTV_PARAM_CURRENCY|Currency<br>（半角英字3文字の通貨コード）<br>通貨別で課金額を集計する際に使用してください。<br>通貨が設定されていない場合、PriceをJPY(日本円)として扱います。|
-|任意でパラメータを加える事も可能です。|FoxPlugin::addParameter(“パラメータ名”, “値”);<br>※1 同一パラメータ名を記述した場合は、後者が有効となります。<br>※2 アンダースコア（"_"）をパラメータ名の先頭に記述しないでください。<br>※3 半角英数字以外は使用できません。|
+|CC_LTV_PARAM_SKU|Stock Keeping Unit(商品管理代號SKU)<br>（最大32位半角英文數字）<br>在商品的庫存管理的時候請使用|
+|CC_LTV_PARAM_PRICE|Price<br>（整数値　日圓）<br>管理銷售金額時請使用。|
+|CC_LTV_PARAM_CURRENCY|Currency<br>（3位半角英文的貨幣代碼）<br>按不同幣種統計消費金額時請使用。<br>沒有設定貨幣時，Price會默認按JPY（日圓）來處理|
+|也可以任意添加參數|FoxPlugin::addParameter(“參數名”, “値”);<br>※1 如果設定了相同的參數名，後者有效。<br>※2 請不要在參數名的開頭使用下劃線（"_"）。<br>※3 不能使用半角英文數字以外的字符。|
 
-CC_LTV_PARAM_CURRENCYには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+在CC_LTV_PARAM_CURRENCY裡用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
-設定例：
+設定範例：
 
 ```cpp
-FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);FoxPlugin::addParameter(“my_param”, “ABC”);FoxPlugin::sendLtv(70, “Taro”);
+FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);
+FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);
+FoxPlugin::addParameter(“my_param”, “ABC”);
+FoxPlugin::sendLtv(70, “Taro”);
 ```
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](../../README.md)

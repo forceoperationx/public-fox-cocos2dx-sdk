@@ -1,31 +1,35 @@
-## （オプション）管理画面上に登録したバンドルバージョンに応じた処理の振り分け
+## （任意）登錄到管理畫面的BundleVersion相對應的不同處理
 
-F.O.X の管理画面上に登録しているバージョンと実行中のアプリのバージョンとが一致するかどうかに応じて処理を振り分けることができます。本機能を利用することで、例えばリリース中とテスト中のバージョンの処理の振り分けをF.O.Xを利用して制御し、テスト中のみ特定の処理を実行するなどが可能となります。
-本機能の実装は必須ではありません。
+通過登錄在F.O.X管理畫面裡的版本和執行中APP的版本做比較，能夠依照版本是否一致來執行不同處理。
+F.O.X可以利用這個機能來實現控制發布版本和測試版本做不同處理，或者只在測試版本裡才執行某些特定處理等任務。
+使用本機能不需要安裝。
 
-なお、F.O.X で利用するバンドルバージョンとは、CFBundleShortVersionString に相当する値です。
+此外，F.O.X裡使用的BundleVersion相當於CFBundleShortVersionString的值。
 
+為實現對BundleVersion來做相應的處理，需要利用`checkVersionWithDelegate()`方法。
+服務器會接收和處理BundleVersion的查詢，一收到結果就會調用didLoadVersion()。請安裝Delegate方法didLoadVersion()。
+調用didLoadVersion()時，能夠判別管理畫面裡登錄的BundleVersion和運行APP的BundelVersion是否一致。一致的場合返回YES，不一致的場合返回NO。
 
-バンドルバージョンに応じた処理の振り分けを行うには、checkVersionWithDelegate()メソッドを利用します。バージ ョンチェックの問い合わせを F.O.X サーバーに対して行い、結果を受信すると didLoadVersion()がコールされます。デ リゲートメソッド didLoadVersion()を実装してください。didLoadVersion()のコール時に、管理画面上に登録したバンドルバージョンが実行中のアプリのバージョンと一致するかどうかの判定結果を引数に渡します。一致した場合には”YES”、一致しなかった場合には”NO”を返します。
-
-
-以下、本機能の実装例です。
-checkVersionWithDelegate()メソッドをコールし、サーバーに問い合わせを行います。
-
-```cs
-FoxPlugin.setListenerGameObject(this.gameObject.name);FoxPlugin.checkVersionWithDelegate();
-```
-
-デリゲートメソッドであるdidLoadVersion()を実装します。
+下面是這個機能的安裝例子。調用CheckVersionDelegate()方法在服務器做查詢。
 
 ```cs
-public void didLoadVersion(string result){	// 一致しなかった場合(例えばテスト中のバージョン)の処理の記述。
-	if (result=="NO") {		....	}}
+FoxPlugin.setListenerGameObject(this.gameObject.name);
+FoxPlugin.checkVersionWithDelegate();
 ```
 
->本メソッドによる F.O.X サーバーへの問い合わせは、負荷軽減のため1クライアントにおいて各 バージョンごとに5回までに制限されます。5 回を超えるとサーバーへの問い合わせは行われず、 didLoadVersion()がコールされません。バンドルバージョンを更新することで再度 5 回を上限 にサーバーへ問い合わせが行われます。
+安裝Delegate方法didLoadVersion()。
+
+```cs
+public void didLoadVersion(string result)
+{
+	// 記述了不一致的場合(例如測試中的Version)的處理。
+	if (result=="NO") {
+		....
+	}
+}
+```
+
+> 用這個方法在F.O.X服務器做查詢，為了減輕負荷，一個用戶每個版本最大5回。超過5回將不能在服務器做查詢，或者說didLoadVersion()不被調用。如果更新了BundleVersion可以在服務器再做5回查詢。
 
 ---
-[iOS TOP](/lang/ja/doc/integration/ios/README.md)
-
-[TOP](/lang/ja/README.md)
+[iOS TOP](../README.md)

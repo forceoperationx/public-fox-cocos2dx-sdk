@@ -1,53 +1,45 @@
-#広告IDを利用するためのGoogle Play Services SDKの導入
+# 導入Google Play Services SDK來使用廣告ID
 
+## Google Play開發程序準則
 
-## Google Playデベロッパープログラムへの準拠
-
-Force Operation X Android SDKはGoogle Playデベロッパープログラムポリシーに準拠しています。本SDKはポリシーに準拠するために、永続的なデバイス ID（IMEI、MACアドレス及びAndroidID）が取得される場合には広告IDが取得されません。2014年8月1日から、Google Playストアにアップロードされたすべての更新や新着アプリには、広告目的で使用する端末IDには広告ID を利用する必要があります。本ポリシーに準拠するために、以下の手順を行ってください。
-
+Force Operation X Android SD遵循Google Play developer programme policy的準則。依據policy，若已經取得永久性的Device ID (IMEI、MAC address和Android ID)，將不會再取得廣告ID。2014年8月1日開始，上傳在Play store全部的更新和新APP中，對於為了廣告目的使用的設備ID必須使用廣告ID。為了符合此Policy，請按照下面的流程進行。
 
 ## Google Play Services SDK
 
-
-広告IDを利用できるようにするために、Google Play Services SDKが組み込まれている必要があります。
-アプリケーションにGoogle Play Services SDKが組み込まれていない場合には、次のサイトの手順に従い、導入を行ってください。
+為了能使用廣告ID，必須包含Google Play Services SDK。若APP當中沒有包含Google Play Services SDK，請依照以下網站的流程，進行導入。
 
 [Setting Up Google Play Services | Android Developers](https://developer.android.com/google/play-services/setup.html)
 
+## Google Play Services SDK的取得
 
+下面記載了2014年11月公布的Google Play Services SDK導入方法。
 
-## Google Play Services SDKの取得
+如果沒有安裝Google Play Services SDK，請從Android SDK Manager取得Package。
 
-以下に、2014年12月時点での、Google Play Services SDKの導入方法を記載致します。
-
-
-Google Play Services SDKをインストールしていない場合は、Android SDK Managerからパッケージを取得します。
-
-* Android SDK Managerを起動します。
-* Extrasディレクトリ配下のGoogle Play servicesにチェックをいれ、パッケージをインストールします。
+* 起動Android SDK Manager
+* 勾選Extras目錄下的Google Play services選項來安裝Package。
 
 ![googlePlayServices01](./img01.png)
 
-## Google Play Servicesの導入
+## Google Play Services的導入
 
-Google Play Services のライブラリプロジェクトを取得したら、プロジェクトプロパティで外部ライブラリプロジェクトを参照するよう ${ANDROID_SDK_PATH}/extras/google/google_play_services/libproject/google-play-services_libを指定してください。
+取得了Google Play Services類庫項目之後，在項目屬性裡為了能訪問到外部類庫項目，請指定${ANDROID_SDK_PATH}/extras/google/google_play_services/libproject/google-play-services_lib，把Google Play Services導入到項目裡。
 
+## 通過設定來利用Google Play Services
 
+#### AndroidManifest.xml的編輯
 
-## Google Play Servicesを利用するための設定
-
-#### AndroidManifest.xmlの編集
-
-Google Play Servicesを利用するために下記の設定をAndroidManifest.xmlの<application>タグ内に記述します。
+為了利用Google Play Services，請在AndroidManifest.xml的&lt;application&gt;tag内追加下面的設定。
 
 ```xml
-<meta-data android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
+<meta-data
+    android:name="com.google.android.gms.version"
+    android:value="@integer/google_play_services_version" />
 ```
 
-#### Proguardの設定
+#### Proguard的設定
 
-Proguardを利用して難読化している場合は、以下の設定を追加してください。
+使用ProGuard進行APP讀取混淆化時，請追加下面的設定。
 
 ```
 -keep class * extends java.util.ListResourceBundle {
@@ -69,6 +61,4 @@ Proguardを利用して難読化している場合は、以下の設定を追加
 ```
 
 ---
-[Android TOP](/lang/ja/doc/integration/android/README.md)
-
-[TOP](/lang/ja/README.md)
+[Android TOP](../README.md)

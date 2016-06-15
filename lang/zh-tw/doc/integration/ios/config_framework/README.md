@@ -1,13 +1,13 @@
-## フレームワーク設定の詳細
+## Framework設定的詳細
 
-ビルド対象のターゲットをクリックし、「Build Phases」→「Link Binary With Libraries」を選択。「+」ボタンを押し、各フレームワークを選択してください。
+點擊編譯對象，「Build Phases」→選擇「Link Binary With Libraries」。點擊「＋」按鈕，請選擇各Framework。
 
-![フレームワーク設定01](./img01.png)
+![Framework設定01](./img01.png)
 
-次のフレームワークをプロジェクトにリンクしてください。
+請把下面的Framework追加到開發項目裡。
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><th>Framework名</th><th>Status</th></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
@@ -15,11 +15,7 @@
 <tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
-> AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
-
-![フレームワーク設定02](./img02.png)
+![Framework設定02](./img02.png)
 
 ---
-[iOS TOP](/lang/ja/doc/integration/ios/README.md)
-
-[TOP](/lang/ja/README.md)
+[iOS TOP](../README.md)

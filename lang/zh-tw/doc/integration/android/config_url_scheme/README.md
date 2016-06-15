@@ -1,13 +1,19 @@
-# URLスキームの設定
+# URL Scheme的設定
 
-アプリを外部から起動する際に必須となります。起動させる対象となる<activity>タグ内に追加します。
-#### 例 ”smapleapp://”でアプリを起動させる
+從外部啟動APP時必須設定。添加到啟動對象的&lt;activity&gt;標簽內。
+
+#### 例如 用”smapleapp://”來啟動APP
 
 ```xml
-<intent-filter>		<action android:name="android.intent.action.VIEW" />		<category android:name="android.intent.category.DEFAULT" />		<category android:name="android.intent.category.BROWSABLE" />		<data android:scheme="sampleapp" /></intent-filter>
+<intent-filter>
+		<action android:name="android.intent.action.VIEW" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<category android:name="android.intent.category.BROWSABLE" />
+		<data android:scheme="sampleapp" />
+</intent-filter>
 ```
 
-#### 使用例
+#### 使用範例
 
 ```xml
 <activity
@@ -18,7 +24,7 @@
         	<category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
 
-        <!-- URLスキームの設定 （sampleapp://）  -->
+        <!-- URL Scheme （sampleapp://）  -->
         <intent-filter>
         	<action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -29,6 +35,4 @@
 ```
 
 ---
-[Android TOP](/lang/ja/doc/integration/android/README.md)
-
-[TOP](/lang/ja/README.md)
+[Android TOP](../README.md)
