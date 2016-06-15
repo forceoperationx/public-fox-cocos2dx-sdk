@@ -61,11 +61,9 @@ NSIncludesSubdomains|Boolean|指定成YES，把ATS的例外設定也適用到子
 
 **在iOS9環境導入的注意點**
 
-> Cookie計測を実施する際に、iOS9ではSFSafariViewControllerが使用します。 F.O.X Unity SDK v2.16以降では、SFSafariViewController起動後の制御をFoxReengagePluginで行うため導入が必須となります。
 > 進行Cookie計測的時候，在iOS9環境裡使用SFSafariViewController。
 F.O.X Unity SDK v2.16及以後版本，是靠FoxReengagePlugin做SFSafariViewController啟動後的控制，所以必須導入。
 
-> これまで外されていた場合には、本Unity SDKのunitypackageファイルに同梱のFoxReengagePluginをご導入ください。
 > 如果到此都沒有安裝，請導入同捆的FoxReengagePlugin到這個Unity SDK的unitypackage文件裡。
 
 ### 其他
