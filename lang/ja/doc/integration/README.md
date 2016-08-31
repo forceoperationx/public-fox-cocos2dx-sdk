@@ -38,7 +38,7 @@ Notify.h|オプション|ヘッダファイル。Push通知を行う。
 
 ※「FOX_COCOS2DX\_SDK_&lt;version&gt;.zip」に「FOX_iOS\_SDK_&lt;version&gt;」フォルダが含まれていない場合は
 
-SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
+SDK[ダウンロードページ](https://github.com/cyber-z/public-fox-ios-sdk/releases)からFOX_iOS\_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
 
 
 ### ライブラリの組み込み
@@ -72,7 +72,7 @@ SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウン
 |FOX_Android_SDK_&lt;version&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
 |gcm.jar|オプション|プッシュ通知機能を利用する際に導入ください。|
 
-※「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」に「FOX_Android_SDK_&lt;version&gt;」フォルダが含まれていない場合はSDKダウンロードサイトからFOX_Android_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
+※「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」に「FOX_Android_SDK_&lt;version&gt;」フォルダが含まれていない場合はSDK[ダウンロードページ](https://github.com/cyber-z/public-fox-android-sdk/releases)からFOX_Android_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
 
 ### Cocos2d-xプロジェクトのClassesへの導入
 
