@@ -7,7 +7,7 @@
 
 ### SDKの展開
 
-ダウンロードしたSDK「FOX_Cocos2dx_SDK_<version>.zip」をOS上に展開します。Classesフォルダ内に同梱されているファイルは以下の通りです。
+ダウンロードしたSDK「FOX_COCOS2DX_SDK_<version>.zip」をOS上に展開します。Classesフォルダ内に同梱されているファイルは以下の通りです。
 
 ファイル名|必須|概要
 :--------|:-------------:|:--------:
@@ -36,7 +36,7 @@ Ltv.h|オプション|ヘッダファイル。LTV計測を行う。|
 AnalyticsManager.h|オプション|ヘッダファイル。アクセス解析を行う。|
 Notify.h|オプション|ヘッダファイル。Push通知を行う。
 
-※「FOX_Cocos2dx\_SDK_&lt;version&gt;.zip」に「FOX_iOS\_SDK_&lt;version&gt;」フォルダが含まれていない場合は
+※「FOX_COCOS2DX\_SDK_&lt;version&gt;.zip」に「FOX_iOS\_SDK_&lt;version&gt;」フォルダが含まれていない場合は
 
 SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
 
@@ -64,19 +64,19 @@ SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウン
 
 ### SDKの展開
 
-ダウンロードしたSDK「FOX_Cocos2dx_SDK_<version>.zip」をOS上に展開します。<br>
-「FOX_Android_SDK_<version>」フォルダに同梱されている「AppAdForce.jar」を開発環境に導入します。次に、Eclipseプロジェクトへの導入手順について説明します。
+ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。<br>
+「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている「`FOX_Android_SDK_<version>.jar`」を開発環境に導入します。次に、Eclipseプロジェクトへの導入手順について説明します。
 
 |ファイル名|必須|概要|
 |:------:|:------:|:------|
-|AppAdForce.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
+|FOX_Android_SDK_&lt;version&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
 |gcm.jar|オプション|プッシュ通知機能を利用する際に導入ください。|
 
-※「FOX_Cocos2dx_SDK_<version>.zip」に「FOX_Android_SDK_<version>」フォルダが含まれていない場合はSDKダウンロードサイトからFOX_Android_SDK_<version>.zipをダウンロードの上、ご使用ください。
+※「FOX_COCOS2DX_SDK_<version>.zip」に「FOX_Android_SDK_<version>」フォルダが含まれていない場合はSDKダウンロードサイトからFOX_Android_SDK_<version>.zipをダウンロードの上、ご使用ください。
 
 ### Cocos2d-xプロジェクトのClassesへの導入
 
-「FOX_Cocos2dx\_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
+「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
 
 * Android/Classes配下のCocos2dxFox.hとCocos2dxFox.cppをプロジェクト配下のClassesへコピー
 * プロジェクト内配下のjni/Android.mkにCocos2dxFox.cppファイルを追記し、ビルドの対象に含める<br>
@@ -95,7 +95,7 @@ Cocos2dxFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（�
 
 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](/lang/ja/doc/update/README.md)をご参照ください。
 
-ダウンロードしたSDK「FOX_Android_SDK_<version>.zip」を展開し、「AppAdForce.jar」をアプリケーションのプロジェクトに組み込んでください。
+ダウンロードしたSDK「FOX_Android_SDK_&lt;version&gt;.zip」を展開し、「`FOX_Android_SDK_<version>.jar`」をアプリケーションのプロジェクトに組み込んでください。
 
 * [Eclipseプロジェクトへの導入の方法](./android/ide/eclipse/README.md)
 * [AndroidStudioプロジェクトへの導入の方法](./android/ide/android_studio/README.md)

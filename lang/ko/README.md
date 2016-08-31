@@ -53,7 +53,7 @@ FOX SDK를 앱에 도입함으로써 아래의 기능을 제공합니다.
 
 ## 2.1 SDK 전개
 
-다운로드 한 SDK 「FOX_Cocos2dx_SDK_<version>.zip」를 OS위에 전개합니다. Classes 폴더에 포함된 파일은 아래와 같습니다.
+다운로드 한 SDK 「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」를 OS위에 전개합니다. Classes 폴더에 포함된 파일은 아래와 같습니다.
 
 파일명|필수|개요
 :--------|:-------------:|:--------:
@@ -70,7 +70,7 @@ FoxReengagePlugin.m|옵션|헤더 파일. Cocos2d-x에서 URL스키마를 통해
 
 위의 파일은 래퍼이기 때문에 구현 파일은 네이티브 SDK를 결합합니다.
 
-아래 파일들이 iOS의 네이티브 SDK되고 「FOX_iOS_SDK_ <version>」폴더에 포함되어 있습니다.
+아래 파일들이 iOS의 네이티브 SDK되고 「FOX_iOS_SDK_&lt;version&gt;」폴더에 포함되어 있습니다.
 
 파일명|필수|개요
 :--------|:-------------:|:--------:
@@ -80,9 +80,9 @@ Ltv.h|옵션|헤더 파일.LTV 측정을 실시한다.|
 AnalyticsManager.h|옵션|헤더 파일. 액세스 해석을 실시한다.|
 Notify.h|옵션|헤더 파일. Push 통지를 한다.
 
-※ 「FOX_Cocos2dx_SDK_<version> .zip」에「FOX_iOS_SDK_<version>」폴더가 포함되지 않은 경우
+※ 「FOX_COCOS2DX_SDK_&lt;version&gt; .zip」에「FOX_iOS_SDK_&lt;version&gt;」폴더가 포함되지 않은 경우
 
-SDK 다운로드 사이트에서 FO​​X_iOS_SDK_<version>.zip을 다운 받아 사용하시기 바랍니다.
+SDK 다운로드 사이트에서 FO​​X_iOS_SDK_&lt;version&gt;.zip을 다운 받아 사용하시기 바랍니다.
 
 
 ## 2.2 라이브러리 내장
@@ -170,21 +170,21 @@ SDK의 동작에 필요한 설정을 plist에 추가합니다. 「AppAdForce.pli
 # 3. Android 용 프로젝트 설정
 ## 3.1 SDK 전개
 
-다운로드 한 SDK 「FOX_Cocos2dx_SDK_<version>.zip」을 OS위에 전개합니다.<br>
-「FOX_Android_SDK_<version>」폴더에 포함되어있는 「AppAdForce.jar」를 개발 환경에 도입합니다. 다음은 Eclipse 프로젝트에 도입 단계에 대해 설명합니다.
+다운로드 한 SDK 「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」을 OS위에 전개합니다.<br>
+「FOX_Android_SDK_&lt;version&gt;」폴더에 포함되어있는 「FOX_Android_SDK_&lt;version&gt;.jar」를 개발 환경에 도입합니다. 다음은 Eclipse 프로젝트에 도입 단계에 대해 설명합니다.
 
 |파일명|필수|개요|
 |:------:|:------:|:------|
-|AppAdForce.jar|필수|Android 네이티브 SDK. 통상성과·LTV성과・액세스 해석을 측정 할 수 있습니다.|
+|FOX_Android_SDK_&lt;version&gt;.jar|필수|Android 네이티브 SDK. 통상성과·LTV성과・액세스 해석을 측정 할 수 있습니다.|
 |gcm.jar|옵션|푸시 알림 기능을 이용할 때 도입합니다.|
 
-※ 「FOX_Cocos2dx_SDK_<version>.zip」에　「FOX_Android_SDK_<version>」폴더가 포함되지 않은 경우 SDK 다운로드 사이트에서 FO​​X_Android_SDK_<version>.zip을 다운 받아 사용하시기 바랍니다.
+※ 「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」에　「FOX_Android_SDK_&lt;version&gt;」폴더가 포함되지 않은 경우 SDK 다운로드 사이트에서 FO​​X_Android_SDK_&lt;version&gt;.zip을 다운 받아 사용하시기 바랍니다.
 
 ## 3.2 프로젝트에 도입
 
 이미 앱에 SDK가 설치되어있는 경우에는 최신 버전에 대한 업데이트 (./doc/update/)를 참조하십시오.
 
-다운로드 한 SDK 「FOX_Android_SDK_<version>.zip을 전개해 「AppAdForce.jar」를 앱의 프로젝트에 포함 시키십시오.
+다운로드 한 SDK 「FOX_Android_SDK_&lt;version&gt;.zip을 전개해 「FOX_Android_SDK_&lt;version&gt;.jar」를 앱의 프로젝트에 포함 시키십시오.
 
 [Eclipse 프로젝트에 도입 방법](./doc/integration/eclipse/README.md)
 
@@ -241,7 +241,7 @@ Force Operation X SDK의 실행에 필요한 정보를 <application> 태그에 �
 
 ## 3.4 Cocos2d-x 프로젝트의 Classes에 도입
 
-「FOX_Cocos2dx_SDK_<version>.zip」를 압축을 풀고 아래의 조작을 합니다.
+「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」를 압축을 풀고 아래의 조작을 합니다.
 
 * Android/Classes 아래의 Cocos2dxFox.h과 Cocos2dxFox.cpp 프로젝트 아래의 Classes에 복사
 * 프로젝트 아래의 jni/Android.mk에 Cocos2dxFox.cpp 파일을 추가, 빌드 대상에 포함<br>
@@ -378,7 +378,7 @@ ProGuard를 이용하여 F.O.X SDK를 도입한 앱을 난독화 할 때 경고�
 ```
 -keepattributes *Annotation*
 
--libraryjars libs/AppAdForce.jar
+-libraryjars libs/FOX_Android_SDK_<version>.jar
 -keep interface jp.appAdForce.** { *; }
 -keep class jp.appAdForce.** { *; }
 -keep class jp.co.dimage.** { *; }

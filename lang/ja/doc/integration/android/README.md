@@ -136,7 +136,7 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 ```
 -keepattributes *Annotation*
 
--libraryjars libs/AppAdForce.jar
+-libraryjars libs/FOX_Android_SDK_<version>.jar
 -keep interface jp.appAdForce.** { *; }
 -keep class jp.appAdForce.** { *; }
 -keep class jp.co.dimage.** { *; }
