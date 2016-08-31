@@ -56,7 +56,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
-ダウンロードしたSDK「FOX_UnityPlugin_&lt;version&gt;.zip」を展開し、アプリケーションのプロジェクトに組み込んでください。
+ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」を展開し、アプリケーションのプロジェクトに組み込んでください。
 
 [Cocos2d-x プラグインの導入方法](./doc/integration/README.md)
 

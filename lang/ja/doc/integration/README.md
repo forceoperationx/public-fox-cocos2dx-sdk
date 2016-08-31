@@ -7,7 +7,7 @@
 
 ### SDKの展開
 
-ダウンロードしたSDK「FOX_COCOS2DX_SDK_<version>.zip」をOS上に展開します。Classesフォルダ内に同梱されているファイルは以下の通りです。
+ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。Classesフォルダ内に同梱されているファイルは以下の通りです。
 
 ファイル名|必須|概要
 :--------|:-------------:|:--------:
@@ -26,7 +26,7 @@ FoxReengagePlugin.m|必須|ライブラリファイル。Cocos2d-xからURLス�
 
 > ※1 iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。 F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測を行います。`FoxReengagePlugin`は内部でSFSafariViewControllerの制御を行うために必要となりますので、アプリがiOS9をサポートしている場合は必須となります。
 
-以下のファイル群が、iOSのネイティブSDKとなっており「FOX_iOS_SDK_<version>」フォルダに同梱されています。
+以下のファイル群が、iOSのネイティブSDKとなっており「FOX_iOS_SDK_&lt;version&gt;」フォルダに同梱されています。
 
 ファイル名|必須|概要
 :--------|:-------------:|:--------:
@@ -72,7 +72,7 @@ SDKダウンロードサイトからFOX_iOS\_SDK_&lt;version&gt;.zipをダウン
 |FOX_Android_SDK_&lt;version&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
 |gcm.jar|オプション|プッシュ通知機能を利用する際に導入ください。|
 
-※「FOX_COCOS2DX_SDK_<version>.zip」に「FOX_Android_SDK_<version>」フォルダが含まれていない場合はSDKダウンロードサイトからFOX_Android_SDK_<version>.zipをダウンロードの上、ご使用ください。
+※「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」に「FOX_Android_SDK_&lt;version&gt;」フォルダが含まれていない場合はSDKダウンロードサイトからFOX_Android_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
 
 ### Cocos2d-xプロジェクトのClassesへの導入
 
