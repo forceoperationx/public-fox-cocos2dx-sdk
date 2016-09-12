@@ -1,5 +1,5 @@
 # Force Operation X Cocos2d-x SDK Integration Guide
 
 ###LANGUAGE
-* [Japanese](./lang/ja/README.md)
-* [Korean](./lang/ko/README.md)
+* [Japanese](./public-fox-cocos2dx-sdk/tree/master/lang/ja/README.md)
+* [Korean](./public-fox-cocos2dx-sdk/tree/master/lang/ko/README.md)
