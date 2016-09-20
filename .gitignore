@@ -24,7 +24,7 @@ lint
 # generated files
 bin/
 gen/
-classes/
+#classes/
 gen-external-apklibs/
 
 # maven output folder
