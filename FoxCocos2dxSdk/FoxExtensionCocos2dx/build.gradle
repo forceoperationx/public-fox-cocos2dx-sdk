@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    publishNonDefault false  // デバッグを行う際はtrue リリースはfalse
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+repositories {
+    maven {
+        url "https://github.com/cyber-z/public-fox-android-sdk/raw/master/mavenRepo"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'co.cyberz.fox:track-core:4.0.0'
+}
+
+group = 'co.cyberz.fox.support'
+version = '1.0.0'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:${projectDir}/mavenRepo")
+        pom.project {
+            licenses {
+                license {
+                    name "Copyright © CyberZ, inc. All Rights Reserved."
+                }
+            }
+        }
+        pom.artifactId = "track-cocos2dx"
+    }
+}
+
+task removeJar(type:Delete) {
+    delete fileTree(dir:'build/outputs/jar/', include:("*"))
+}
+
+
+task copyJar(type:Copy, dependsOn:removeJar) {
+    from('build/intermediates/bundles/release/')
+    into('build/outputs/jar/')
+    include('classes.jar')
+    rename('classes.jar', "FOX_Android_SDK_Support_Cocos2dx_${version}.jar")
+}
+
+task assembleReleaseJar(dependsOn:copyJar) << {
+    println("assemble jar : " + copyJar.destinationDir)
+}

@@ -1,0 +1,44 @@
+# proguard
+*.pro
+
+# gradle
+.gradle
+
+# orig files
+*.orig
+
+# built application files
+*.apk
+*.ap_
+*.jar
+
+# lint folder
+lint
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# maven output folder
+target
+mavenRepo
+
+# Local setting file
+local.properties
+
+# IntelliJ files
+.idea
+*.iml
+
+build/
+
+# Mac gomi
+.DS_Store
