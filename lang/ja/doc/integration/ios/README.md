@@ -50,9 +50,9 @@ iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしてい
 `NSExceptionAllowsInsecureHTTPLoads`|Boolean|YES を指定してくださいATSの例外とします。
 `NSIncludesSubdomains`|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
 
-![ATS設定](/lang/ja/doc/integration/ios/img_ats.png)
+![ATS設定](./img_ats.png)
 
 ---
-[戻る](/lang/ja/doc/integration/README.md)
+[戻る](../README.md)
 
-[TOP](../../README.md)
+[TOP](../../../README.md)
