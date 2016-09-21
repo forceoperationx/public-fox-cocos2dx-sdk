@@ -1,5 +1,6 @@
 # Force Operation X Cocos2d-x SDK Integration Guide
 
-###LANGUAGE
-* [Japanese](https://github.com/cyber-z/public-fox-cocos2dx-sdk/tree/master/lang/ja/README.md)
-* [Korean](https://github.com/cyber-z/public-fox-cocos2dx-sdk/tree/master/lang/ko/README.md)
+## VERSIONS
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[〜 3.3.0](../../tree/3.x)
+
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.0.0 〜](../../tree/4.x)
