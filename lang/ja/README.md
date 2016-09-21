@@ -8,9 +8,10 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 * **[1. インストール](#install_sdk)**
 	* [SDKダウンロード](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
-	* [Cocos2d-x プラグインの導入方法](./doc/integration/README.md)
+	* [Cocos2d-x プラグインの導入手順](./doc/integration/README.md)
 	* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
 	* [Androidプロジェクトの設定](./doc/integration/android/README.md)
+	* [最新バージョンへのマイグレーションについて](./doc/update/README.md)
 * **[2. F.O.X SDKのアクティベーション](#activate_sdk)**
 * **[3. インストール計測の実装](#tracking_install)**
 	* [インストール計測の詳細](./doc/track_install/README.md)
@@ -48,7 +49,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 [SDKリリースページ](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
 
-既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
+既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのマイグレーションについて](./doc/update/README.md)をご参照ください。
 
 ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」を展開し、アプリケーションのプロジェクトに組み込んでください。
 
@@ -74,7 +75,26 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 <div id="activate_sdk"></div>
 ## 2. F.O.X SDKのアクティベーション
 
+F.O.X SDKのアクティベーションを行うため、`CYZCCFoxConfig`をAppDelegateの`applicationDidFinishLaunching`内に記述します。
 
+```cpp
+#include "CYZCCFox.h"
+
+using namespace fox;
+...
+
+bool AppDelegate::applicationDidFinishLaunching() {
+...
+	CYZCCFoxConfig config;
+	config.appId_android = 発行されたアプリID;
+	config.salt_android = "発行されたAPP_SALT";
+	config.appKey_android = "発行されたAPP_KEY";
+	config.debugMode = 1;
+	CYZCCFox::init(config);
+...
+```
+
+> ※ `debugMode`は1にするとデバッグ用ログを出力することが可能となります。
 
 <div id="tracking_install"></div>
 ## 3. インストール計測の実装
@@ -150,7 +170,7 @@ int ltvId = 成果地点ID;
 char* eventName = (char*)"_purchase";
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 e->buid = "garhira";
-e->label = "purchase item";
+e->sku = "purchase item";
 e->price = 100.0;
 e->currency = "JPY";
 CYZCCFox::trackEvent(e);
