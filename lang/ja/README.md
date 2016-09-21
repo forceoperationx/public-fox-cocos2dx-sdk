@@ -87,6 +87,8 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 成果通知のコードを追加
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 CYZCCFox::trackInstall();
@@ -106,6 +108,8 @@ CYZCCFox::trackInstall();
 
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 CYZCCFox::trackSession();
@@ -121,6 +125,8 @@ CYZCCFox::trackSession();
 **[チュートリアルイベントの計測例]**
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 int ltvId = 成果地点ID;
@@ -136,6 +142,8 @@ CYZCCFox::trackEvent(e);
 **[課金イベントの計測例]**
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 int ltvId = 成果地点ID;

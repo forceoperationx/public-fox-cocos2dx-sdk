@@ -45,6 +45,8 @@ trackEventメソッドを利用することで、広告流入別の課金金額�
 
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 CYZCCFoxEvent* e = new CYZCCFoxEvent("イベント名", LTV成果地点ID)
@@ -55,6 +57,8 @@ CYZCCFox::trackEvent(e);
 アプリ内部の成果に、広告主端末ID（会員IDなど）を含める事ができ、これを基準とした成果計測が行えます。LTV成果に広告主端末IDを付与したい場合は以下のように記述してください。
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 CYZCCFoxEvent* e = new CYZCCFoxEvent("イベント名", LTV成果地点ID)
@@ -100,6 +104,8 @@ CYZCCFox::trackEvent(e);
 
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 // タグ設置ページURL

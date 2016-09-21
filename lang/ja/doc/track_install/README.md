@@ -10,6 +10,8 @@
 
 ```cpp
 #include "CYZCCFox.h"
+
+using namespace fox;
 ...
 
 // 成果通知のコードを追加
@@ -24,6 +26,7 @@ CYZCCFox::trackInstall();
 ```cpp
 #include "CYZCCFox.h"
 
+using namespace fox;
 ...
 
 CYZCCFoxTrackOption option;

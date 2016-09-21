@@ -1,3 +1,7 @@
+[TOP](../../README.md)　>　Cocos2d-xプラグインの導入手順
+
+---
+
 # Cocos2d-xプラグインの導入手順
 
 * [1. 共通](#common)
@@ -34,7 +38,7 @@
 　　 　 　　  ┗━ CYZCCFoxUtil.h
 　　 　 　　  ┗━ CYZCCFoxUtil.cpp
 
-[CYZFox_iOS_static_4.0.0]  // ---------------------  iOSネイティブSDK
+[CYZFox_iOS_static_<VERSION>]  // ---------------------  iOSネイティブSDK
 　　┗━ CYZFox.framework
 
 [FOX_Android_SDK_<VERSION>]  // -------------------  AndroidネイティブSDK
