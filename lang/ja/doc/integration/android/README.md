@@ -4,7 +4,63 @@
 
 # Androidプロジェクトの設定
 
-## 1. パーミッションの設定
+* **[1. インストール](#install_sdk)**
+* **[2. パーミッションの設定](#permission)**
+* **[3. インストールリファラ計測の設定](#install_referrer)**
+* **[4. リエンゲージメント計測の設定](#reengagement)**
+* **[5. ProGuardを利用する場合](#proguard)**
+* **[6. その他](#other)**
+
+<div id="install_sdk"></div>
+## 1. インストール
+
+### 1.1 Cocos2d-xプラグインの導入
+
+「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
+
+* CYZCCFox.h, CYZCCFoxEvent.h, CYZCCFoxTypes.h, AndroidディレクトリをClassesへコピー
+* プロジェクト内配下のjni/Android.mkの設定を変更し、上記のファイルをビルドの対象に含める
+　
+CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以下はその例）
+
+```cpp
+#include <iostrem>
+#include “cocos2d.h”
+#include “CYZCCFox.h”
+#include “../android/jni/JniHelper.h”
+```
+
+### 1.2 Android Studioへの導入
+
+アプリをAndroid Studioでビルドしている場合は、gradle経由でインストールできるため、FOX_COCOS2DX_SDK_&lt;version&gt;.zipを展開した中の、FOX_Android_SDK_&lt;VERSION&gt;のライブラリは不要となります。<br>
+以下の設定をプロジェクトのbuild.gradleに追加してください。
+
+```
+repositories {
+    maven {
+        url "https://github.com/cyber-z/public-fox-android-sdk/raw/master/mavenRepo"
+    }
+}
+
+dependencies {
+    compile 'co.cyberz.fox:track-core:4.0.0'
+    compile 'co.cyberz.fox.support:track-cocos2dx:1.0.0'
+}
+```
+
+
+### 1.3 Eclipseプロジェクトへの導入
+
+ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。<br>
+「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている以下２ファイルをEclipseプロジェクトの`libsフォルダ`に移動させます。
+
+|ファイル名|必須|概要|
+|:------:|:------:|:------|
+|FOX_Android_SDK_&lt;VERSION&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
+|FOX_Android_SDK_Support_Cocos2dx_&lt;VERSION&gt;.jar|必須|ネイティブSDK用のラッパーライブラリ|
+
+<div id="permission"></div>
+## 2. パーミッションの設定
 
 F.O.X SDKでは下記3つのパーミッションを利用します。
 &lt;Manifest&gt;タグ内に次のパーミッションの設定を追加します。
@@ -24,8 +80,8 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 > ※1 Android MよりProtectionLevelが`dangerous`に指定されているパーミッションを必要とする機能を利用するには、ユーザーの許可が必要になります。詳細は[外部ストレージを利用した重複排除設定](/lang/ja/doc/integration/android/external_storage/README.md)をご確認ください。
 
 
-
-## 2. インストールリファラ計測の設定
+<div id="install_referrer"></div>
+## 3. インストールリファラ計測の設定
 インストールリファラーを用いたインストール計測を行うために下記の設定を&lt;application&gt;タグに追加します。
 
 ```xml
@@ -38,8 +94,8 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 
 既に"com.android.vending.INSTALL_REFERRER"に対するレシーバークラスが定義されている場合には、[二つのINSTALL_REFERRERレシーバーを共存させる場合の設定](/lang/ja/doc/integration/android/install_referrer/README.md)をご参照ください。
 
-
-## 3. リエンゲージメント計測の設定
+<div id="reengagement"></div>
+## 4. リエンゲージメント計測の設定
 
 リエンゲージメント計測（カスタムURLスキーム経由の起動を計測）するために必要な設定を&lt;application&gt;タグ内に追記します。
 
@@ -81,19 +137,8 @@ protected void onNewIntent(Intent intent)
 
 > リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`trackDeeplinkLaunch`メソッドが実装されてある必要があります。
 
-
-## 4. その他
-
-* [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
-
-*	[AndroidManifest.xml 設定サンプル](./config_androidManifest/AndroidManifest.xml)
-
-* [（オプション）外部ストレージを利用した重複排除設定](./external_storage/README.md)
-
-* [（オプション）Android M オートバックアップ機能の利用](./auto_backup/README.md)
-
-
-## 5. roGuardを利用する場合
+<div id="proguard"></div>
+## 5. ProGuardを利用する場合
 
 ProGuard を利用してアプリケーションの難読化を行う際は F.O.X SDK のメソッドが対象とならないよう、以下の設定 を追加してください。
 
@@ -109,6 +154,17 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 また、Google Play Service SDK を導入されている場合は、以下のぺージに記載されている keep 指定が記述されているかご確認ください。
 
 [Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
+
+<div id="other"></div>
+## 6. その他
+
+* [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
+
+*	[AndroidManifest.xml 設定サンプル](./config_androidManifest/AndroidManifest.xml)
+
+* [（オプション）外部ストレージを利用した重複排除設定](./external_storage/README.md)
+
+* [（オプション）Android M オートバックアップ機能の利用](./auto_backup/README.md)
 
 
 ---
