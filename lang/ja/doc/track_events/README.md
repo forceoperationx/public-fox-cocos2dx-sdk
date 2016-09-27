@@ -25,14 +25,14 @@ public class MainActivity extends Activity {
 }
 ```
 
-#### ＜iPhone プロジェクト＞
-iPhoneの場合、以下の設定が必要です。
+#### ＜iOS プロジェクト＞
+iOSの場合、以下の設定が必要です。
 
 アプリ起動地点の`applicationDidFinishLaunching`および`applicationWillEnterForeground`の両方に、以下のように記述してください。
 （また、前述のAndroidにおけるJavaのActivity上で、`onResumeメソッドに実装出来ない場合`にも以下の実装を行います。）
 
 > ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>
-※JavaのonResume()とC++のapplicationWillEnterForegroundの両方でsendStartSession()が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。
+※Javaの`onResume()`とC++の`applicationWillEnterForeground`の両方で`CYZFOX::trackSession()`が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。
 
 
 ## 2. trackEventの詳細
@@ -71,7 +71,7 @@ CYZCCFox::trackEvent(e);
 
 ```cpp
 int ltvId = 191;	// LTV成果地点ID
-char* eventName = (char*)"_tutorial_comp";	// イベント名
+const char* eventName = "_tutorial_comp";	// イベント名
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 e->buid = "USER_ID";	// 広告主端末ID
 e->addParam("date", "2016-06-17");	// 任意のKey/Value
@@ -109,7 +109,7 @@ using namespace fox;
 ...
 
 // タグ設置ページURL
-char* externalUrl = (char*)"http://yoursite.com/tagpage";
+const char* externalUrl = "http://yoursite.com/tagpage";
 CYZCCFox::trackEventByBrowser(externalUrl);
 ```
 
