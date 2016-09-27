@@ -31,7 +31,7 @@ SystemConfig.framework|Required
 :---|:---
 CYZCCFox.h|APIの定義
 CYZCCFoxEvent.h|トラッキングイベントの定義
-CYZCCFoxTypes|コールバックファンクションの定義
+CYZCCFoxTypes.h|コールバックファンクションの定義
 iOS/CYZCCFox.mm|native APIのwrapper実装
 iOS/CYZCCFoxEvent.mm|native トラッキングイベントのwrapper実装
 iOS/CYZCCFoxIOSUtility.mm|utilメソッド

@@ -61,9 +61,9 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 |処理|必須|概要|
 |:------:|:------:|:------|
-|インストール計測|必須|起動時はブラウザが起動し、Cookie計測により広告効果測定を行います。<br>コンバージョン数、CVRなどを測定することができます。<br>メソッド名：sendConversion|
-|LTV計測|オプション|任意の成果地点で成果通知を行い、広告別の課金数や入会数の計測を行います。<br>課金金額、退会数などを測定することができます。<br>メソッド名：sendLtv|
-|アクセス解析|オプション|アプリの起動時およびバックグラウンドからの復帰時の起動計測を行います。<br>起動数、アクティブユーザー数(DAU)、継続率などを測定することができます。<br>メソッド名：sendStartSession|
+|インストール計測|必須|起動時はブラウザが起動し、Cookie計測により広告効果測定を行います。<br>コンバージョン数、CVRなどを測定することができます。<br>メソッド名：CYZCCFox::trackInstall();|
+|イベント計測|オプション|任意の成果地点で成果通知を行い、広告別の課金数や入会数の計測を行います。<br>課金金額、退会数などを測定することができます。<br>メソッド名：CYZCCFox::trackEvent(event);|
+|セッション計測|オプション|アプリの起動時およびバックグラウンドからの復帰時の起動計測を行います。<br>起動数、アクティブユーザー数(DAU)、継続率などを測定することができます。<br>メソッド名：CYZCCFox::trackSession();|
 
 > Force Operation X SDK Cocos2d-x プラグインは、ネイティブ版SDKへのブリッジを行うラッパーとして実装しています。SDK導入には、プラグインと、iOS及びAndroidのネイティブ版SDKが必要となります。_
 
@@ -81,15 +81,21 @@ using namespace fox;
 bool AppDelegate::applicationDidFinishLaunching() {
 ...
 	CYZCCFoxConfig config;
-	config.appId_android = 発行されたアプリID;
-	config.salt_android = "発行されたAPP_SALT";
-	config.appKey_android = "発行されたAPP_KEY";
-	config.debugMode = 1;
+	config.appId_android = 発行されたAndroidアプリID;
+	config.salt_android = "発行されたAndroidアプリのAPP_SALT";
+	config.appKey_android = "発行されたAndroidアプリのAPP_KEY";
+	config.appId_ios = 発行されたiOSアプリID;
+	config.salt_ios = "発行されたiOSアプリのAPP_SALT";
+	config.appKey_ios = "発行されたiOSアプリのAPP_KEY";
+
+#ifdef DEBUG
+	config.debugMode = true;
+#endif
 	CYZCCFox::init(config);
 ...
 ```
 
-> ※ `debugMode`は1にするとデバッグ用ログを出力することが可能となります。
+> ※ `debugMode`はtrueにするとデバッグ用ログを出力することが可能となります。
 
 <div id="tracking_install"></div>
 ## 3. インストール計測の実装
@@ -145,7 +151,7 @@ using namespace fox;
 ...
 
 int ltvId = 成果地点ID;
-char* eventName = (char*)"_tutorial_comp";
+const char* eventName = "_tutorial_comp";
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 CYZCCFox::trackEvent(e);
 ```
@@ -162,7 +168,7 @@ using namespace fox;
 ...
 
 int ltvId = 成果地点ID;
-char* eventName = (char*)"_purchase";
+const char* eventName = "_purchase";
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 e->buid = "garhira";
 e->sku = "purchase item";
