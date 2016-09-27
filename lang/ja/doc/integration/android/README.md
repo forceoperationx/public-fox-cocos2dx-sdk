@@ -18,9 +18,15 @@
 
 「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
 
-* CYZCCFox.h, CYZCCFoxEvent.h, CYZCCFoxTypes.h, AndroidディレクトリをClassesへコピー
-* プロジェクト内配下のjni/Android.mkの設定を変更し、上記のファイルをビルドの対象に含める
-　
+* 以下のファイルをClassesへコピー
+  * CYZCCFox.h
+  * CYZCCFoxEvent.h
+  * CYZCCFoxTypes.h
+  * Androidディレクトリ配下の全ファイル
+
+
+* プロジェクト内配下のjni/Android.mkの設定を変更し、上記のファイルをビルドの対象に含める<br>
+
 CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以下はその例）
 
 ```cpp
@@ -30,7 +36,7 @@ CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以�
 #include “../android/jni/JniHelper.h”
 ```
 
-### 1.2 Android Studioへの導入
+### 1.2 Android Studioプロジェクトへの導入
 
 アプリをAndroid Studioでビルドしている場合は、gradle経由でインストールできるため、FOX_COCOS2DX_SDK_&lt;version&gt;.zipを展開した中の、FOX_Android_SDK_&lt;VERSION&gt;のライブラリは不要となります。<br>
 以下の設定をプロジェクトのbuild.gradleに追加してください。
@@ -169,6 +175,6 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 ---
 
-[戻る](../../README.md)
+[戻る](../README.md#android)
 
 [TOP](../../../README.md)
