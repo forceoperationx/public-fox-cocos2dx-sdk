@@ -53,6 +53,6 @@ iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしてい
 ![ATS設定](./img_ats.png)
 
 ---
-[戻る](../README.md)
+[戻る](../README.md#ios)
 
 [TOP](../../../README.md)
