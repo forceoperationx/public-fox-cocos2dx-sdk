@@ -42,6 +42,9 @@ WRITE_EXTERNAL_STORAGE ※1|Dangerous|任意|利用外部存儲提高重複排�
 <meta-data
 	android:name="ANALYTICS_APP_KEY"
 	android:value="請輸入Force Operation X管理員告知的值。" />
+<meta-data
+	android:name="ANALYTICS_SERVER_URL"
+	android:value="請輸入Force Operation X管理員告知的值。" />
 ```
 
 設定的Key和Value如下：
@@ -52,6 +55,7 @@ WRITE_EXTERNAL_STORAGE ※1|Dangerous|任意|利用外部存儲提高重複排�
 |APPADFORCE_SERVER_URL|必須|請輸入Force Operation X管理員告知的值。|
 |APPADFORCE_CRYPTO_SALT|必須|請輸入Force Operation X管理員告知的值。|
 |ANALYTICS_APP_KEY|必須|請輸入Force Operation X管理員告知的值。|
+|ANALYTICS_SERVER_URL|必須|請輸入Force Operation X管理員告知的值。|
 
 ## Install referrer計測的設定
 將Install referrer計測所需要的設定添加在&lt;application&gt;tag內。
@@ -128,6 +132,7 @@ protected void onNewIntent(Intent intent)
 
 ## 使用ProGuard
 
+如果沒有使用ProGuard功能，可以跳過本節。
 使用ProGuard進行APP代码混淆化時，請進行以下設定，將F.O.X SDK的method排除在對象外。
 
 ```

@@ -60,6 +60,11 @@
   <td>String</td>
   <td>請將由Force Operation X管理者通知的數值輸入。<br />不利用流量分析的場合沒有必要設定</td>
 </tr>
+<tr>
+  <td>ANALYTICS_SERVER_URL</td>
+  <td>String</td>
+  <td>請將由Force Operation X管理者通知的數值輸入。<br />不利用流量分析的場合沒有必要設定</td>
+</tr>
 </table>
 
 [AppAdForce.plist範例](/lang/zh-tw/doc/integration/ios/config_plist/AppAdForce.plist)
