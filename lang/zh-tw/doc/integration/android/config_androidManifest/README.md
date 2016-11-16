@@ -96,6 +96,7 @@
 	        <meta-data android:name="APPADFORCE_SERVER_URL" android:value="0123456" />
     	    <meta-data android:name="APPADFORCE_CRYPTO_SALT" android:value="abcdefg" />
         	<meta-data android:name="ANALYTICS_APP_KEY" android:value="xxxxxx" />
+        	<meta-data android:name="ANALYTICS_SERVER_URL" android:value="xxxxxx" />
 
 	        <!-- ④不使用内(外)部存儲保存功能的設定的範例 -->
     	    <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
