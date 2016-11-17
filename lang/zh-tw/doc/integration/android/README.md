@@ -151,9 +151,5 @@ protected void onNewIntent(Intent intent)
 -dontwarn com.naef.jnlua.**
 ```
 
-如果已導入GooglePlayServiceSDK，請確認是否添加了下面網頁所記載的keep規則。
-
-[導入Google Play Services時的Proguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
-
 ---
 [TOP](/lang/zh-tw/README.md)

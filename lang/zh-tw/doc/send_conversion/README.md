@@ -28,8 +28,6 @@ FoxPlugin::sendConversion(“default”);
 
 > ※ 作為剛啟動後的處理需要實際安裝`sendConversion`，像登錄ID這樣的用戶行為相伴的值無法通過參數傳遞。
 
-> ※如果終端是iOS9環境，那麼啟動的不是Safari而是SFSafariViewController。SFSafariViewController的控制需要依靠`FoxReengagePlugin.m`類庫，即使不進行Reengagement計測也需要導入，沒有導入的話SFSafariViewController將會自動被關閉。
-
 > 【注意事项】
 沒有特別的理由請將`sendConversion`安裝在APP啟動時調用的`AppDelegate:applicationDidFinishLaunching`方法裡。安裝在別的地點可能無法正確計測安裝數。
 在沒有安裝`AppDelegate:applicationDidFinishLaunching`的狀態下投放安裝成果型廣告的時候，請一定事先通知廣告代理店或者媒體負責人。不能正常計測的狀態下投放安裝成果型廣告，可能被要求支付超過計測安裝數的廣告費用。

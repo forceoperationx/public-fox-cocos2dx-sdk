@@ -41,9 +41,8 @@ AnalyticsManager.h|任意|頭文件。進行流量分析。|
 
 * Xcode的菜單「File」→選擇「Add Files to “XXX”」
 * 請導入Cocos2dxFox.h、Cocos2dxFox.mm。Cocos2dxFox.cpp是Android用的類庫文件，所以不需要追加。
-* 如果使用PUSH通知功能，請導入FoxNotifyPlugin.h、FoxNotifyPlugin.m這兩個文件。
 * 如果使用BundleVersion判定功能，請導入FoxVersionDelegate.h、FoxVersionDelegate .mm和FoxVersionPlugin.h、FoxVersionPlugin.mm這4個文件。
-* 如果是支持iOS9或者進行Reengagement計測時，請裝入FoxReengagePlugin.hとFoxReengagePlugin.m兩個文件。
+* 請導入FoxReengagePlugin.hとFoxReengagePlugin.m兩個文件。
 * 選中「Copy items into destination group’s folder」
 
 

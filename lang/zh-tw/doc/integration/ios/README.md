@@ -14,7 +14,6 @@
 <tr><th>Framework名</th><th>Status</th></tr>
 <tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
-<tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
 </table>
@@ -45,18 +44,6 @@ ANALYTICS_SERVER_URL  | String | 請將由Force Operation X管理者通知的數
 [SDK設定的詳細](/lang/zh-tw/doc/integration/ios/config_plist/README.md)
 
 [AppAdForce.plist例子](/lang/zh-tw/doc/integration/ios/config_plist/AppAdForce.plist)
-
-
-**在iOS9環境導入的注意點**
-
-> 進行Cookie計測的時候，在iOS9環境裡使用SFSafariViewController。
-F.O.X Unity SDK v2.16及以後版本，是靠FoxReengagePlugin做SFSafariViewController啟動後的控制，所以必須導入。
-
-> 如果到此都沒有安裝，請導入同捆的FoxReengagePlugin到這個Unity SDK的unitypackage文件裡。
-
-### 其他
-
-* [登錄到管理畫面的BundleVersion相對應的不同處理](./check_version/README.md)
 
 ---
 [TOP](/lang/zh-tw/README.md)

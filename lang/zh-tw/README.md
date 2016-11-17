@@ -17,10 +17,8 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 	* [sendLtvConversion的詳細](./doc/send_ltv_conversion/README.md)
 * **[4. 流量分析的安裝](#tracking_analytics)**
 	* [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
-* **[5. 廣告投放功能](#fox_trade)**
-	* [広告配信機能の詳細](./doc/fox_trade/README.md)
-* **[6. 進行疏通測試](#integration_test)**
-* **[7. 最後請務必確認](#trouble_shooting)**
+* **[5. 進行疏通測試](#integration_test)**
+* **[6. 最後請務必確認](#trouble_shooting)**
 
 ## F.O.X SDK是什麼
 
@@ -38,10 +36,6 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-* **廣告投放**
-
-能夠在APP內部表示互動推廣廣告。如果不需要顯示該廣告，可以省略本章節的安裝。
-
 <div id="install_sdk"></div>
 ## 1. 導入
 
@@ -49,7 +43,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 [SDK發布頁面](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
 
-請展開下載的SDK「FOX_UnityPlugin_<version>.zip」並導入到APP的項目裡。
+請展開下載的SDK「FOX_COCOS2DX_SDK_<version>.zip」並導入到APP的項目裡。
 
 [Cocos2d-x 插件的導入方法](./doc/integration/README.md)
 
@@ -160,79 +154,8 @@ FoxPlugin::sendStartSession();
 
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
-<div id="fox_trade"></div>
-## 5. 廣告投放機能
-
-能夠在APP內部表示相互推廣獲得客源的廣告。
-如果不需要顯示該廣告，可以省略本章節的安裝。
-可以顯示的廣告種類有以下兩種。
-
-* 橫幅廣告（Banner Ad）
-* 插播廣告（Interstitial Ad）
-
-### 5.1 橫幅廣告表示的安裝
-
-請在希望表示的時候生成DLCoBanner實例，並安裝show方法。
-安裝後，橫幅廣告會在現在表示的畫面上顯示出來。
-
-Sample.cpp
-```cpp
-#include "DLCoBanner.h"
-
-Fox::DLCoBanner* dlb;
-
-// 表示在畫面上部
-void Sample::showBannerTop(Ref* pSender)
-{
-// 在表示橫幅廣告的時機進行如下處理
-	int position = DLC_POSITION_TOP;
-	char* placementId = ((char*)"廣告表示ID");
-	dlb = new DLCoBanner(placementId, position);
-	dlb->show();
-}
-
-// 關閉橫幅廣告
-void Samle::hideBanner(Ref* pSender)
-{
-    dlb->hide();
-}
-```
-
-> 在DLCoBanner構造函數的第一個參數裡指定由管理員發行的廣告表示ID。
-
-> 在DLCoBanner構造函數的第二個參數裡指定橫幅廣告的表示位置option。<br>
-　・`DLC_POSITION_TOP` : 配置到畫面上部中心<br>
-　・`DLC_POSITION_BOTTOM` : 配置到畫面下部中心<br>
-　・`DLC_POSITION_TOP_LEFT` : 配置到畫面上部左側<br>
-　・`DLC_POSITION_TOP_RIGHT` : 配置到畫面上部右側<br>
-　・`DLC_POSITION_BOTTOM_LEFT` : 配置到畫面下部左側<br>
-　・`DLC_POSITION_BOTTOM_RIGHT` : 配置到畫面下部右側
-
-[廣告投放機能的詳細](./doc/fox_trade/README.md)
-
-### 5.2 插播廣告表示的安裝
-
-請在插播廣告表示對象的畫面裡生成下面的DahliaInterstitialAds實例，並安裝show方法。
-
-Sample.cpp
-```cpp
-#include "DLCoInterstitial.h"
-
-// 插播廣告的表示
-void Sample::showInterstitial(Ref* pSender)
-{
-    char* placementId = ((char*)"広告表示ID");
-    DLCoInterstitial* dli = new DLCoInterstitial(placementId);
-    dli->show();
-}
-```
-
-> 請在DLCoInterstitial構造函數的參數裡指定管理員發行的廣告表示ID。
-
-[廣告投放機能的詳細](./doc/fox_trade/README.md)
-
 <div id="integration_test"></div>
-## 6. 進行疏通測試
+## 5. 進行疏通測試
 
 在APP上架申請以前，在導入SDK的狀態請做充分的測試，以確保APP的動作沒有問題。
 請按照管理員會通知的測試步驟進行測試。
@@ -263,23 +186,23 @@ void Sample::showInterstitial(Ref* pSender)
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
 <div id="trouble_shooting"></div>
-# 7. 最後請務必確認（到現在發生過的問題集）
+# 6. 最後請務必確認（到現在發生過的問題集）
 
-### 7.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
+### 6.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
 為了進行Cookie計測，在啟動外部瀏覽器以後，要利用URL Scheme跳轉到APP來返回到原來的畫面。
 這時有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
-### 7.2. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
+### 6.2. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
 由於環境的不同，可能無法判別URL Scheme裡的大小寫字母，進而引起不能正常跳轉。
 因此URL Scheme請全部使用小寫字母來設定。
 
-### 7.3. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
+### 6.3. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
 
 在iOS裡，如果設定同一個URL Scheme到多個APP，啟動哪個APP是不確定的。因此設定URL Scheme的時候，請使用唯一的有一定複雜度的字符串。
 
-### 7.4. 用F.O.X計測的Install數值比Market計測的數值要大
+### 6.4. 用F.O.X計測的Install數值比Market計測的數值要大
 
 F.O.X使用了多種方式來監測終端的重複安裝。倘若設定了不進行重複監測，在相同終端再安裝時F.O.X會判定為新的安裝。為了提高重複監測的精度，請進行如下設定。
 
