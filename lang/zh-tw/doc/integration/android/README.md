@@ -1,6 +1,7 @@
 # Android項目的設定
-為使SDK發揮作用請在AndroidManifest.xml裡添加必要的設定。
-如果项目里没有AndroidManifest.xml，请拷贝「Plugins/Android/AndroidManifest-sample.xml」并改名为「AndroidManifest.xml」来使用。
+為使SDK發揮作用請在AndroidManifest.xml裡添加必要的設定。<br />
+請在FOX管理畫面裡（SDK導入→平台的選擇→SDK導入文檔→SDK導入步驟→設定文件的下載）下載該設定文件，並根據自己項目的需要進行修改。<br />
+也可以拷貝「Plugins/Android/AndroidManifest-sample.xml」並改名為「AndroidManifest.xml」來手動添加和修改。
 
 ## permission的設定
 
