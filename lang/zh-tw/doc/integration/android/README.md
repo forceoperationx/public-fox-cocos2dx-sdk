@@ -99,7 +99,7 @@ import jp.appAdForce.android.AdManager;
 protected void onResume() {
 	super.onResume();
 	AdManager ad = new AdManager(this);
-	ad.sendReengageConversion(getIntent());
+	ad.sendReengagementConversion(getIntent());
 }
 ```
 
