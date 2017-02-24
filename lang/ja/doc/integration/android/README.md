@@ -98,7 +98,7 @@ import jp.appAdForce.android.AdManager;
 protected void onResume() {
 	super.onResume();
 	AdManager ad = new AdManager(this);
-	ad.sendReengageConversion(getIntent());
+	ad.sendReengagementConversion(getIntent());
 }
 ```
 
@@ -113,7 +113,7 @@ protected void onNewIntent(Intent intent)
 }
 ```
 
-> リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`sendReengageConversion`メソッドが実装されてある必要があります。
+> リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`sendReengagementConversion`メソッドが実装されてある必要があります。
 
 
 ## その他
