@@ -114,7 +114,7 @@ protected void onNewIntent(Intent intent)
 }
 ```
 
-> 為了進行Reengagement廣告的計測（經由URL Scheme啟動的計測），請在全部設定了URL Scheme的`Activity(※1)`的onResume()裡安裝`sendReengageConversion`方法。
+> 為了進行Reengagement廣告的計測（經由URL Scheme啟動的計測），請在全部設定了URL Scheme的`Activity(※1)`的onResume()裡安裝`sendReengagementConversion`方法。
 
 > ※1 為了計測Reengagement廣告，需要在AndroidManifest.xml定義的Acitvity裡定義定制化的URL Scheme。該計測是利用定制URL Scheme調用Activity的方法來進行Reengagement計測的。
 
