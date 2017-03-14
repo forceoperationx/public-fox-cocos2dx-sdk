@@ -41,6 +41,11 @@ void CYZCCFox::trackInstall(CYZCCFoxTrackOption option) {
     foxOption.redirectURL = CYZCCFoxStringFromUTF8String(option.redirectURL);
     foxOption.buid = CYZCCFoxStringFromUTF8String(option.buid);
     foxOption.optout = option.optout;
+    if (option.onInstallComplete) {
+        foxOption.trackingCompletionHandler = ^{
+            option.onInstallComplete();
+        };
+    }
 
     [CYZFox trackInstallWithOption:foxOption];
 }
@@ -66,7 +71,9 @@ void CYZCCFox::trackEvent(CYZCCFoxEvent* event) {
     foxEvent.price = event->price;
     foxEvent.quantity = event->quantity;
     foxEvent.currency = CYZCCFoxStringFromUTF8String(event->currency);
-    foxEvent.eventInfo = CYZCCFoxDocumentToDictionary(event->eventInfo);
+    if (event->eventInfo) {
+        foxEvent.eventInfo = CYZCCFoxDocumentToDictionary(event->eventInfo);
+    }
 
     [CYZFox trackEvent:foxEvent];
 }
