@@ -35,22 +35,13 @@ CYZCCFoxTypes.h|コールバックファンクションの定義
 iOS/CYZCCFox.mm|native APIのwrapper実装
 iOS/CYZCCFoxEvent.mm|native トラッキングイベントのwrapper実装
 iOS/CYZCCFoxIOSUtility.mm|utilメソッド
-iOS/CYZCCFoxReengagePlugin.h|`appDelegate:openURL`のダイナミックオーバーライド定義
-iOS/CYZCCFoxReengagePlugin.m|`appDelegate:openURL`のダイナミックオーバーライド実装
+iOS/CYZFoxAppDelegateSwizzling.m|protocol`AppDelegate`の`application:openURL:sourceApplication:`と`application:openURL:options`のダイナミックオーバーライド定義
+
 
 
 ### 4. App Transport Securityについて
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
-
-キー | タイプ | 概要
-:---: | :---: | :---
-`NSExceptionDomains`|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・`app-adforce.jp`<br>・`forceoperationx.com`
-`NSExceptionAllowsInsecureHTTPLoads`|Boolean|YES を指定してくださいATSの例外とします。
-`NSIncludesSubdomains`|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
-
-![ATS設定](./img_ats.png)
+F.O.X SDK ver4.0.0からは計測における全ての通信をHTTPSを利用して行うため、追加で対応を行う必要はありません。
 
 ---
 [戻る](../README.md#ios)
