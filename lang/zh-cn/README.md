@@ -81,10 +81,10 @@ using namespace fox;
 bool AppDelegate::applicationDidFinishLaunching() {
 ...
 	CYZCCFoxConfig config;
-	config.appId_android = 发行的Android APP ID;
+	config.appId_android = "发行的Android APP ID";
 	config.salt_android = "发行的Android APP的APP_SALT";
 	config.appKey_android = "发行的Android APP的APP_KEY";
-	config.appId_ios = 发行的iOS APP ID;
+	config.appId_ios = "发行的iOS APP ID";
 	config.salt_ios = "発发行的iOS APP的APP_SALT";
 	config.appKey_ios = "发行的iOS APP的APP_KEY";
 
