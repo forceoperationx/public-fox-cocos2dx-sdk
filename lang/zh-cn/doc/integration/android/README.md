@@ -1,33 +1,33 @@
-[TOP](../../../README.md)　>　[Cocos2d-xプラグインの導入手順](../README.md)　>　Androidプロジェクトの設定
+[TOP](../../../README.md)　>　[Cocos2d-x plugin导入步骤](../README.md)　>　Android项目设置
 
 ---
 
-# Androidプロジェクトの設定
+# Android项目设置
 
-* **[1. インストール](#install_sdk)**
-* **[2. パーミッションの設定](#permission)**
-* **[3. インストールリファラ計測の設定](#install_referrer)**
-* **[4. リエンゲージメント計測の設定](#reengagement)**
-* **[5. ProGuardを利用する場合](#proguard)**
-* **[6. その他](#other)**
+* **[1. 导入](#install_sdk)**
+* **[2. 权限设置](#permission)**
+* **[3. Install Referrer计测设置](#install_referrer)**
+* **[4. 流失唤回广告计测设置](#reengagement)**
+* **[5. 使用ProGuard](#proguard)**
+* **[6. 其他](#other)**
 
 <div id="install_sdk"></div>
-## 1. インストール
+## 1. 导入
 
-### 1.1 Cocos2d-xプラグインの導入
+### 1.1 Cocos2d-x plugin导入
 
-「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
+解压「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」，进行以下操作。
 
-* 以下のファイルをClassesへコピー
+* 将以下文件复制到Classes
   * CYZCCFox.h
   * CYZCCFoxEvent.h
   * CYZCCFoxTypes.h
-  * Androidディレクトリ配下の全ファイル
+  * Android目录下所有文件
 
 
-* プロジェクト内配下のjni/Android.mkの設定を変更し、上記のファイルをビルドの対象に含める<br>
+* 更改项目内的jni/Android.mk设置，将上述文件设为编译对象<br>
 
-CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以下はその例）
+请根据开发环境来配置CYZCCFox.cpp的JniHelper.h的include路径（以下为案例）
 
 ```cpp
 #include <iostrem>
@@ -36,10 +36,10 @@ CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以�
 #include “../android/jni/JniHelper.h”
 ```
 
-### 1.2 Android Studioプロジェクトへの導入
+### 1.2 导入到Android Studio项目
 
-アプリをAndroid Studioでビルドしている場合は、gradle経由でインストールできるため、FOX_COCOS2DX_SDK_&lt;version&gt;.zipを展開した中の、FOX_Android_SDK_&lt;VERSION&gt;のライブラリは不要となります。<br>
-以下の設定をプロジェクトのbuild.gradleに追加してください。
+APP为Android Studio内编译的场合，通过gradle进行安装，解压FOX_COCOS2DX_SDK_&lt;version&gt;.zip后，不需要其中FOX_Android_SDK_&lt;VERSION&gt;的类库。<br>
+请在项目的build.gradle中添加以下设置。
 
 ```
 repositories {
@@ -55,21 +55,21 @@ dependencies {
 ```
 
 
-### 1.3 Eclipseプロジェクトへの導入
+### 1.3 导入到Eclipse项目
 
-ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。<br>
-「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている以下２ファイルをEclipseプロジェクトの`libsフォルダ`に移動させます。
+将下载的SDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」在OS上展开。<br>
+「FOX_Android_SDK_&lt;version&gt;/libs」文件中捆绑的以下两个文件移动至Eclipse项目的`libs`文件夹中。
 
-|ファイル名|必須|概要|
+|文件名|必须|概要|
 |:------:|:------:|:------|
-|FOX_Android_SDK_&lt;VERSION&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
-|FOX_Android_SDK_Support_Cocos2dx_&lt;VERSION&gt;.jar|必須|ネイティブSDK用のラッパーライブラリ|
+|FOX_Android_SDK_&lt;VERSION&gt;.jar|必须|Android原生SDK。可以计测普通成果・LTV成果・访问解析。|
+|FOX_Android_SDK_Support_Cocos2dx_&lt;VERSION&gt;.jar|必须|原生SDK的捆绑类库|
 
 <div id="permission"></div>
-## 2. パーミッションの設定
+## 2. 权限设置
 
-F.O.X SDKでは下記3つのパーミッションを利用します。
-&lt;Manifest&gt;タグ内に次のパーミッションの設定を追加します。
+F.O.X SDK可以使用以下三种权限。
+&lt;Manifest&gt;标签中添加以下权限的设置。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -77,18 +77,18 @@ F.O.X SDKでは下記3つのパーミッションを利用します。
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 
-パーミッション|Protection Level|必須|概要
+权限|Protection Level|必须|概要
 :---|:---:|:---:|:---
-INTERNET|Normal|必須|F.O.X SDKが通信を行うために必要となります。
-READ_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排除機能向上に必要となります。(※1)
-WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排除機能向上に必要となります。(※1)
+INTERNET|Normal|必須|F.O.X SDK是进行通信的必要条件。
+READ_EXTERNAL_STORAGE|Dangerous|任意|使用外部储存来优化排重功能时必须设定。(※1)
+WRITE_EXTERNAL_STORAGE|Dangerous|任意|使用外部储存来优化排重功能时必须设定。(※1)
 
-> ※1 Android MよりProtectionLevelが`dangerous`に指定されているパーミッションを必要とする機能を利用するには、ユーザーの許可が必要になります。詳細は[外部ストレージを利用した重複排除設定](/lang/ja/doc/integration/android/external_storage/README.md)をご確認ください。
+> ※1 从Android M开始使用ProtectionLevel被指定为`dangerous`权限的功能时，需要获得用户许可。具体请参考[利用外部储存优化排除重复设置](/lang/ja/doc/integration/android/external_storage/README.md)。
 
 
 <div id="install_referrer"></div>
-## 3. インストールリファラ計測の設定
-インストールリファラーを用いたインストール計測を行うために下記の設定を&lt;application&gt;タグに追加します。
+## 3. Install Referrer计测设置
+使用install referrer进行Install计测时，需将以下设置添加至&lt;application&gt;标签中。
 
 ```xml
 <receiver android:name="co.cyberz.fox.FoxInstallReceiver" android:exported="true">
@@ -98,17 +98,17 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 </receiver>
 ```
 
-既に"com.android.vending.INSTALL_REFERRER"に対するレシーバークラスが定義されている場合には、[二つのINSTALL_REFERRERレシーバーを共存させる場合の設定](/lang/ja/doc/integration/android/install_referrer/README.md)をご参照ください。
+"com.android.vending.INSTALL_REFERRER"的receiver类已经被定义的情况下，请参照[让两种INSTALL_REFERRER RECEIVER共存的设置](/lang/ja/doc/integration/android/install_referrer/README.md)。
 
 <div id="reengagement"></div>
-## 4. リエンゲージメント計測の設定
+## 4. 流失唤回广告计测设置
 
-リエンゲージメント計測（カスタムURLスキーム経由の起動を計測）するために必要な設定を&lt;application&gt;タグ内に追記します。
+为进行流失唤回广告计测（计测经由自定义URL SCHEME的启动行为），将所需设置添加在&lt;application&gt;标签中。
 
-リエンゲージメント計測はカスタムURLスキームでActivityが呼び出されることで計測を行います。
-ここでのカスタムURLスキームは他のActivityに設定しているものとは異なる値を設定してください。
+流失唤回广告计测通过自定义URL SCHEME调用Activity的方式来进行计测。
+这里的自定义URL SCHEME请区别于其他Activity中的值来设定。
 
-[設定例]
+[设置案例]
 
 AndroidManifest.xml
 ```xml
@@ -117,7 +117,7 @@ AndroidManifest.xml
 		<action android:name="android.intent.action.VIEW" />
 		<category android:name="android.intent.category.DEFAULT" />
 		<category android:name="android.intent.category.BROWSABLE" />
-		<data android:scheme="カスタム URL スキーム" />
+		<data android:scheme="自定义URL scheme" />
 	</intent-filter>
 </activity>
 ```
@@ -129,7 +129,7 @@ import co.cyberz.fox.Fox;
 @Override
 protected void onResume() {
 	super.onResume();
-	// リエンゲージメント計測
+	// 流失唤回广告计测
 	Fox.trackDeeplinkLaunch(this);
 }
 
@@ -141,40 +141,40 @@ protected void onNewIntent(Intent intent)
 }
 ```
 
-> リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`trackDeeplinkLaunch`メソッドが実装されてある必要があります。
+> 为进行流失唤回广告计测，所有设置了URL scheme的Activity的`onResume()`中必须执行`trackDeeplinkLaunch`方法。
 
 <div id="proguard"></div>
-## 5. ProGuardを利用する場合
+## 5. 使用ProGuard
 
-ProGuard を利用してアプリケーションの難読化を行う際は F.O.X SDK のメソッドが対象とならないよう、以下の設定 を追加してください。
+使用Proguard进行APP代码混淆时，为排除F.O.X SDK的method方法，请添加以下设置。
 
 ```
 -keepattributes *Annotation*
 -keep class co.cyberz.** { *; }
 -keep class com.google.android.gms.ads.identifier.* { *; }
 -dontwarn co.cyberz.**
-# Gradle経由でSDKをインストールしている場合、下記jarファイルの指定は不要です。
+# 通过Gradle安装SDK时，不需要指定以下jar文件。
 -libraryjars libs/AppAdForce.jar
 ```
 
-また、Google Play Service SDK を導入されている場合は、以下のぺージに記載されている keep 指定が記述されているかご確認ください。
+另外，在已安装Google Play Service SDK 的情况下，请确认以下页面中是否已记述了keep指定。
 
-[Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
+[导入Google Play Services时的Proguard应对](https://developer.android.com/google/play-services/setup.html#Proguard)
 
 <div id="other"></div>
-## 6. その他
+## 6. 其他
 
-* [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
+* [导入Google Play Services SDK来使用广告ID](./google_play_services/README.md)
 
-*	[AndroidManifest.xml 設定サンプル](./config_androidManifest/AndroidManifest.xml)
+*	[AndroidManifest.xml 设置案例](./config_androidManifest/AndroidManifest.xml)
 
-* [（オプション）外部ストレージを利用した重複排除設定](./external_storage/README.md)
+* [（任意）使用外部储存进行重复排查的设置](./external_storage/README.md)
 
-* [（オプション）Android M オートバックアップ機能の利用](./auto_backup/README.md)
+* [（任意）Android M 自动备份功能](./auto_backup/README.md)
 
 
 ---
 
-[戻る](../README.md#android)
+[返回](../README.md#android)
 
 [TOP](../../../README.md)
