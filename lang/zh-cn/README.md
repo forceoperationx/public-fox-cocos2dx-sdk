@@ -1,76 +1,76 @@
-# Force Operation Xとは
+# 什么是Force Operation X
 
-Force Operation X (以下F.O.X)は、スマートフォンにおける広告効果最適化のためのトータルソリューションプラットフォームです。アプリケーションのダウンロード、ウェブ上でのユーザーアクションの計測はもちろん、スマートフォンユーザーの行動特性に基づいた独自の効果計測基準の元、企業のプロモーションにおける費用対効果を最大化することができます。
+Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最大改善广告效果的综合解决方案平台。除了对APP下载量和网络用户操作的基本计测外，还能基于手机用户行为特性采用独自效果计测基準，实现了企业宣传推广时费用与效果比的最大改善。
 
-本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
+在这个文档里，详细讲解了基于智能手机平台优化广告效果的F.O.X SDK的导入步骤。
 
-## 目次
+## 目录
 
-* **[1. インストール](#install_sdk)**
-	* [SDKダウンロード](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
-	* [Cocos2d-x プラグインの導入手順](./doc/integration/README.md)
-	* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
-	* [Androidプロジェクトの設定](./doc/integration/android/README.md)
-	* [最新バージョンへのマイグレーションについて](./doc/update/README.md)
-* **[2. F.O.X SDKのアクティベーション](#activate_sdk)**
-* **[3. インストール計測の実装](#tracking_install)**
-	* [インストール計測の詳細](./doc/track_install/README.md)
-* **[4. アプリ内イベントの計測](#tracking_event)**
-	* [セッション(起動)イベントの計測](#track_session)
-	*	[その他アプリ内イベントの計測](#track_other_event)
-	* [イベント計測の詳細](./doc/track_events/README.md)
-* **[5. 最後に必ずご確認ください](#trouble_shooting)**
+* **[1. 安装](#install_sdk)**
+	* [SDK下载](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+	* [Cocos2d-x Plugin的导入步骤](./doc/integration/README.md)
+	* [iOS项目设置](./doc/integration/ios/README.md)
+	* [Android项目设置](./doc/integration/android/README.md)
+	* [更新到最新版本](./doc/update/README.md)
+* **[2. F.O.X SDK激活](#activate_sdk)**
+* **[3. 执行Install计测](#tracking_install)**
+	* [Install计测详细](./doc/track_install/README.md)
+* **[4. APP内事件计测](#tracking_event)**
+	* [session(启动)事件计测](#track_session)
+	*	[其他APP内事件计测](#track_other_event)
+	* [事件计测详细](./doc/track_events/README.md)
+* **[5. 最后的注意事项](#trouble_shooting)**
 
-## F.O.X SDKとは
+## 什么是F.O.X SDK
 
-F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
+将F.O.X SDK导入APP之后，能够实现以下功能。
 
-* **インストール計測**
+* **Install计测**
 
-広告流入別にインストール数を計測することができます。
+能够计测不同广告带来的安装数量。
 
-* **LTV計測**
+* **LTV计测**
 
-流入元広告別にLife Time Valueを計測します。主な成果地点としては、会員登録、チュートリアル突破、課金などがあります。各広告別に登録率、課金率や課金額などを計測することができます。
+可以计测不同广告来源的Life Time Value。主要的成果地点为会员注册、新手引导完成、付费等。能够分别监测各广告的登录率、付费率以及付费金额。
 
-* **アクセス解析**
+* **流量分析**
 
-自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
+比较自然流入和广告流入带来的安装。能够计测App的启动次数和唯一用户数(DAU/MAU)、留存率等。
 
 <div id="install_sdk"></div>
-## 1. インストール
+## 1. 导入
 
-以下のページより最新のSDKをダウンロードしてください。
+请从以下页面中下载最新稳定版(Latest release)SDK。
 
-[SDKリリースページ](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+[SDK发布页面](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
 
-既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのマイグレーションについて](./doc/update/README.md)をご参照ください。
+APP中已经导入SDK的场合，请参考[更新到最新版本](./doc/update/README.md)。
 
-ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」を展開し、アプリケーションのプロジェクトに組み込んでください。
+下载并解压SDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」，并导入至APP项目中。
 
-[Cocos2d-x プラグインの導入方法](./doc/integration/README.md)
+[Cocos2d-x Plugin的导入方法](./doc/integration/README.md)
 
 ### 各OS毎の設定
 
-* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
-* [Androidプロジェクトの設定](./doc/integration/android/README.md)
+* [iOS项目设置](./doc/integration/ios/README.md)
+* [Android项目设置](./doc/integration/android/README.md)
 
-### SDK仕様
+### SDK说明
 
-F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
+将F.O.X SDK导入APP之后，能够实现以下功能。
 
-|処理|必須|概要|
+|处理|必须|概要|
 |:------:|:------:|:------|
-|インストール計測|必須|起動時はブラウザが起動し、Cookie計測により広告効果測定を行います。<br>コンバージョン数、CVRなどを測定することができます。<br>メソッド名：CYZCCFox::trackInstall();|
-|イベント計測|オプション|任意の成果地点で成果通知を行い、広告別の課金数や入会数の計測を行います。<br>課金金額、退会数などを測定することができます。<br>メソッド名：CYZCCFox::trackEvent(event);|
-|セッション計測|オプション|アプリの起動時およびバックグラウンドからの復帰時の起動計測を行います。<br>起動数、アクティブユーザー数(DAU)、継続率などを測定することができます。<br>メソッド名：CYZCCFox::trackSession();|
+|Install计测|必须|APP启动时会自动跳转浏览器，通过Cookie计测进行广告效果测定。<br>可以计测成果CV数、CVR等。<br>方法名：CYZCCFox::trackInstall();|
+|事件计测|任意|在任意成果地点进行成果通知，能够计测不同广告的付费数和登录会员数。<br>可以计测付费金额、注销数等。<br>方法名：CYZCCFox::trackEvent(event);|
+|session计测|任意|APP启动时及从后台恢复时进行启动测定。<br>可以计测APP启动数、活跃用户数(DAU)、留存率等。<br>方法名：CYZCCFox::trackSession();|
 
-> Force Operation X SDK Cocos2d-x プラグインは、ネイティブ版SDKへのブリッジを行うラッパーとして実装しています。SDK導入には、プラグインと、iOS及びAndroidのネイティブ版SDKが必要となります。_
+> Force Operation X SDK Cocos2d-x plugin作为连结原生SDK的封装来编码实现的。导入SDK时，需要plugin和iOS及Android的原生SDK。_
 
 <div id="activate_sdk"></div>
-## 2. F.O.X SDKのアクティベーション
+## 2. 激活F.O.X SDK
 
-F.O.X SDKのアクティベーションを行うため、`CYZCCFoxConfig`をAppDelegateの`applicationDidFinishLaunching`内に記述します。
+为激活F.O.X SDK，需将`CYZCCFoxConfig`书写在AppDelegate的`applicationDidFinishLaunching`内。
 
 ```cpp
 #include "CYZCCFox.h"
@@ -81,12 +81,12 @@ using namespace fox;
 bool AppDelegate::applicationDidFinishLaunching() {
 ...
 	CYZCCFoxConfig config;
-	config.appId_android = 発行されたAndroidアプリID;
-	config.salt_android = "発行されたAndroidアプリのAPP_SALT";
-	config.appKey_android = "発行されたAndroidアプリのAPP_KEY";
-	config.appId_ios = 発行されたiOSアプリID;
-	config.salt_ios = "発行されたiOSアプリのAPP_SALT";
-	config.appKey_ios = "発行されたiOSアプリのAPP_KEY";
+	config.appId_android = 发行的Android APP ID;
+	config.salt_android = "发行的Android APP的APP_SALT";
+	config.appKey_android = "发行的Android APP的APP_KEY";
+	config.appId_ios = 发行的iOS APP ID;
+	config.salt_ios = "発发行的iOS APP的APP_SALT";
+	config.appKey_ios = "发行的iOS APP的APP_KEY";
 
 #ifdef DEBUG
 	config.debugMode = true;
@@ -95,17 +95,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
 ...
 ```
 
-> ※ `debugMode`はtrueにするとデバッグ用ログを出力することが可能となります。
+> ※ `debugMode`为true时，能够输出调试日志。
 
 <div id="tracking_install"></div>
-## 3. インストール計測の実装
+## 3. 执行Install计测
 
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。初回起動時に、ブラウザを起動し、広告クリック時に付与されたCookieの情報を照合することで、成果の計測を行います。
+进行首次启动的Install计测，可以计测广告效果。首次启动APP时，启动浏览器，参照广告点击时的Cookie信息进行成果计测。
 
-初回起動時にブラウザを起動するために、`AppDelegate:applicationDidFinishLaunching:`メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に効果測定用の処理を追加します。
+为使首次启动APP时自动弹跳出浏览器，需在`AppDelegate:applicationDidFinishLaunching:`方法等这样的APP启动时肯定调用的地点添加效果计测处理。
 
 
-成果通知のコードを追加
+添加成果通知代码
 ```cpp
 #include "CYZCCFox.h"
 
@@ -115,17 +115,17 @@ using namespace fox;
 CYZCCFox::trackInstall();
 ```
 
-* [インストール計測の詳細](./doc/track_install/README.md)
+* [Install计测详细](./doc/track_install/README.md)
 
 
 <div id="tracking_event"></div>
-## 4. アプリ内イベントの計測
+## 4. APP内事件计测
 
 <div id="track_session"></div>
-### セッション(起動)イベントの計測
+### session（启动）事件计测
 
-自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。<br><br>
-アプリケーションが起動、もしくはバックグラウンドから復帰する際にセッション計測を行うコードを追加します。不要の場合には、本項目の実装を省略できます。<br>
+可以计测自然流入和广告流入的安装数对比、APP启动次数和唯一用户人数（DAU/MAU)、留存率等。如不需要流量分析，可以忽略本项的安装。<br><br>
+APP启动时或从后台恢复时添加session计测代码。无需该计测时，可以忽略本项。<br>
 
 ```cpp
 #include "CYZCCFox.h"
@@ -137,13 +137,13 @@ CYZCCFox::trackSession();
 ```
 
 <div id="track_other_event"></div>
-### その他アプリ内イベントの計測
+### 其他的APP内事件计测
 
-会員登録、チュートリアル突破、課金など任意の成果地点にイベント計測を実装することで、流入元広告のLTVを測定することができます。<br>
-イベント計測が不要の場合には、本項目の実装を省略できます。<br>
-成果がアプリ内部で発生する場合、成果処理部に以下のように記述してください。<br>
+在会员注册，完成新手引导，付费等任意成果地点执行事件计测，能够测定流入源广告的LTV。<br>
+无需事件计测时，可以忽略本项。<br>
+成果在APP内部产生的情况，请在成果处理的地方进行按下面的方式来编码安装。<br>
 
-**[チュートリアルイベントの計測例]**
+**[新手引导事件计测案例]**
 ```cpp
 #include "CYZCCFox.h"
 
@@ -156,11 +156,11 @@ CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 CYZCCFox::trackEvent(e);
 ```
 
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。
+> 成果地点ID(必须)：由管理者通知。请输入该值。
 
-> イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。<br>`CYZCCFoxEvent`クラスのコンストラクタの引数にイベント名と発行された成果地点IDを指定してください。
+> 进行事件计测时，需指定识别成果地点的`成果地点ID`。<br>`CYZCCFoxEvent`类的构造函数的参数中请指定事件名称和发行的成果地点ID。
 
-**[課金イベントの計測例]**
+**[付费事件计测案例]**
 ```cpp
 #include "CYZCCFox.h"
 
@@ -177,30 +177,25 @@ e->currency = "JPY";
 CYZCCFox::trackEvent(e);
 ```
 
-> currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通過コードを指定してください。
+> currency中请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定义的货币代码。
 
-* [イベント計測の詳細](./doc/track_events/README.md)
+* [事件计测详细](./doc/track_events/README.md)
 
 <div id="trouble_shooting"></div>
-# 5. 最後に必ずご確認ください（これまで発生したトラブル集）
+# 5. 最后需确认内容（常见问题集）
 
-### 5.1 URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 5.1 未设置URL SCHEME 进行发布时无法从浏览器跳转至APP
 
-Cookie計測を行いブラウザを起動した場合には、URLスキームを利用してアプリケーションに遷移します。
+进行Cookie计测时启动浏览器以后，必须使用URL scheme跳转回到APP画面。
+此时需要设置独自的URL scheme，未设置scheme就上线发布时会导致无法正常迁移。
 
-この際、独自のURLスキームが設定されている必要があります。
+### 5.2 URL SCHEME中含有大写字母时，无法正常跳转APP。
 
+根据运行环境，会出现因为URL SCHEME 的大小写字母不能判定而导致URL SCHEME 无法正常迁移的情况。请将URL SCHEME 全部设置为小写英文或数字或小数点。
 
-### 5.2 URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 5.3 F.O.X中监测到的App安装数会大于APP商城里监测的安装数
 
-環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。
-
-URLスキームは全て小文字で設定を行ってください。
-
-
-### 5.3 F.O.Xで確認できるインストール数の値がマーケットの数字より大きい
-
-F.O.Xではいくつかの方式を組み合わせて端末の重複インストール検知を行っています。重複検知が行えない設定では、同一端末で再インストールされる度にF.O.Xは新規のインストールと判定してしまいます。重複検知の精度を向上するために、以下の設定を行ってください。
+F.O.X结合多种方式来检查终端是否有重复安装。如果设置为不进行重复检查时，同一终端的再次安装会被F.O.X判定为新的安装。为提高重复排查的精确度，请进行如下设置。
 
 ---
 [TOP MENU](/README.md)
