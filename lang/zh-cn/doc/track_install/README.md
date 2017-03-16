@@ -1,12 +1,12 @@
-[TOP](../../README.md)　>　インストール計測の詳細
+[TOP](../../README.md)　>　Install计测详情
 
 ---
 
-# インストール計測の詳細
+# Install计测详情
 
-`trackInstall`メソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザが起動されます。この際、外部ブラウザの遷移先を`trackInstall`の引数に計測オプションを指定することができます。<br>
+使用`trackInstall`方法可以进行Install计测。使用Cookie计测的情况时会弹跳出外部浏览器。此时，外部浏览器的迁移网页可以通过`trackInstall`的引数中指定计测选项来实现。<br>
 
-プロジェクトのソースコードを編集し、アプリケーションの起動時に呼び出される画面のAppDelegate:applicationDidFinishLaunching:メソッド等、アプリケーションの起動時に必ず呼ばれる箇所に対して、次の通り実装を行ってください。
+编辑项目中的源代码，在APP启动时弹跳画面的AppDelegate:applicationDidFinishLaunching:方法等，APP启动时必定执行的位置，来按以下内容来做编码安装。
 
 ```cpp
 #include "CYZCCFox.h"
@@ -14,14 +14,14 @@
 using namespace fox;
 ...
 
-// 成果通知のコードを追加
+// 添加成果通知代码
 CYZCCFox::trackInstall();
 ```
 
-> オプションを指定しない場合では標準で用意されたページが表示されますが、遷移先のURLをF.O.X管理画面上で任意に設定することが可能です。
+> 若不指定option参数将会跳转到默认页面，跳转页面的URL可以在F.O.X管理界面中进行自由设置。
 
 
-特定のURLヘ遷移させたい場合や、アプリケーションで動的にURLを生成したい場合には、オプションを指定します。
+想要指定跳转目的地URL或想在APP中自动生成URL时，请指定option参数。
 
 ```cpp
 #include "CYZCCFox.h"
@@ -43,17 +43,17 @@ void SampleClass::onInstallComplete()
 }
 ```
 
-> ・CYZCCFoxTrackOptionのbuidに広告主端末IDを渡すことができます。
+> ・CYZCCFoxTrackOption的buid中可以传递广告主终端ID。
 
-> ・CYZCCFoxTrackOptionのonInstalCompleteにコールバックを渡すことで、SDKの通信が完了したタイミングでコールバックを受け取ることができます。
+> ・CYZCCFoxTrackOption的onInstalComplete中通过传递回调方法，可以在SDK通信完成时执行回调方法。
 
-> ・CYZCCFoxTrackOptionのoptoutをtrueにすることで、オプトアウトを有効にすることができます。デフォルトではfalseです。
+> ・通过设置CYZCCFoxTrackOption的optout为true，可以使optout有效。默认值为false。
 
-> ※ sendConversionは起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
+> ※ 作为启动后的立即处理功能，必须在sendConversion做编码安装。登录ID等用户行为的数字无法作为参数来传递。
 
-> 【ご注意】
-`trackInstall`は、特に理由がない限りはアプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
-アプリケーションの起動時に呼び出される`AppDelegate:applicationDidFinishLaunching`内に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+> 【注意】
+`trackInstall`在没有特殊理由的情况下，请在启动APP时调用的`AppDelegate:applicationDidFinishLaunching`中执行。在其他位置执行可能会导致安装数无法正确计测。
+APP启动时调用的`AppDelegate:applicationDidFinishLaunching`内中未编码安装的状态下实行安装成果型广告时，必须向广告代理店或媒体单位进行说明。未正确进行计测就开始安装成果型广告，可能会产生超过计测安装数的广告费用。
 
 
 ---
