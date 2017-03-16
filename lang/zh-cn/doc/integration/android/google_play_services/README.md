@@ -1,57 +1,55 @@
-[TOP](../../../../README.md)　>　[Cocos2d-xプラグインの導入手順](../../README.md)　>　[Androidプロジェクトの設定](../README.md)　>　Google Play Services SDKの導入
+[TOP](../../../../README.md)　>　[Cocos2d-x plugin的导入步骤](../../README.md)　>　[Android项目设置](../README.md)　>　Google Play Services SDK导入
 
 ---
 
-# 広告IDを利用するためのGoogle Play Services SDKの導入
+# 导入Google Play Services SDK来使用广告ID
 
 
-## Google Playデベロッパープログラムへの準拠
+## Google Play development program准则
 
-Force Operation X Android SDKはGoogle Playデベロッパープログラムポリシーに準拠しています。本SDKはポリシーに準拠するために、永続的なデバイス ID（IMEI、MACアドレス及びAndroidID）が取得される場合には広告IDが取得されません。2014年8月1日から、Google Playストアにアップロードされたすべての更新や新着アプリには、広告目的で使用する端末IDには広告ID を利用する必要があります。本ポリシーに準拠するために、以下の手順を行ってください。
+Force Operation X Android SDK以Google Play development program 条约为准则。该SDK为了遵守条约，已经获取永久设备ID（IMEI、MAC adress以及AndroidID）的情况下将不会获取广告ID。2014年8月1日开始，Google Play Store上所有的更新以及发布新app时，以广告为目的的终端ID必须使用广告ID。为了遵守该条约，请执行以下步骤。
 
 
 ## Google Play Services SDK
 
 
-広告IDを利用できるようにするために、Google Play Services SDKが組み込まれている必要があります。
-アプリケーションにGoogle Play Services SDKが組み込まれていない場合には、次のサイトの手順に従い、導入を行ってください。
+为了能够使用广告ID，必须安装Google Play Services SDK。
+APP中没有安装Google Play Services SDK的情况时，请按照以下页面的步骤做导入安装。
 
 [Setting Up Google Play Services | Android Developers](https://developer.android.com/google/play-services/setup.html)
 
 
+## 获取Google Play Services SDK
 
-## Google Play Services SDKの取得
-
-以下に、2014年12月時点での、Google Play Services SDKの導入方法を記載致します。
+以下为2014年12月时的Google Play Services SDK导入方法。
 
 
-Google Play Services SDKをインストールしていない場合は、Android SDK Managerからパッケージを取得します。
+未安装Google Play Services SDK的情况下，请从Android SDK Manager获取安装包。
 
-* Android SDK Managerを起動します。
-* Extrasディレクトリ配下のGoogle Play servicesにチェックをいれ、パッケージをインストールします。
+* 启动Android SDK Manager。
+* 勾选在Extras目录下的Google Play services，导入文件包。
 
 ![googlePlayServices01](./img01.png)
 
-## Google Play Servicesの導入
+## 导入Google Play Services
 
-Google Play Services のライブラリプロジェクトを取得したら、プロジェクトプロパティで外部ライブラリプロジェクトを参照するよう ${ANDROID_SDK_PATH}/extras/google/google_play_services/libproject/google-play-services_libを指定してください。
+获取Google Play Services的类库项目，请在项目属性选项中指定参照外部类库项目 ${ANDROID_SDK_PATH}/extras/google/google_play_services/libproject/google-play-services_lib。
 
 
+## Google Play Services使用设置
 
-## Google Play Servicesを利用するための設定
+#### 编辑AndroidManifest.xml
 
-#### AndroidManifest.xmlの編集
-
-Google Play Servicesを利用するために下記の設定をAndroidManifest.xmlの<application>タグ内に記述します。
+使用Google Play Services前需要将下列设置写入AndroidManifest.xml的<application>标签中。
 
 ```xml
 <meta-data android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version" />
 ```
 
-#### Proguardの設定
+#### Proguard设置
 
-Proguardを利用して難読化している場合は、以下の設定を追加してください。
+使用Proguard进行代码混淆时，请添加以下设置。
 
 ```
 -keep class * extends java.util.ListResourceBundle {
