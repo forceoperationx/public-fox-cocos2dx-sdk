@@ -1,11 +1,11 @@
-[TOP](../../../../README.md)　>　[Cocos2d-xプラグインの導入手順](../../README.md)　>　[Androidプロジェクトの設定](../README.md)　>　URLスキームの設定
+[TOP](../../../../README.md)　>　[Cocos2d-x plugin导入步骤](../../README.md)　>　[Android项目设置](../README.md)　>　URL scheme设置
 
 ---
 
-# URLスキームの設定
+# URL scheme设置
 
-アプリを外部から起動する際に必須となります。起動させる対象となる<activity>タグ内に追加します。
-#### 例 ”smapleapp://”でアプリを起動させる
+从外部启动APP时必须设置。在启动对象的<activity>标签中添加。
+#### 例如用”smapleapp://”启动APP
 
 ```xml
 <intent-filter>		<action android:name="android.intent.action.VIEW" />		<category android:name="android.intent.category.DEFAULT" />		<category android:name="android.intent.category.BROWSABLE" />		<data android:scheme="sampleapp" /></intent-filter>
@@ -22,7 +22,7 @@
         	<category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
 
-        <!-- URLスキームの設定 （sampleapp://）  -->
+        <!-- URLスscheme设置 （sampleapp://）  -->
         <intent-filter>
         	<action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />

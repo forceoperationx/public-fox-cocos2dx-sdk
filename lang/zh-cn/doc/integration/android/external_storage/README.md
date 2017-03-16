@@ -1,45 +1,46 @@
-[TOP](../../../../README.md)　>　[Cocos2d-xプラグインの導入手順](../../README.md)　>　[Androidプロジェクトの設定](../README.md)　>　外部ストレージを利用した重複排除設定
+[TOP](../../../../README.md)　>　[Cocos2d-x plugin导入步骤](../../README.md)　>　[Android项目设置](../README.md)　>　利用外部储存进行排除重复
 
 ---
 
-## 外部ストレージを利用した重複排除設定
+## 利用外部储存进行排除重复
 
-アプリケーションの初回起動時にSDKが生成した識別IDをローカルストレージまたはSDカードに保存することで、アプリケーション再インストール時に重複判定を行うことができます。
+APP首次启动时，SDK生成的识别ID保存在本地储存或SD卡中，可以在APP再次安装时进行重复判定。
 
-本設定は必須ではありませんが、アプリケーションの再インストールにおける重複検知の精度が大きく向上するため、実装を推奨しております。
+本设置为任意项目，但为了提高APP再次安装时重复检查的精度，建议使用。
 
-### パーミッションの設定
+### 权限设置
 
-外部ストレージへのファイル読み書きに必要なパーミッションの設定をAndroidManifest.xmlの<manifest>タグ内に追加します。
+在AndroidManifest.xml的<manifest>的标签中添加读写外部储存必要的权限设置。
 
 ```xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 
-上記パーミッションが設定されている場合、次のパスに識別IDファイルが保存されます。
+如果设置了上述权限，ID识别文件会保存在以下路径。
 
 ```
-Environment.getExternalStorageDirectory().getPath()で取得できるパス/アプリのパッケージ名/__FOX_XUNIQ__
+Environment.getExternalStorageDirectory().getPath()可获取路径/APP的package名/__FOX_XUNIQ__
 ```
 
-### （任意）保存ディレクトリ及びファイル名の変更
+### （任意）保存目录及修改文件名
 
-保存されるファイルのディレクトリ名は、標準ではパッケージ名で作成されますが、<application>タグ内に以下設定を追加することで、任意のディレクトリ名及びファイル名に変更することができます。
+保存文件的目录名，一般为package名，在<application>标签下添加以下设置可以修改目录名以及文件名。
 
 ```xml
-<meta-data android:name="APPADFORCE_ID_DIR" android:value="任意のディレクトリ名" />
-<meta-data android:name="APPADFORCE_ID_FILE" android:value="任意のファイル名" />
+<meta-data android:name="APPADFORCE_ID_DIR" android:value="任意目录名" />
+<meta-data android:name="APPADFORCE_ID_FILE" android:value="任意文件名" />
 ```
 
-> 任意のディレクトリ名やファイル名を指定した場合でも、Environment.getExternalStorageDirectory().getPath()の返り値のパス配下に作成します。Environment.getExternalStorageDirectory().getPath()の返り値は端末やOSバージョンによって異なります。
-> "APPADFORCE_ID_DIR"(任意のディレクトリ名)を指定せず、任意のファイル名のみを指定した場合、アプリのパッケージ名のディレクトリが作成され、その配下に任意のファイル名で保存されます。
-> ※"APPADFORCE_ID_FILE"(任意のファイル名)を指定せず、任意のディレクトリ名のみを指定した場合、任意の名前でディレクトリが作成され、その配下に`__FOX_XUNIQ__`で保存されます。
-通常は設定の必要はありません。
+> 指定的目录名和文件名，会在
+Environment.getExternalStorageDirectory().getPath()的返回值路径下创建出来。Environment.getExternalStorageDirectory().getPath()的返回值根据终端和OS版本的不同而有所差异。
+> "APPADFORCE_ID_DIR"(任意目录名)，仅指定文件名时，会生成app的package名的目录，并在该路径下保存文件。
+> ※"APPADFORCE_ID_FILE"(任意文件名)，仅指定目录的情况时，会生成指定的目录名，并在该路径下保存为`__FOX_XUNIQ__`。
+通常不需要设置。
 
 
-### 設定例
+### 设置案例
 
-AndroidManifest.xmlの設定例を次に記載します。
+以下为AndroidManifest.xml的设置案例。
 
 ```xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -54,28 +55,27 @@ AndroidManifest.xmlの設定例を次に記載します。
 </application>
 ```
 
-上記の例の場合に、保存されるファイルのパスは次になります。
+在上述案例中，文件保存在以下路径。
 
 ```
-Environment.getExternalStorageDirectory().getPath()で取得できるパス/fox_id_dir/fox_id_file
+用Environment.getExternalStorageDirectory().getPath()获取的路径/fox_id_dir/fox_id_file
 ```
 
-### 外部ストレージの利用停止
+### 停止使用外部储存
 
-Force Operation X SDKによる外部ストレージへのアクセスを停止したい場合には、AndroidManifest.xmlにAPPADFORCE_USE_EXTERNAL_STORAGEの設定を追加してください。
+想要通过Force Operation X SDK停止访问外部储存时，请在AndroidManifest.xml中添加APPADFORCE_USE_EXTERNAL_STORAGE设置。
 ```xml
 <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
 ```
 
-本設定を行うことで外部ストレージに対する記録が停止しますが、アプリケーションの削除によりデータが常に初期化されるため、正確なインストール計測が行われなくなります。
+本项设置可以停止对外部储存的读写，但删除APP时会清空数据，可能导致无法进行准确测量。
 
-### Android M(6.0)における注意点
+### 关于Android M(6.0)的注意点
 
-protectionLevelがdangerousに指定されているパーミッションを必要とする機能を利用するには、ユーザーの許可が必要となります。
-ユーザーの許可がない場合、ストレージ領域へのデータ保存が行えなくなるため重複排除設定が利用出来なくなります。
-前述の`READ_EXTERNAL_STORAGE`と`WRITE_EXTERNAL_STORAGE`においてもdangerousとなっており、ユーザーに許可を貰うための実装を行う必要があります。
+使用protectionLevel为dangerous等级的功能时，必须得到用户许可。 用户拒绝时，数据将无法保存在外部储存区域因此无法设置排除重复。上述中`READ_EXTERNAL_STORAGE`和`WRITE_EXTERNAL_STORAGE`也为dangerous，需获得用户许可。
 
-* [実装の参考](https://developer.android.com/training/permissions/requesting.html#perm-request)
+
+* [编码安装参考](https://developer.android.com/training/permissions/requesting.html#perm-request)
 
 
 ---
