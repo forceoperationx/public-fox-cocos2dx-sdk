@@ -8,8 +8,9 @@
 * **[2. パーミッションの設定](#permission)**
 * **[3. インストールリファラ計測の設定](#install_referrer)**
 * **[4. リエンゲージメント計測の設定](#reengagement)**
-* **[5. ProGuardを利用する場合](#proguard)**
-* **[6. その他](#other)**
+* **[5. インストール計測完了のコールバックを受け取る](#receive_callback)**
+* **[6. ProGuardを利用する場合](#proguard)**
+* **[7. その他](#other)**
 
 <div id="install_sdk"></div>
 ## 1. インストール
@@ -49,8 +50,8 @@ repositories {
 }
 
 dependencies {
-    compile 'co.cyberz.fox:track-core:4.0.0'
-    compile 'co.cyberz.fox.support:track-cocos2dx:1.0.0'
+    compile 'co.cyberz.fox:track-core:4.1.1'
+    compile 'co.cyberz.fox.support:track-cocos2dx:1.0.1'
 }
 ```
 
@@ -114,15 +115,23 @@ AndroidManifest.xml
 ```xml
 <activity android:name="org.cocos2dx.cpp.AppActivity">
 	<intent-filter>
+		<action android:name="android.intent.action.MAIN"/>
+
+		<category android:name="android.intent.category.LAUNCHER"/>
+	</intent-filter>
+
+	<intent-filter>
 		<action android:name="android.intent.action.VIEW" />
+
 		<category android:name="android.intent.category.DEFAULT" />
 		<category android:name="android.intent.category.BROWSABLE" />
-		<data android:scheme="カスタム URL スキーム" />
+
+		<data android:scheme="カスタム URLスキーム" />
 	</intent-filter>
 </activity>
 ```
 
-Activity
+AppActivity
 ```java
 import co.cyberz.fox.Fox;
 
@@ -143,8 +152,31 @@ protected void onNewIntent(Intent intent)
 
 > リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`trackDeeplinkLaunch`メソッドが実装されてある必要があります。
 
+<div id="receive_callback"></div>
+## 5. インストール計測完了のコールバックを受け取る
+
+[![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/cyber-z/public-fox-android-sdk/releases/tag/4.1.1)
+
+組み込んでいるAndroidネイティブSDKがバージョン4.1.1以降においてインストール計測完了のコールバックを受け取る場合には<br>
+以下のように必ず`"アプリ起動時に最初に呼ばれるActivity"`(メインのアクティビティ)の onResume に Fox.trackDeeplinkLaunch メソッドを実装してください。`但し、[前項](#reengagement)の実装が行われている場合には不要です。`
+
+```java
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		// FOX
+		Fox.trackDeeplinkLaunch(this);
+	}
+```
+
+> ※ アプリのインストール計測をCookie計測で行っている場合は、ブラウザからカスタムURLスキームでアプリに戻る際のActivityのonResumeに`Fox.trackDeeplinkLaunch`を実装してください。
+
+> ※ 本実装が行われていない場合、C++側にインストール計測完了が通知されません。
+
 <div id="proguard"></div>
-## 5. ProGuardを利用する場合
+## 6. ProGuardを利用する場合
 
 ProGuard を利用してアプリケーションの難読化を行う際は F.O.X SDK のメソッドが対象とならないよう、以下の設定 を追加してください。
 
@@ -162,7 +194,7 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 [Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
 
 <div id="other"></div>
-## 6. その他
+## 7. その他
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
 

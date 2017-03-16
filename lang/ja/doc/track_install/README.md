@@ -43,11 +43,11 @@ void SampleClass::onInstallComplete()
 }
 ```
 
-> ・CYZCCFoxTrackOptionのbuidに広告主端末IDを渡すことができます。
+> * CYZCCFoxTrackOptionのbuidに広告主端末IDを渡すことができます。
 
-> ・CYZCCFoxTrackOptionのonInstalCompleteにコールバックを渡すことで、SDKの通信が完了したタイミングでコールバックを受け取ることができます。
+> * CYZCCFoxTrackOptionのonInstalCompleteにコールバックを渡すことで、SDKの通信が完了したタイミングでコールバックを受け取ることができます。<br>※ F.O.X Cocos2d-x SDK 4.0.1以降においてAndroidでコールバックを受け取るの場合、アプリ初回起動時に呼ばれるActivityを編集する必要があります。[]詳細はこちら](../integration/android/README.md#receive_callback)をご確認ください。
 
-> ・CYZCCFoxTrackOptionのoptoutをtrueにすることで、オプトアウトを有効にすることができます。デフォルトではfalseです。
+> * CYZCCFoxTrackOptionのoptoutをtrueにすることで、オプトアウトを有効にすることができます。デフォルトではfalseです。
 
 > ※ sendConversionは起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
 

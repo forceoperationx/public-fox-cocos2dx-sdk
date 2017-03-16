@@ -62,10 +62,9 @@ public class Fox {
     option.addOptOut(optout);
     mDelegate = delegate;
 
-    option.setTrackingStateListener(new FoxTrackOption.TrackingStateListerner() {
+    option.setTrackingStateListener(new FoxTrackOption.TrackingStateListener() {
       @Override
       public void onComplete() {
-    	  Log.d("Cocos2d-x_FoxTrack", "成功 - onComplete");
         // 成功
         onCompleted(mDelegate);
       }
@@ -99,9 +98,9 @@ public class Fox {
 	  e.itemName = itemName;
 	  e.quantity = quantity;
 	  try {
-		  if (!StringUtil.isEmpty(eventInfo)) e.eventInfo = new JSONObject(eventInfo);
+		  if (!StringUtil.isEmpty(eventInfo) && 2 < eventInfo.length()) e.eventInfo = new JSONObject(eventInfo);
 	  } catch (JSONException e1) {
-		Log.e("Fox-SDK", "Cocos2d-x_FoxTrack", e1);
+		  Log.e("Fox-SDK", "FoxTrackEvent", e1);
 	  }
 	  if (extraInfo != null) {
 		  try {
@@ -114,7 +113,7 @@ public class Fox {
 				}
 			}
 		  } catch(Exception e1) {
-				Log.e("Fox.trackEvent", e1.getMessage());
+				Log.e("Cocos2d-x_FoxEvent", e1.getMessage());
 		  }
 	  }
 	  trackEvent(e);
@@ -126,19 +125,21 @@ public class Fox {
 
 	public static void setUserInfo(String userInfo) {
 		try {
+			if (StringUtil.isEmpty(userInfo) || userInfo.length() <= 2) return;
 			JSONObject jUserInfo = new JSONObject(userInfo);
 			co.cyberz.fox.Fox.setUserInfo(jUserInfo);
 		} catch(Exception e) {
-			Log.e("Cocos2dx setUserInfo", e.getMessage());
+			Log.e("Cocos2d-x_setUserInfo", e.getMessage());
 		}
 	}
 
 	public static String getUserInfo() {
 		try {
 			JSONObject jUserInfo = co.cyberz.fox.Fox.getUserInfo();
+			if (jUserInfo == null) return "";
 			return jUserInfo.toString();
 		} catch(Exception e) {
-			Log.e("Cocos2dx getUserInfo", e.getMessage());
+			Log.e("Cocos2d-x_getUserInfo", e.getMessage());
 		}
 		return null;
 	}
