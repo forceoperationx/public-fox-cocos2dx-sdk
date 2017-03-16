@@ -1,58 +1,49 @@
-[TOP](../../../README.md)　>　[Cocos2d-xプラグインの導入手順](../../README.md)　>　iOSプロジェクトの設定
+[TOP](../../../README.md)　>　[Cocos2d-x plugin的导入步骤](../../README.md)　>　iOS项目设置
 
 ---
 
-# iOSプロジェクトの設定
+# iOS项目设置
 
-## **Xcodeプロジェクトの設定**
+## **Xcode项目设置**
 
-パブリッシュされたXcodeプロジェクトを開き、編集します。
+打开发布的Xcode项目进行编辑。
 
-### 1. F.O.X SDKネーティブフレームワークの導入
+### 1. F.O.X SDK原生架构(Framework)导入
 
-ダウンロードした`CYZFox_iOS_static_<version>.zip`を解凍して、`CYZFox.framework`ファイルをXcodeプロジェクトにリンクしてください。
+下载并解压`CYZFox_iOS_static_<version>.zip`，将`CYZFox.framework`文件接入Xcode项目。
 
-### 2. 他のフレームワークの設定
+### 2. 其他架构设置
 
-次のフレームワークをプロジェクトにリンクしてください。
+请将以下架构接入项目。
 
-フレームワーク名 | Status
+架构名 | Status
 :--- | :---:
 AdSupport.framework|Optional
 Security.framework|Required
 SystemConfig.framework|Required
 
 
-### 3. Pluginソースの追加
+### 3. 添加Plugin source
 
-ダウンロードしたSDK`FOX_COCOS2DX_SDK_<version>.zip`をOS上に展開します。Classesフォルダ内に以下iOSに使われるソースファイルをXcodeプロジェクトに追加してください。
+将下载的SDK`FOX_COCOS2DX_SDK_<version>.zip`在OS上打开。请将Classes文件夹内下列iOS的source文件添加在Xcode项目中。
 
-ファイル名|概要
+文件名|概要
 :---|:---
-CYZCCFox.h|APIの定義
-CYZCCFoxEvent.h|トラッキングイベントの定義
-CYZCCFoxTypes.h|コールバックファンクションの定義
-iOS/CYZCCFox.mm|native APIのwrapper実装
-iOS/CYZCCFoxEvent.mm|native トラッキングイベントのwrapper実装
-iOS/CYZCCFoxIOSUtility.mm|utilメソッド
-iOS/CYZCCFoxReengagePlugin.h|`appDelegate:openURL`のダイナミックオーバーライド定義
-iOS/CYZCCFoxReengagePlugin.m|`appDelegate:openURL`のダイナミックオーバーライド実装
+CYZCCFox.h|API的定义
+CYZCCFoxEvent.h|追踪事件的定义
+CYZCCFoxTypes.h|回调函数的定义
+iOS/CYZCCFox.mm|native API的wrapper执行
+iOS/CYZCCFoxEvent.mm|native 追踪事件的封装
+iOS/CYZCCFoxIOSUtility.mm|util方法
+iOS/CYZCCFoxReengagePlugin.h|`appDelegate:openURL`的动态重写定义
+iOS/CYZCCFoxReengagePlugin.m|`appDelegate:openURL`的动态重写内容
 
 
-### 4. App Transport Securityについて
+### 4. 关于App Transport Security
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
-
-キー | タイプ | 概要
-:---: | :---: | :---
-`NSExceptionDomains`|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・`app-adforce.jp`<br>・`forceoperationx.com`
-`NSExceptionAllowsInsecureHTTPLoads`|Boolean|YES を指定してくださいATSの例外とします。
-`NSIncludesSubdomains`|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
-
-![ATS設定](./img_ats.png)
+从F.O.X SDK ver4.0.0开始，底层全部都基于HTTPS协议进行通信，不需要做额外的对应。
 
 ---
-[戻る](../README.md#ios)
+[返回](../README.md#ios)
 
 [TOP](../../../README.md)

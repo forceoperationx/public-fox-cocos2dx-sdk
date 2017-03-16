@@ -1,17 +1,17 @@
-[TOP](../../README.md)　>　イベント計測の詳細
+[TOP](../../README.md)　>　事件计测详细
 
 ---
 
-# イベント計測の詳細
+# 事件计测详细
 
-## 1. セッション計測
+## 1. session计测
 
-#### ＜Android プロジェクト＞
-Androidの場合、以下のようにjavaによる実装も可能です。<br>
+#### ＜Android 项目＞
+Android的场合，可以按照以下内容通过java编码执行。<br>
 
-アプリケーションの起動及び、バックグラウンドからの復帰を計測するために、Activityの`onResume`メソッドにコードを追加します。
+为计测APP启动及后台恢复的数据，需在Activity中`onResume`方法中添加代码。
 
-アプリケーション起動時の起動計測（MainActivityクラスへの実装例）
+APP启动时的启动计测（MainActivity类的执行案例）
 ```java
 import co.cyberz.fox.Fox;
 
@@ -25,23 +25,23 @@ public class MainActivity extends Activity {
 }
 ```
 
-#### ＜iOS プロジェクト＞
-iOSの場合、以下の設定が必要です。
+#### ＜iOS 项目＞
+iOS的场合，必须进行以下设置。
 
-アプリ起動地点の`applicationDidFinishLaunching`および`applicationWillEnterForeground`の両方に、以下のように記述してください。
-（また、前述のAndroidにおけるJavaのActivity上で、`onResumeメソッドに実装出来ない場合`にも以下の実装を行います。）
+APP启动地点的`applicationDidFinishLaunching`及`applicationWillEnterForeground`两者中进行以下描述。
+（另外，前面讲到的Android上Java的Activity中，`onResume方法无法执行的情况`也需进行以下执行。）
 
-> ※アプリケーションがバックグラウンドから復帰した際に、そのActivityに起動計測の実装がされていない場合など、正確なアクティブユーザー数が計測できなくなります。<br>
-※Javaの`onResume()`とC++の`applicationWillEnterForeground`の両方で`CYZFOX::trackSession()`が実行されていた場合、１ユーザーから２重にアプリ起動情報が送信されるため必ずどちらかで実装してください。
+> ※APP从后台恢复时，Activity中没有执行启动计测的话，将无法正确计测活跃用户。<br>
+※如果在Java的`onResume()`和C++的`applicationWillEnterForeground`两者中都未执行`CYZFOX::trackSession()`的话，可能会导致一个用户被记录两次启动信息，请务必在其中之一执行。
 
 
-## 2. trackEventの詳細
+## 2. trackEvent详细
 
-trackEventメソッドを利用することで、広告流入別の課金金額や入会数などを計測することができます。計測のために、任意の地点にLTV成果通信を行うコードを追加します。<br>
+通过使用trackEvent方法，可以计测各广告流入的付费金额和注册人数等。为进行计测，需在任意地点中添加执行LTV成果信息的代码。<br>
 
-ソースの編集は、成果が上がった後に実行されるスクリプトに処理を記述します。例えば、会員登録やアプリ内課金後の課金計測では、登録・課金処理実行後のコールバック内にイベント計測処理を記述します。<br>
+应该在成果产生后实行的脚本处理里编写代码。例如，会员注册及APP内付费后的付费计测中，注册・付费实行后，在回调中执行事件计测处理。<br>
 
-成果がアプリ内部で発生する場合、成果処理部に以下のように記述してください。
+成果在APP内部产生时，请在成果处理部中进行以下描述。
 
 ```cpp
 #include "CYZCCFox.h"
@@ -49,58 +49,58 @@ trackEventメソッドを利用することで、広告流入別の課金金額�
 using namespace fox;
 ...
 
-CYZCCFoxEvent* e = new CYZCCFoxEvent("イベント名", LTV成果地点ID)
+CYZCCFoxEvent* e = new CYZCCFoxEvent("事件名称", LTV成果地点ID)
 CYZCCFox::trackEvent(e);
 ```
 
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。
-アプリ内部の成果に、広告主端末ID（会員IDなど）を含める事ができ、これを基準とした成果計測が行えます。LTV成果に広告主端末IDを付与したい場合は以下のように記述してください。
+> 成果地点ID(必须)：请输入由管理员通知的值。
+APP内部的成果中，可以包含广告主终端ID（会员ID等），以这些为该基准进行成果计测。LTV成果中希望绑定广告主终端ID时请进行以下编码。
 ```cpp
 #include "CYZCCFox.h"
 
 using namespace fox;
 ...
 
-CYZCCFoxEvent* e = new CYZCCFoxEvent("イベント名", LTV成果地点ID)
-e->buid = "USER_ID";	// 広告主端末ID
+CYZCCFoxEvent* e = new CYZCCFoxEvent("事件名", LTV成果地点ID)
+e->buid = "USER_ID";	// 广告主终端ID
 CYZCCFox::trackEvent(e);
 
 ```
 
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。広告主端末ID(オプション)：広告主様が管理しているユニークな識別子（会員IDなど）です。指定できる値は64文字以内の半角英数字です。アプリ内計測時には、パラメータをオプションとして設定する事が可能です。
+> 成果地点ID(必须)：由管理员通知。请输入该值。广告主终端ID(任意)：广告主管理的独特标识符（会员ID等）。可以设置64字符以内半角英数字。APP内计测时可以进行参数。
 
 ```cpp
 int ltvId = 191;	// LTV成果地点ID
-const char* eventName = "_tutorial_comp";	// イベント名
+const char* eventName = "_tutorial_comp";	// 事件名称
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
-e->buid = "USER_ID";	// 広告主端末ID
-e->addParam("date", "2016-06-17");	// 任意のKey/Value
+e->buid = "USER_ID";	// 广告主终端ID
+e->addParam("date", "2016-06-17");	// 任意Key/Value
 e->addParam("gender", "female");
 CYZCCFox::trackEvent(e);
 ```
 
-> `addParam`メソッドで任意のKey/Valueを追加することが可能です。その場合、Key値にアンダースコア（"_"）をパラメータ名の先頭に記述しないでください。また、半角英数字以外は使用できません。
+> `addParam`方法中可以添加任意Key/Value。此时，Key値中请不要在参数名前面使用下划线符号（"_"）。另外，不能使用半角英数字以外的字符。
 
-指定できるパラメータは次の通りです。
+以下为可以指定的参数。
 
-|**型**|**パラメータ名**|**概要**|
+|**型**|**参数名**|**概要**|
 |:---:|:---|:---|
-|char|buid|Buidをセット|
-|double|price|金額をセット|
-|char|currency|通貨をセット|
-|char|sku|skuをセット|
-|char|value|valueをセット|
-|char|orderId|orderIdをセット|
-|uint|quantity|quantityをセット|
-|map|extraInfo|任意パラメータのKey/Value|
-|Document|eventInfo|eventInfoをセット|
+|char|buid|设置Buid|
+|double|price|设置金额|
+|char|currency|设置货币|
+|char|sku|设置sku|
+|char|value|设置value|
+|char|orderId|设置orderId|
+|uint|quantity|设置quantity|
+|map|extraInfo|任意参数的Key/Value|
+|Document|eventInfo|设置eventInfo|
 
-> currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+> currency中请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定义的货币代码。
 
-## 3. タグを利用したイベント計測について
+## 3. 使用标签进行事件计测
 
-会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してイベント計測を利用することができます。<br>
-アプリケーションから外部ブラウザを起動し、外部ブラウザで表示したWebページでタグ計測を行う場合は、`trackEventByBrowser`メソッドを利用して外部ブラウザを起動してください。引数には、外部ブラウザで表示するURLを文字列で指定します。<br>
+在页面上发生会员注册及商品购买等行为时，可以使用img标签来进行事件计测。<br>
+从APP启动外部浏览器，在外部浏览器中表示的页面里进行标签计测时，请使用`trackEventByBrowser`方法启动外部浏览器。参数中请用字符串来设定外部浏览器显示的URL。<br>
 
 ```cpp
 #include "CYZCCFox.h"
@@ -108,7 +108,7 @@ CYZCCFox::trackEvent(e);
 using namespace fox;
 ...
 
-// タグ設置ページURL
+// 标签设置页面URL
 const char* externalUrl = "http://yoursite.com/tagpage";
 CYZCCFox::trackEventByBrowser(externalUrl);
 ```
