@@ -33,8 +33,8 @@ Environment.getExternalStorageDirectory().getPath()可获取路径/APP的package
 
 > 指定的目录名和文件名，会在
 Environment.getExternalStorageDirectory().getPath()的返回值路径下创建出来。Environment.getExternalStorageDirectory().getPath()的返回值根据终端和OS版本的不同而有所差异。
-> "APPADFORCE_ID_DIR"(任意目录名)，仅指定文件名时，会生成app的package名的目录，并在该路径下保存文件。
-> ※"APPADFORCE_ID_FILE"(任意文件名)，仅指定目录的情况时，会生成指定的目录名，并在该路径下保存为`__FOX_XUNIQ__`。
+> "APPADFORCE_ID_DIR"(任意目录名)，仅指定文件名时，会按APP的包(package)名来生成目录，并在该目录下保存文件。
+> ※"APPADFORCE_ID_FILE"(任意文件名)，仅指定目录的情况时，会生成指定的目录名，并在该目录下保存为`__FOX_XUNIQ__`。
 通常不需要设置。
 
 

@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 iOS的场合，必须进行以下设置。
 
 APP启动地点的`applicationDidFinishLaunching`及`applicationWillEnterForeground`两者中进行以下描述。
-（另外，前面讲到的Android上Java的Activity中，`onResume方法无法执行的情况`也需进行以下执行。）
+（另外，前面讲到的Android上Java的Activity中，onResume方法无法执行的情况也需进行以下执行。）
 
 > ※APP从后台恢复时，Activity中没有执行启动计测的话，将无法正确计测活跃用户。<br>
 ※如果在Java的`onResume()`和C++的`applicationWillEnterForeground`两者中都未执行`CYZFOX::trackSession()`的话，可能会导致一个用户被记录两次启动信息，请务必在其中之一执行。
