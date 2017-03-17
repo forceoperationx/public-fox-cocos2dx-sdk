@@ -85,7 +85,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	config.salt_android = "发行的Android APP的APP_SALT";
 	config.appKey_android = "发行的Android APP的APP_KEY";
 	config.appId_ios = "发行的iOS APP ID";
-	config.salt_ios = "発发行的iOS APP的APP_SALT";
+	config.salt_ios = "发行的iOS APP的APP_SALT";
 	config.appKey_ios = "发行的iOS APP的APP_KEY";
 
 #ifdef DEBUG
@@ -195,7 +195,13 @@ CYZCCFox::trackEvent(e);
 
 ### 5.3 F.O.X中监测到的App安装数会大于APP商城里监测的安装数
 
-F.O.X结合多种方式来检查终端是否有重复安装。如果设置为不进行重复检查时，同一终端的再次安装会被F.O.X判定为新的安装。为提高重复排查的精确度，请进行如下设置。
+F.O.X结合多种方式来检查终端是否有重复安装。如果设置为不进行重复检查时，同一终端的再次安装会被F.O.X判定为新的安装。针对android版，为提高重复排查的精确度，请进行如下设置。
+
+* [导入Google Play Services SDK来使用广告ID](./doc/integration/android/google_play_services/README.md)
+
+* [利用外部储存优化重复排除](./doc/integration/android/external_storage/README.md)
+
+* [使用自动备份功能 Android M](./doc/integration/android/auto_backup/README.md)
 
 ---
 [TOP MENU](/README.md)
