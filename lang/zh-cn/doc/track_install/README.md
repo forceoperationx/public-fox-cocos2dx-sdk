@@ -1,8 +1,8 @@
-[TOP](../../README.md)　>　Install计测详情
+[TOP](../../README.md)　>　Install计测
 
 ---
 
-# Install计测详情
+# Install计测详细
 
 使用`trackInstall`方法可以进行Install计测。使用Cookie计测的情况时会弹跳出外部浏览器。此时，外部浏览器的迁移网页可以通过`trackInstall`的引数中指定计测选项来实现。<br>
 

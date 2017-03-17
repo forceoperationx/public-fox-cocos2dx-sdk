@@ -65,7 +65,7 @@ APP中已经导入SDK的场合，请参考[更新到最新版本](./doc/update/R
 |事件计测|任意|在任意成果地点进行成果通知，能够计测不同广告的付费数和登录会员数。<br>可以计测付费金额、注销数等。<br>方法名：CYZCCFox::trackEvent(event);|
 |session计测|任意|APP启动时及从后台恢复时进行启动测定。<br>可以计测APP启动数、活跃用户数(DAU)、留存率等。<br>方法名：CYZCCFox::trackSession();|
 
-> Force Operation X SDK Cocos2d-x plugin作为连结原生SDK的封装来编码实现的。导入SDK时，需要plugin和iOS及Android的原生SDK。_
+> Force Operation X SDK Cocos2d-x plugin作为连结原生SDK的封装来编码实现的。导入SDK时，需要plugin和iOS及Android的原生SDK。
 
 <div id="activate_sdk"></div>
 ## 2. 激活F.O.X SDK
