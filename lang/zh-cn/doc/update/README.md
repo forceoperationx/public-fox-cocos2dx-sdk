@@ -73,7 +73,7 @@
 
 |分类|`〜 3.3.0` 的编码安装|`4.0.0 〜` 的编码安装|
 |:---:|:---|:---|
-|激活|**[iOS]**<br>・AppAdForce.plist<br><br>**[Android]**<br>AndroidManifest.xml<br>&lt;meta-data&gt;<br>・APPADFORCE_APP_ID<br>・APPADFORCE_CRYPTO_SALT<br>・ANALYTICS_APP_KEY|CYZCCFoxConfig config;<br>config.appId_android = 生成的APP ID;<br>config.salt_android = "生成的APP_SALT";<br>	config.appKey_android = "生成的APP_KEY";<br>CYZCCFox::init(config);|
+|激活|**[iOS]**<br>・AppAdForce.plist<br><br>**[Android]**<br>AndroidManifest.xml<br>&lt;meta-data&gt;<br>・APPADFORCE_APP_ID<br>・APPADFORCE_CRYPTO_SALT<br>・ANALYTICS_APP_KEY|CYZCCFoxConfig config;<br>config.appId_android = 发行的APP ID;<br>config.salt_android = "发行的APP_SALT";<br>	config.appKey_android = "发行的APP_KEY";<br>CYZCCFox::init(config);|
 |Install计测|FoxPlugin::sendConversion(“default”);|CYZCCFox::trackInstall();|
 |Install计测<br>(可选)|FoxPlugin::sendConversion(“http://yourhost.com/yourpage.html”, "USER_ID");|CYZCCFoxTrackOption option;<br>option.redirectUrl = "http://yoursite.com";<br>option.buid = "USER_ID";<br>CYZCCFox::trackInstall(option);|
 |外部浏览器的事件计测|-|char* externalUrl = (char*)"http://yoursite.com/tagpage";<br>CYZCCFox::trackEventByBrowser(externalUrl);|

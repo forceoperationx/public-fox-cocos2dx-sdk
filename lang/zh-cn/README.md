@@ -156,9 +156,9 @@ CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 CYZCCFox::trackEvent(e);
 ```
 
-> 成果地点ID(必须)：由管理者通知。请输入该值。
+> 成果地点ID(必须)：请输入管理者通知通知的值。
 
-> 进行事件计测时，需指定识别成果地点的`成果地点ID`。<br>`CYZCCFoxEvent`类的构造函数的参数中请指定事件名称和发行的成果地点ID。
+> 进行事件计测时，需指定识别成果地点的成果地点ID。<br>`CYZCCFoxEvent`类的构造函数的参数中请指定事件名称和发行的成果地点ID。
 
 **[付费事件计测案例]**
 ```cpp
