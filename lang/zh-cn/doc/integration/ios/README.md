@@ -18,9 +18,9 @@
 
 架构名 | Status
 :--- | :---:
-AdSupport.framework|Optional
-Security.framework|Required
-SystemConfig.framework|Required
+AdSupport.framework|任意
+Security.framework|必须
+SystemConfig.framework|必须
 
 
 ### 3. 添加Plugin source
@@ -32,9 +32,9 @@ SystemConfig.framework|Required
 CYZCCFox.h|API的定义
 CYZCCFoxEvent.h|追踪事件的定义
 CYZCCFoxTypes.h|回调函数的定义
-iOS/CYZCCFox.mm|native API的wrapper执行
-iOS/CYZCCFoxEvent.mm|native 追踪事件的封装
-iOS/CYZCCFoxIOSUtility.mm|util方法
+iOS/CYZCCFox.mm|原生API的封装
+iOS/CYZCCFoxEvent.mm|原生追踪事件的封装
+iOS/CYZCCFoxIOSUtility.mm|Util方法
 iOS/CYZCCFoxReengagePlugin.h|`appDelegate:openURL`的动态重写定义
 iOS/CYZCCFoxReengagePlugin.m|`appDelegate:openURL`的动态重写内容
 

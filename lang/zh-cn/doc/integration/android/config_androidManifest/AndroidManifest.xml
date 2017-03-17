@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- ① URLスキームの設定 （sampleapp://）  -->
+            <!-- ① URL scheme的设置 （sampleapp://）  -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -30,27 +30,27 @@
                 <data android:scheme="sampleapp" />
             </intent-filter>
         </activity>
-        
-         <!-- ② インストールリファラー計測のreceiver設定 -->
+
+         <!-- ② Install Referrer计测的receiver设置 -->
          <receiver android:exported="true"　android:name="jp.appAdForce.android.InstallReceiver" >
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
 
-         <!-- ③ 必須meta-dataの設定 -->
+         <!-- ③ 必須，meta-data的设置 -->
         <meta-data android:name="APPADFORCE_APP_ID" android:value="123" />
         <meta-data android:name="APPADFORCE_SERVER_URL" android:value="0123456" />
         <meta-data android:name="APPADFORCE_CRYPTO_SALT" android:value="abcdefg" />
         <meta-data android:name="ANALYTICS_APP_KEY" android:value="xxxxxx" />
 
-        <!-- ④ストレージ保存機能を使わない場合の例 -->
+        <!-- ④不使用Storage保存功能时候的实例 -->
         <meta-data android:name="APPADFORCE_USE_EXTERNAL_STORAGE" android:value="0" />
-        <!-- ⑤GooglePlayServicesを用いてAdvertisingIDを取得する場合 -->
+        <!-- ⑤使用GooglePlayServices取得AdvertisingID时的设置 -->
         <meta-data android:name="com.google.android.gms.version"
            android:value="@integer/google_play_services_version" />
     </application>
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
