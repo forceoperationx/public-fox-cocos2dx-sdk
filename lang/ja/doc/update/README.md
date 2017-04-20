@@ -13,6 +13,7 @@
 * [5. その他](#other)
 
 <div id="remove_regacy"></div>
+
 ## 1. 以前のバージョンのファイルを全て削除
 
 #### 1.1 Cocos2d-xプラグインファイル一覧
@@ -65,11 +66,13 @@
 * AppAdForce.plist
 
 <div id="install"></div>
+
 ## 2. 最新バージョンのファイルをプロジェクトにインストール
 
 > [`Cocos2d-xプラグインの導入手順`](../integration/README.md)をご確認ください。
 
 <div id="update_implement"></div>
+
 ## 3. 旧バージョン(4.0.0未満)からの実装方法を更新
 
 |種別|`〜 3.3.0` の実装|`4.0.0 〜` の実装|
@@ -98,7 +101,8 @@
 |追加|CYZFoxAppDelegateSwizzling.m|
 
 <div id="other"></div>
-## 4. その他
+
+## 5. その他
 
 #### (Android) BroadcastReceiverの複数指定
 
