@@ -12,6 +12,7 @@
 * **[6. 其他](#other)**
 
 <div id="install_sdk"></div>
+
 ## 1. 导入
 
 ### 1.1 Cocos2d-x plugin导入
@@ -66,6 +67,7 @@ dependencies {
 |FOX_Android_SDK_Support_Cocos2dx_&lt;VERSION&gt;.jar|必须|原生SDK的捆绑类库|
 
 <div id="permission"></div>
+
 ## 2. 权限设置
 
 F.O.X SDK可以使用以下三种权限。
@@ -87,6 +89,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|使用外部储存来优化排重功能�
 
 
 <div id="install_referrer"></div>
+
 ## 3. Install Referrer计测设置
 使用install referrer进行Install计测时，需将以下设置添加至&lt;application&gt;标签中。
 
@@ -101,6 +104,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|使用外部储存来优化排重功能�
 "com.android.vending.INSTALL_REFERRER"的receiver类已经被定义的情况下，请参照[让两种INSTALL_REFERRER RECEIVER共存的设置](/lang/ja/doc/integration/android/install_referrer/README.md)。
 
 <div id="reengagement"></div>
+
 ## 4. 流失唤回广告计测设置
 
 为进行流失唤回广告计测（计测经由自定义URL SCHEME的启动行为），将所需设置添加在&lt;application&gt;标签中。
@@ -144,6 +148,7 @@ protected void onNewIntent(Intent intent)
 > 为进行流失唤回广告计测，所有设置了URL scheme的Activity的`onResume()`中必须执行`trackDeeplinkLaunch`方法。
 
 <div id="proguard"></div>
+
 ## 5. 使用ProGuard
 
 使用Proguard进行APP代码混淆时，为排除F.O.X SDK的method方法，请添加以下设置。
@@ -162,6 +167,7 @@ protected void onNewIntent(Intent intent)
 [导入Google Play Services时的Proguard应对](https://developer.android.com/google/play-services/setup.html#Proguard)
 
 <div id="other"></div>
+
 ## 6. 其他
 
 * [导入Google Play Services SDK来使用广告ID](./google_play_services/README.md)

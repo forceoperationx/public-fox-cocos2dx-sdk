@@ -38,6 +38,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 比较自然流入和广告流入带来的安装。能够计测App的启动次数和唯一用户数(DAU/MAU)、留存率等。
 
 <div id="install_sdk"></div>
+
 ## 1. 导入
 
 请从以下页面中下载最新稳定版(Latest release)SDK。
@@ -68,6 +69,7 @@ APP中已经导入SDK的场合，请参考[更新到最新版本](./doc/update/R
 > Force Operation X SDK Cocos2d-x plugin作为连结原生SDK的封装来编码实现的。导入SDK时，需要plugin和iOS及Android的原生SDK。
 
 <div id="activate_sdk"></div>
+
 ## 2. 激活F.O.X SDK
 
 为激活F.O.X SDK，需将`CYZCCFoxConfig`书写在AppDelegate的`applicationDidFinishLaunching`内。
@@ -98,6 +100,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 > ※ `debugMode`为true时，能够输出调试日志。
 
 <div id="tracking_install"></div>
+
 ## 3. 执行Install计测
 
 进行首次启动的Install计测，可以计测广告效果。首次启动APP时，启动浏览器，参照广告点击时的Cookie信息进行成果计测。
@@ -119,9 +122,11 @@ CYZCCFox::trackInstall();
 
 
 <div id="tracking_event"></div>
+
 ## 4. APP内事件计测
 
 <div id="track_session"></div>
+
 ### session（启动）事件计测
 
 可以计测自然流入和广告流入的安装数对比、APP启动次数和唯一用户人数（DAU/MAU)、留存率等。如不需要流量分析，可以忽略本项的安装。<br><br>
@@ -137,6 +142,7 @@ CYZCCFox::trackSession();
 ```
 
 <div id="track_other_event"></div>
+
 ### 其他的APP内事件计测
 
 在会员注册，完成新手引导，付费等任意成果地点执行事件计测，能够测定流入源广告的LTV。<br>
@@ -182,6 +188,7 @@ CYZCCFox::trackEvent(e);
 * [事件计测详细](./doc/track_events/README.md)
 
 <div id="trouble_shooting"></div>
+
 # 5. 最后需确认内容（常见问题集）
 
 ### 5.1 未设置URL SCHEME 进行发布时无法从浏览器跳转至APP
