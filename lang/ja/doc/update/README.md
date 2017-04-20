@@ -9,7 +9,8 @@
 * [1. 以前のバージョンのファイルを全て削除](#remove_regacy)
 * [2. 最新バージョンのファイルをプロジェクトにインストール](#install)
 * [3. 旧バージョン(4.0.0未満)からの実装方法を更新](#update_implement)
-* [4. その他](#other)
+* [4. 4.0.0 から 4.0.1 へのアップデート](#update_410)
+* [5. その他](#other)
 
 <div id="remove_regacy"></div>
 ## 1. 以前のバージョンのファイルを全て削除
@@ -81,6 +82,20 @@
 |イベント計測|// LTV計測によるイベント計測<br>FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “9.99”);<br>FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, “USD”);<br>FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “purchase item”);<br>FoxPlugin::sendLtv(成果地点ID, "USER_ID");<br><br>// アクセス解析によるイベント計測<br>FoxPlugin::sendEvent("_purchase", null, null, "order id", “purchase item”, null, 9.99, 1, "USD");|int ltvId = 成果地点ID;<br>const char* eventName = "_purchase";<br>CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);<br>e->buid = "USER_ID";<br>e->sku = "purchase item";<br>e->price = 9.99;<br>e->currency = "USD";<br>e->orderId = "order id"<br>CYZCCFox::trackEvent(e);|
 
 > ※1 バージョン4.0.0以降にマイグレーションする際、これまで旧バージョンで指定していたイベント名を変更してしまうと、アクセス解析にて計測してきた集計データが引き継がれなくなりますのでご注意ください。
+
+<div id="update_401"></div>
+
+## 4. 4.0.0 から 4.0.1 へのアップデート
+
+#### (iOS) ファイルの差し替え
+
+バージョン4.0.1をインストールする際、下記ファイルを差し替えてください。
+
+|対応|対象ファイル|
+|:---:|:---:|
+|削除|CYZCCFoxReengagePlugin.h|
+|削除|CYZCCFoxReengagePlugin.m|
+|追加|CYZFoxAppDelegateSwizzling.m|
 
 <div id="other"></div>
 ## 4. その他

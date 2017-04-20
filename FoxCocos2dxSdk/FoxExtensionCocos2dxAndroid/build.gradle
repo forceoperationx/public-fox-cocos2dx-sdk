@@ -44,11 +44,11 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'co.cyberz.fox:track-core:4.0.0'
+    compile 'co.cyberz.fox:track-core:4.1.1'
 }
 
 group = 'co.cyberz.fox.support'
-version = '1.0.0'
+version = '1.0.1'
 
 uploadArchives {
     repositories.mavenDeployer {
