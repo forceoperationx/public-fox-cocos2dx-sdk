@@ -9,9 +9,11 @@
 * [1. 删除旧版本所有文件](#remove_regacy)
 * [2. 在项目中导入新版本文件](#install)
 * [3. 从旧版本(不足4.0.0版)更新的执行方法](#update_implement)
-* [4. 其他](#other)
+* [4. 从4.0.0更新到4.0.1](#update_410)
+* [5. 其他](#other)
 
 <div id="remove_regacy"></div>
+
 ## 1. 删除旧版本所有文件
 
 #### 1.1 Cocos2d-x plugin文件一览
@@ -64,11 +66,13 @@
 * AppAdForce.plist
 
 <div id="install"></div>
+
 ## 2. 在项目中导入新版本文件
 
 > 请确认[`Cocos2d-x plugin的导入步骤`](../integration/README.md)。
 
 <div id="update_implement"></div>
+
 ## 3. 从旧版本(不足4.0.0版)更新的执行方法
 
 |分类|`〜 3.3.0` 的编码安装|`4.0.0 〜` 的编码安装|
@@ -82,8 +86,21 @@
 
 > ※1 请注意，更新到4.0.0及以上版本时如果修改旧版本的事件名，将无法保留流量分析中到现在为止计测到的数据。
 
+## 4. 从4.0.0更新到4.0.1
+
+#### (iOS) 替换文件
+
+安装4.0.1版的时候、请按下面的指示来操作文件。
+
+|操作|目标文件|
+|:---:|:---:|
+|删除|CYZCCFoxReengagePlugin.h|
+|删除|CYZCCFoxReengagePlugin.m|
+|添加|CYZFoxAppDelegateSwizzling.m|
+
 <div id="other"></div>
-## 4. 其他
+
+## 5. 其他
 
 #### (Android) BroadcastReceiver多项指定
 
