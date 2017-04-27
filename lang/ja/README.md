@@ -38,6 +38,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
 
 <div id="install_sdk"></div>
+
 ## 1. インストール
 
 以下のページより最新のSDKをダウンロードしてください。
@@ -68,6 +69,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 > Force Operation X SDK Cocos2d-x プラグインは、ネイティブ版SDKへのブリッジを行うラッパーとして実装しています。SDK導入には、プラグインと、iOS及びAndroidのネイティブ版SDKが必要となります。_
 
 <div id="activate_sdk"></div>
+
 ## 2. F.O.X SDKのアクティベーション
 
 F.O.X SDKのアクティベーションを行うため、`CYZCCFoxConfig`をAppDelegateの`applicationDidFinishLaunching`内に記述します。
@@ -98,6 +100,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 > ※ `debugMode`はtrueにするとデバッグ用ログを出力することが可能となります。
 
 <div id="tracking_install"></div>
+
 ## 3. インストール計測の実装
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。初回起動時に、ブラウザを起動し、広告クリック時に付与されたCookieの情報を照合することで、成果の計測を行います。
@@ -119,9 +122,11 @@ CYZCCFox::trackInstall();
 
 
 <div id="tracking_event"></div>
+
 ## 4. アプリ内イベントの計測
 
 <div id="track_session"></div>
+
 ### セッション(起動)イベントの計測
 
 自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。<br><br>
@@ -137,6 +142,7 @@ CYZCCFox::trackSession();
 ```
 
 <div id="track_other_event"></div>
+
 ### その他アプリ内イベントの計測
 
 会員登録、チュートリアル突破、課金など任意の成果地点にイベント計測を実装することで、流入元広告のLTVを測定することができます。<br>
@@ -182,6 +188,7 @@ CYZCCFox::trackEvent(e);
 * [イベント計測の詳細](./doc/track_events/README.md)
 
 <div id="trouble_shooting"></div>
+
 # 5. 最後に必ずご確認ください（これまで発生したトラブル集）
 
 ### 5.1 URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない

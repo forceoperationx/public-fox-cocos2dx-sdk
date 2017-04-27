@@ -13,6 +13,7 @@
 * **[7. その他](#other)**
 
 <div id="install_sdk"></div>
+
 ## 1. インストール
 
 ### 1.1 Cocos2d-xプラグインの導入
@@ -67,6 +68,7 @@ dependencies {
 |FOX_Android_SDK_Support_Cocos2dx_&lt;VERSION&gt;.jar|必須|ネイティブSDK用のラッパーライブラリ|
 
 <div id="permission"></div>
+
 ## 2. パーミッションの設定
 
 F.O.X SDKでは下記3つのパーミッションを利用します。
@@ -88,6 +90,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 
 
 <div id="install_referrer"></div>
+
 ## 3. インストールリファラ計測の設定
 インストールリファラーを用いたインストール計測を行うために下記の設定を&lt;application&gt;タグに追加します。
 
@@ -102,6 +105,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 既に"com.android.vending.INSTALL_REFERRER"に対するレシーバークラスが定義されている場合には、[二つのINSTALL_REFERRERレシーバーを共存させる場合の設定](/lang/ja/doc/integration/android/install_referrer/README.md)をご参照ください。
 
 <div id="reengagement"></div>
+
 ## 4. リエンゲージメント計測の設定
 
 リエンゲージメント計測（カスタムURLスキーム経由の起動を計測）するために必要な設定を&lt;application&gt;タグ内に追記します。
@@ -153,6 +157,7 @@ protected void onNewIntent(Intent intent)
 > リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`trackDeeplinkLaunch`メソッドが実装されてある必要があります。
 
 <div id="receive_callback"></div>
+
 ## 5. インストール計測完了のコールバックを受け取る
 
 [![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/cyber-z/public-fox-android-sdk/releases/tag/4.1.1)
@@ -176,6 +181,7 @@ protected void onNewIntent(Intent intent)
 > ※ 本実装が行われていない場合、C++側にインストール計測完了が通知されません。
 
 <div id="proguard"></div>
+
 ## 6. ProGuardを利用する場合
 
 ProGuard を利用してアプリケーションの難読化を行う際は F.O.X SDK のメソッドが対象とならないよう、以下の設定 を追加してください。
@@ -194,6 +200,7 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 [Google Play Services導入時のProguard対応](https://developer.android.com/google/play-services/setup.html#Proguard)
 
 <div id="other"></div>
+
 ## 7. その他
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
