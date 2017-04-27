@@ -20,7 +20,7 @@
 :--- | :---:
 AdSupport.framework|Optional
 Security.framework|Required
-SystemConfig.framework|Required
+SystemConfiguration.framework|Required
 
 
 ### 3. Pluginソースの追加
