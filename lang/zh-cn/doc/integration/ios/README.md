@@ -21,6 +21,7 @@
 AdSupport.framework|任意
 Security.framework|必须
 SystemConfiguration.framework|必须
+WebKit.framework|必须
 
 
 ### 3. 添加Plugin source
