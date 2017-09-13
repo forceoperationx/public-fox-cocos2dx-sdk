@@ -65,11 +65,12 @@ SDK[ダウンロードページ](https://github.com/cyber-z/public-fox-ios-sdk/r
 ### SDKの展開
 
 ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。<br>
-「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている「`FOX_Android_SDK_<version>.jar`」を開発環境に導入します。次に、Eclipseプロジェクトへの導入手順について説明します。
+「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている「`FOX_Android_SDK_<version>.jar`」と「`FOX_Android_SDK_Cocos2dx.jar`」を開発環境に導入します。次に、Eclipseプロジェクトへの導入手順について説明します。
 
 |ファイル名|必須|概要|
 |:------:|:------:|:------|
 |FOX_Android_SDK_&lt;version&gt;.jar|必須|AndroidのネイティブSDK。通常成果・LTV成果・アクセス解析を計測することができます。|
+|FOX_Android_SDK_Cocos2dx.jar|必須|Cocos2d-x用のラッパーライブラリになります。|
 |gcm.jar|オプション|プッシュ通知機能を利用する際に導入ください。|
 
 ※「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」に「FOX_Android_SDK_&lt;version&gt;」フォルダが含まれていない場合はSDK[ダウンロードページ](https://github.com/cyber-z/public-fox-android-sdk/releases)からFOX_Android_SDK_&lt;version&gt;.zipをダウンロードの上、ご使用ください。
