@@ -8,7 +8,7 @@
 
 包含頭文件
 
-	#include “Cocos2dxFox.h”
+	#include "Cocos2dxFox.h"
 
 添加成果通知的代碼
 
@@ -49,10 +49,10 @@ APP內計測時，可以把參數作為可選項來設定。
 設定範例：
 
 ```cpp
-FoxPlugin::addParameter(CC_LTV_PARAM_SKU, “ABC1234”);
-FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “2000”);
-FoxPlugin::addParameter(“my_param”, “ABC”);
-FoxPlugin::sendLtv(70, “Taro”);
+FoxPlugin::addParameter(CC_LTV_PARAM_SKU, "ABC1234");
+FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, "2000");
+FoxPlugin::addParameter("my_param", "ABC");
+FoxPlugin::sendLtv(70, "Taro");
 ```
 
 ---

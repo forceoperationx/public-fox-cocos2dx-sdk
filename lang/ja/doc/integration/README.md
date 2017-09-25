@@ -87,9 +87,9 @@ Cocos2dxFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（�
 
 ```cpp
 #include <iostrem>
-#inclued “cocos2d.h”
-#include “Cocos2dxFox.h”
-#include “../android/jni/JniHelper.h”
+#inclued "cocos2d.h"
+#include "Cocos2dxFox.h"
+#include "../android/jni/JniHelper.h"
 ```
 
 ###	プロジェクトへの導入
