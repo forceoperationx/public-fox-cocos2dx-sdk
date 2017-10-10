@@ -93,7 +93,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 成果通知のコードを追加
 ```cpp
-FoxPlugin::sendConversion(“default”);
+FoxPlugin::sendConversion("default");
 ```
 
 sendConversionメソッドの引数には、通常は上記の通り"default"という文字列をそのまま指定してください。
@@ -148,8 +148,8 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onResume() {
-            super.onResume();
-            AnalyticsManager.sendStartSession(this);
+			super.onResume();
+			AnalyticsManager.sendStartSession(this);
 		}
 }
 ```
@@ -162,7 +162,7 @@ iPhoneの場合、以下の設定が必要です。
 
 
 ```cpp
-#include “Cocos2dxFox.h”
+#include "Cocos2dxFox.h"
 
 ---
 

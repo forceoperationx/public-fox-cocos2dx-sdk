@@ -37,6 +37,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
 <div id="install_sdk"></div>
+
 ## 1. 導入
 
 請從下面的頁面來下載最新版（Latest release）的SDK。
@@ -65,6 +66,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 > Force Operation X SDK Cocos2d-x plugin是為了連接Native版本的SDK而做的wrapper，所以為了正確的導入SDK，需要iOS或Android的Native版本的SDK
 
 <div id="tracking_install"></div>
+
 ## 2. Install計測的安裝
 
 導入初次啟動的Install計測，就能夠監測廣告效果。初次啟動時，啟動瀏覽器，對照在點擊廣告時所被賦予的Cookie資訊，進行成果計測。
@@ -78,7 +80,7 @@ Include header file.
 
 追加成果通知Code
 ```cpp
-FoxPlugin::sendConversion(“default”);
+FoxPlugin::sendConversion("default");
 ```
 
 在sendConversion方法的參數裡，通常請完全按上面那樣指定"default"這個字符串。
@@ -89,6 +91,7 @@ FoxPlugin::sendConversion(“default”);
 * [sendConversion的詳細](./doc/send_conversion/README.md)
 
 <div id="tracking_ltv"></div>
+
 ## 3. LTV計測的安裝
 
 透過LTV計測，能夠計測廣告流入別的消費金額和加入會員數等。為了計測，須在任意地點添加进行LTV成果通信的代码。
@@ -99,7 +102,7 @@ FoxPlugin::sendConversion(“default”);
 
 Include header。
 ```cpp
-#include “Cocos2dxFox.h”
+#include "Cocos2dxFox.h"
 ```
 記述成果
 ```cpp
@@ -112,6 +115,7 @@ FoxPlugin::sendLtv(成果地点ID);
 * [sendLtvConversion的詳細](./doc/send_ltv_conversion/README.md)
 
 <div id="tracking_analytics"></div>
+
 ## 4. 流量分析的安裝
 
 導入流量分析，能夠計測自然流入和廣告流入的安裝數，APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。流量分析會在APP啟動、或從後台恢復時，追加進行Session計測的代碼。如果不做流量分析，可以省略本項目的安裝。
@@ -142,7 +146,7 @@ iPhone需要進行以下設定。
 （另外，在前面基於Android環境Java的Activity上，如果不能實際安裝`onResume`就進行如下的安裝。）
 
 ```cpp
-#include “Cocos2dxFox.h”
+#include "Cocos2dxFox.h"
 
 ---
 
@@ -155,6 +159,7 @@ FoxPlugin::sendStartSession();
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
 <div id="integration_test"></div>
+
 ## 5. 進行疏通測試
 
 在APP上架申請以前，在導入SDK的狀態請做充分的測試，以確保APP的動作沒有問題。
@@ -186,6 +191,7 @@ FoxPlugin::sendStartSession();
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
 <div id="trouble_shooting"></div>
+
 # 6. 最後請務必確認（到現在發生過的問題集）
 
 ### 6.1. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP

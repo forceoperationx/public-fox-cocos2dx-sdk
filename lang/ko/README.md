@@ -296,8 +296,8 @@ URL 스키마로 기동되는 Activity의 launchMode가 "singleTask" 또는 "sin
 
 	@Override
 	protected void onNewIntent(Intent intent) {
-    	super.onNewIntent(intent);
-	    setIntent(intent);
+		super.onNewIntent(intent);
+		setIntent(intent);
 	}
 
 
@@ -351,7 +351,7 @@ Android의 경우 아래와 같은 설정이 필요합니다.
 
 		@Override
 		protected void onResume() {
-				super.onResume();
+			super.onResume();
 			AnalyticsManager.sendStartSession(this);
 		}
 	}
@@ -360,7 +360,7 @@ Android의 경우 아래와 같은 설정이 필요합니다.
 
 엡 기동 지점의 applicationDidFinishLaunching 및 applicationWillEnterForeground 내에서 아래와 같이 실행합니다.
 
-	#include “Cocos2dxFox.h”
+	#include "Cocos2dxFox.h"
 
 ---
 

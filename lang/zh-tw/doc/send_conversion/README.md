@@ -9,7 +9,7 @@
 #include "Cocos2dxFox.h"
 
 // 添加成果通知的代碼
-FoxPlugin::sendConversion(“default”);
+FoxPlugin::sendConversion("default");
 ```
 
 通常在sendConversion的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在F.O.X管理畫面裡任意設定跳轉目標頁面的URL。
@@ -17,7 +17,7 @@ FoxPlugin::sendConversion(“default”);
 想要跳轉至特定URL，或者想用APP動態生成URL的時候，請設定URL字符串。
 
 ```cpp
-	FoxPlugin::sendConversion(“http://yourhost.com/yourpage.html”);
+	FoxPlugin::sendConversion("http://yourhost.com/yourpage.html");
 ```
 
 可以在sendConversion方法的第二個參數裡傳遞廣告主終端ID。比如，希望把用户ID和SDK生成的UUID结合起来管理时可以使用这个参数。

@@ -34,13 +34,13 @@ FoxPlugin::sendEvent(eventName, action, label, orderId, sku, itemName, price, qu
 下面給出了一個消費了9.99美元的計測安裝範例。
 
 ```cpp
-#include “Cocos2dxFox.h”
+#include "Cocos2dxFox.h"
 
 ---
 
 	// 依靠LTV計測進行消費計測
-	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “9.99”);
-	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, “USD”);
+	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, "9.99");
+	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, "USD");
 	FoxPlugin::sendLtv(成果地点ID);
 
 	// 依靠流量分析進行消費計測
