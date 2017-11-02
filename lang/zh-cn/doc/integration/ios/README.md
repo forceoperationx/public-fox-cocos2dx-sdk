@@ -36,8 +36,7 @@ CYZCCFoxTypes.h|回调函数的定义
 iOS/CYZCCFox.mm|原生API的封装
 iOS/CYZCCFoxEvent.mm|原生追踪事件的封装
 iOS/CYZCCFoxIOSUtility.mm|Util方法
-iOS/CYZCCFoxReengagePlugin.h|`appDelegate:openURL`的动态重写定义
-iOS/CYZCCFoxReengagePlugin.m|`appDelegate:openURL`的动态重写内容
+iOS/CYZFoxAppDelegateSwizzling.m|protocol`AppDelegate`的`application:openURL:sourceApplication:`和`application:openURL:options`的动态重写定义
 
 
 ### 4. 关于App Transport Security
