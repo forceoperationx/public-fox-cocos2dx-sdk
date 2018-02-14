@@ -96,6 +96,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CYZCCFox::init(config);
 ...
 ```
+> ※ appId、salt、appKeyの値については、アプリ登録後、F.O.X管理画面のアプリ一覧>該当アプリ右上の設定ボタン>SDK導入をご確認ください。
 
 > ※ `debugMode`はtrueにするとデバッグ用ログを出力することが可能となります。
 
