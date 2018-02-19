@@ -37,13 +37,13 @@ LTV計測においても課金を成果地点としている場合には、同�
 
 
 ```cpp
-#include “Cocos2dxFox.h”
+#include "Cocos2dxFox.h"
 
 ---
 
 	// LTV計測による課金計測
-	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, “9.99”);
-	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, “USD”);
+	FoxPlugin::addParameter(CC_LTV_PARAM_PRICE, "9.99");
+	FoxPlugin::addParameter(CC_LTV_PARAM_CURRENCY, "USD");
 	FoxPlugin::sendLtv(成果地点ID);
 
 	// アクセス解析による課金計測
