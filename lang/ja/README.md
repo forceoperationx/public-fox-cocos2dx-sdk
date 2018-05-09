@@ -100,6 +100,28 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 > ※ `debugMode`はtrueにするとデバッグ用ログを出力することが可能となります。
 
+
+
+### 2.1 オフラインモード
+F.O.X SDKの計測機能を停止しトラッキングを無効化する設定です。
+
+オフラインモードを有効にする場合は、config.offlineModeにOfflineModeType::OFFLINEを、無効にする場合はOfflineModeType::ONLINEを設定してください（未設定の場合、オフラインモードは無効のままです）。
+
+- 開発期間などでF.O.Xへデータを送信したくない場合や、配信地域によって計測を停止したい場合などで本機能をご利用ください。
+- ユーザ許諾をもとにオフラインモードの有効無効を設定したい場合、ユーザ許諾後にactivate()を実行してください(activate()はアプリ起動時に常に呼び出し必要となります)
+- 自動計測ではオフラインモードの設定は非対応となります。手動計測での実装を行ってください。
+- オフラインモードを設定した場合、アプリをアンイストールするまで設定は反映されます。
+
+```c
+{
+  ...
+  // オフラインモードの設定
+  config.offlineMode = OfflineModeType::OFFLINE;
+  Fox.activate(config);
+}
+```
+
+
 <div id="tracking_install"></div>
 
 ## 3. インストール計測の実装
