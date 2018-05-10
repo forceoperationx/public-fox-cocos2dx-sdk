@@ -26,8 +26,7 @@
 　　┃　  ┗━ CYZCCFox.mm
 　　┃　  ┗━ CYZCCFoxEvent.mm
 　　┃　  ┗━ CYZCCFoxIOSUtility.mm
-　　┃　  ┗━ CYZZCCFoxReengagePlugin.h
-　　┃　  ┗━ CYZZCCFoxReengagePlugin.m
+　　┃　  ┗━ CYZFoxAppDelegateSwizzling.m
 　　┗━ [Android]  // -------------------------------  Android封装代码
 　　 　  ┗━ co_cyberz_fox_cocos2dx_wrapper_Fox.h
 　　 　  ┗━ co_cyberz_fox_cocos2dx_wrapper_Fox.cpp
