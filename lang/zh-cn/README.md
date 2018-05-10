@@ -99,6 +99,25 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 > ※ `debugMode`为true时，能够输出调试日志。
 
+### 2.1 线下模式
+开启线下模式功能，可停止F.O.X SDK的所有监测行为。
+
+设定config.offlineMode设定为OfflineModeType::OFFLINE来开启线下模式，设定为为OfflineModeType::ONLINE来关闭线下模式（未设定时默认关闭线下模式）。
+
+- 在开发期间，如不想将数据发送到F.O.X，或者希望按照投放地域停止计测的时候，可以利用这个功能。
+- 根据用户许可来设定线下模式是否开启时，请确保在用户许可之后执行activate()。(activate()需要在App每次启动时去执行)
+- 自动计测的代码实装方式不适用于线下模式。请按手动计测来实装代码。
+- 设定将保持生效至App被删除。
+
+```c
+{
+  ...
+  // 线下模式的设定
+  config.offlineMode = OfflineModeType::OFFLINE;
+  Fox.activate(config);
+}
+```
+
 <div id="tracking_install"></div>
 
 ## 3. 执行Install计测
