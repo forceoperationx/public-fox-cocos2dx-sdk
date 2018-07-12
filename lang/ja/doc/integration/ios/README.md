@@ -22,6 +22,7 @@ AdSupport.framework|Optional
 Security.framework|Required
 SystemConfiguration.framework|Required
 WebKit.framework|Required
+CoreTelephony.framework|Optional
 
 
 ### 3. Pluginソースの追加
