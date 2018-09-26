@@ -30,7 +30,7 @@ using namespace fox;
 ...
 
 CYZCCFoxTrackOption option;
-option.redirectUrl = "http://yoursite.com";
+option.redirectURL = "http://yoursite.com";
 option.buid = "USER_ID";
 option.onInstalComplete = CC_CALLBACK_0(SampleClass::onInstallComplete, this);
 CYZCCFox::trackInstall(option);
