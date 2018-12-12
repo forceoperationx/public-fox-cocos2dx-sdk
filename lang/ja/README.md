@@ -178,16 +178,25 @@ CYZCCFox::trackSession();
 
 using namespace fox;
 ...
-
+// LTV計測必要な場合
 int ltvId = 成果地点ID;
 const char* eventName = "_tutorial_comp";
 CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName, ltvId);
 CYZCCFox::trackEvent(e);
 ```
+```cpp
+#include "CYZCCFox.h"
 
-> 成果地点ID(必須)：管理者より連絡します。その値を入力してください。
+using namespace fox;
+...
+// イベント計測のみの場合
+const char* eventName = "_tutorial_comp";
+CYZCCFoxEvent* e = new CYZCCFoxEvent(eventName);
+CYZCCFox::trackEvent(e);
+```
 
-> イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。<br>`CYZCCFoxEvent`クラスのコンストラクタの引数にイベント名と発行された成果地点IDを指定してください。
+> LTV計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。  
+> イベント計測のみを計測する場合、イベント名だけ入力してください。
 
 **[課金イベントの計測例]**
 ```cpp
