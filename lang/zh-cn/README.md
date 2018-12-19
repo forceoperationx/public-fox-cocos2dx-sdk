@@ -15,7 +15,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 * **[2. F.O.X SDK激活](#activate_sdk)**
 * **[3. 执行Install计测](#tracking_install)**
 	* [Install计测详细](./doc/track_install/README.md)
-* **[4. 执行流失唤回广告计测](#tracking_reengagement)**
+* **[4. 执行流失唤回广告计测](#tracking_reengagement)**
 * **[5. APP内事件计测](#tracking_event)**
 	* [session(启动)事件计测](#track_session)
 	*	[其他APP内事件计测](#track_other_event)
@@ -138,10 +138,10 @@ using namespace fox;
 CYZCCFox::trackInstall();
 ```
 
-* [Install计测详细](./doc/track_install/README.md)  
+* [Install计测详细](./doc/track_install/README.md)
 
 
-<div id="tracking_reengagement></div>
+<div id="tracking_reengagement"></div>
 
 ## 4. 执行流失唤回广告计测
 
