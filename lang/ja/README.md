@@ -15,7 +15,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 * **[2. F.O.X SDKのアクティベーション](#activate_sdk)**
 * **[3. インストール計測の実装](#tracking_install)**
 	* [インストール計測の詳細](./doc/track_install/README.md)
-* **[4. リエンゲージメント計測の実装](#tracking_reengagement)**
+* **[4. リエンゲージメント計測の実装](#tracking_reengagement)**
 * **[5. アプリ内イベントの計測](#tracking_event)**
 	* [セッション(起動)イベントの計測](#track_session)
 	*	[その他アプリ内イベントの計測](#track_other_event)
@@ -233,7 +233,7 @@ CYZCCFox::trackEvent(e);
 
 <div id="trouble_shooting"></div>
 
-# 6. 最後に必ずご確認ください（これまで発生したトラブル集）
+# 6. 最後に必ずご確認ください（これまで発生したトラブル集）
 
 ### 6.1 URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
