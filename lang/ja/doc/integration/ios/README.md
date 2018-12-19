@@ -39,7 +39,7 @@ iOS/CYZCCFoxEvent.mm|native トラッキングイベントのwrapper実装
 iOS/CYZCCFoxIOSUtility.mm|utilメソッド
 iOS/CYZFoxAppDelegateSwizzling.m|protocol`AppDelegate`の`application:openURL:sourceApplication:`と`application:openURL:options`のダイナミックオーバーライド定義
 
-
+> ※リエンゲージメント計測を実施しない場合は、`CYZFoxAppDelegateSwizzling.m`をインポートしないでください。
 
 ### 4. App Transport Securityについて
 

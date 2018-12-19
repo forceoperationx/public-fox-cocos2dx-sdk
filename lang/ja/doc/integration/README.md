@@ -10,6 +10,7 @@
 
 
 <div id="common"></div>
+
 ## 1. 共通
 
 ### 1.1 SDKの展開
@@ -48,11 +49,13 @@
 
 
 <div id="ios"></div>
+
 ## 2. iOS
 
 > **[iOS SDKの詳細設定](./ios/README.md)**
 
 <div id="android"></div>
+
 ## 3. Android
 
 > **[Android SDKの詳細設定](./android/README.md)**

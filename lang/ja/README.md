@@ -15,11 +15,12 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 * **[2. F.O.X SDKのアクティベーション](#activate_sdk)**
 * **[3. インストール計測の実装](#tracking_install)**
 	* [インストール計測の詳細](./doc/track_install/README.md)
-* **[4. アプリ内イベントの計測](#tracking_event)**
+* **[4. リエンゲージメント計測の実装](#tracking_reengagement)**
+* **[5. アプリ内イベントの計測](#tracking_event)**
 	* [セッション(起動)イベントの計測](#track_session)
 	*	[その他アプリ内イベントの計測](#track_other_event)
 	* [イベント計測の詳細](./doc/track_events/README.md)
-* **[5. 最後に必ずご確認ください](#trouble_shooting)**
+* **[6. 最後に必ずご確認ください](#trouble_shooting)**
 
 ## F.O.X SDKとは
 
@@ -143,10 +144,19 @@ CYZCCFox::trackInstall();
 
 * [インストール計測の詳細](./doc/track_install/README.md)
 
+<div id="tracking_reengagement"></div>
+
+## 4. リエンゲージメント計測の実装
+
+iOS、Androidそれぞれのプロジェクト設定方法をご参照いただき、  
+リエンゲージメント成果の計測に必要な設定が追加されているかご確認ください。
+  
+[iOSプロジェクトの設定](./doc/integration/ios/README.md#3-pluginソースの追加)  
+[Androidプロジェクトの設定](./doc/integration/android/README.md#reengagement)  
 
 <div id="tracking_event"></div>
 
-## 4. アプリ内イベントの計測
+## 5. アプリ内イベントの計測
 
 <div id="track_session"></div>
 
@@ -221,23 +231,23 @@ CYZCCFox::trackEvent(e);
 
 <div id="trouble_shooting"></div>
 
-# 5. 最後に必ずご確認ください（これまで発生したトラブル集）
+# 6. 最後に必ずご確認ください（これまで発生したトラブル集）
 
-### 5.1 URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 6.1 URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
 Cookie計測を行いブラウザを起動した場合には、URLスキームを利用してアプリケーションに遷移します。
 
 この際、独自のURLスキームが設定されている必要があります。
 
 
-### 5.2 URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 6.2 URLスキームに大文字が含まれ、正常にアプリに遷移されない
 
 環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。
 
 URLスキームは全て小文字で設定を行ってください。
 
 
-### 5.3 F.O.Xで確認できるインストール数の値がマーケットの数字より大きい
+### 6.3 F.O.Xで確認できるインストール数の値がマーケットの数字より大きい
 
 F.O.Xではいくつかの方式を組み合わせて端末の重複インストール検知を行っています。重複検知が行えない設定では、同一端末で再インストールされる度にF.O.Xは新規のインストールと判定してしまいます。重複検知の精度を向上するために、以下の設定を行ってください。
 
