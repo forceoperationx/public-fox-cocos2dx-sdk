@@ -148,11 +148,12 @@ CYZCCFox::trackInstall();
 
 ## 4. リエンゲージメント計測の実装
 
-設定方法iOS, Androidそれぞれのプロジェクト設定方法をご参照ください。  
+iOS、Androidそれぞれのプロジェクト設定方法をご参照いただき、  
+リエンゲージメント成果の計測に必要な設定が追加されているかご確認ください。
   
-iOSの場合は、  
+iOSプロジェクトの設定  
 [iOSプロジェクトの設定](./doc/integration/ios/README.md#3-pluginソースの追加)  
-Androidの場合は、  
+iOSプロジェクトの設定  
 [Androidプロジェクトの設定](./doc/integration/android/README.md#reengagement)  
 
 <div id="tracking_event"></div>
