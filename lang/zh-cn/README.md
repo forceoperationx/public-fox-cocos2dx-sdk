@@ -15,11 +15,12 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 * **[2. F.O.X SDK激活](#activate_sdk)**
 * **[3. 执行Install计测](#tracking_install)**
 	* [Install计测详细](./doc/track_install/README.md)
-* **[4. APP内事件计测](#tracking_event)**
+* **[4. 执行流失唤回广告计测](#tracking_reengagement)**
+* **[5. APP内事件计测](#tracking_event)**
 	* [session(启动)事件计测](#track_session)
 	*	[其他APP内事件计测](#track_other_event)
 	* [事件计测详细](./doc/track_events/README.md)
-* **[5. 最后的注意事项](#trouble_shooting)**
+* **[6. 最后的注意事项](#trouble_shooting)**
 
 ## 什么是F.O.X SDK
 
@@ -137,12 +138,24 @@ using namespace fox;
 CYZCCFox::trackInstall();
 ```
 
-* [Install计测详细](./doc/track_install/README.md)
+* [Install计测详细](./doc/track_install/README.md)  
 
+
+<div id="tracking_reengagement></div>
+
+## 4. 执行流失唤回广告计测
+
+唤回计测无需调用函数。  
+设置方法请参考iOS, Android的项目设置文档。  
+  
+iOS    
+[iOS项目设置](./doc/integration/ios/README.md#3-添加plugin-source)  
+Android  
+[Android项目设置](./doc/integration/android/README.md#reengagement)  
 
 <div id="tracking_event"></div>
 
-## 4. APP内事件计测
+## 5. APP内事件计测
 
 <div id="track_session"></div>
 
@@ -217,18 +230,18 @@ CYZCCFox::trackEvent(e);
 
 <div id="trouble_shooting"></div>
 
-# 5. 最后需确认内容（常见问题集）
+# 6. 最后需确认内容（常见问题集）
 
-### 5.1 未设置URL SCHEME 进行发布时无法从浏览器跳转至APP
+### 6.1 未设置URL SCHEME 进行发布时无法从浏览器跳转至APP
 
 进行Cookie计测时启动浏览器以后，必须使用URL scheme跳转回到APP画面。
 此时需要设置独自的URL scheme，未设置scheme就上线发布时会导致无法正常迁移。
 
-### 5.2 URL SCHEME中含有大写字母时，无法正常跳转APP。
+### 6.2 URL SCHEME中含有大写字母时，无法正常跳转APP。
 
 根据运行环境，会出现因为URL SCHEME 的大小写字母不能判定而导致URL SCHEME 无法正常迁移的情况。请将URL SCHEME 全部设置为小写英文或数字或小数点。
 
-### 5.3 F.O.X中监测到的App安装数会大于APP商城里监测的安装数
+### 6.3 F.O.X中监测到的App安装数会大于APP商城里监测的安装数
 
 F.O.X结合多种方式来检查终端是否有重复安装。如果设置为不进行重复检查时，同一终端的再次安装会被F.O.X判定为新的安装。针对android版，为提高重复排查的精确度，请进行如下设置。
 

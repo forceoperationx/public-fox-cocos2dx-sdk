@@ -38,6 +38,7 @@ iOS/CYZCCFoxEvent.mm|原生追踪事件的封装
 iOS/CYZCCFoxIOSUtility.mm|Util方法
 iOS/CYZFoxAppDelegateSwizzling.m|protocol`AppDelegate`的`application:openURL:sourceApplication:`和`application:openURL:options`的动态重写定义
 
+> 不进行流失唤回广告计测时，不用导入`CYZFoxAppDelegateSwizzling.m`文件。
 
 ### 4. 关于App Transport Security
 
