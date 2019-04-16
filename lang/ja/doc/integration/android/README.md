@@ -4,19 +4,19 @@
 
 # Androidプロジェクトの設定
 
-* **[1. インストール](#install_sdk)**
-* **[2. パーミッションの設定](#permission)**
-* **[3. インストールリファラ計測の設定](#install_referrer)**
-* **[4. リエンゲージメント計測の設定](#reengagement)**
-* **[5. インストール計測完了のコールバックを受け取る](#receive_callback)**
-* **[6. ProGuardを利用する場合](#proguard)**
-* **[7. その他](#other)**
+* **[インストール](#install_sdk)**
+* **[パーミッションの設定](#permission)**
+* **[インストールリファラ計測の設定](#install_referrer)**
+* **[リエンゲージメント計測の設定](#reengagement)**
+* **[¥ProGuardを利用する場合](#proguard)**
+* **[インストール計測完了のコールバックを受け取る（オプション機能）](#receive_callback)**
+* **[その他](#other)**
 
 <div id="install_sdk"></div>
 
-## 1. インストール
+## インストール
 
-### 1.1 Cocos2d-xプラグインの導入
+### Cocos2d-xプラグインの導入
 
 「FOX_Cocos2dx_SDK_&lt;version&gt;.zip」を展開し、以下の操作を行います。
 
@@ -38,7 +38,7 @@ CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以�
 #include “../android/jni/JniHelper.h”
 ```
 
-### 1.2 Android Studioプロジェクトへの導入
+### Android Studioプロジェクトへの導入
 
 アプリをAndroid Studioでビルドしている場合は、gradle経由でインストールできるため、FOX_COCOS2DX_SDK_&lt;version&gt;.zipを展開した中の、FOX_Android_SDK_&lt;VERSION&gt;のライブラリは不要となります。<br>
 以下の設定をプロジェクトのbuild.gradleに追加してください。
@@ -57,7 +57,7 @@ dependencies {
 ```
 
 
-### 1.3 Eclipseプロジェクトへの導入
+### Eclipseプロジェクトへの導入
 
 ダウンロードしたSDK「FOX_COCOS2DX_SDK_&lt;version&gt;.zip」をOS上に展開します。<br>
 「FOX_Android_SDK_&lt;version&gt;/libs」フォルダに同梱されている以下２ファイルをEclipseプロジェクトの`libsフォルダ`に移動させます。
@@ -69,7 +69,7 @@ dependencies {
 
 <div id="permission"></div>
 
-## 2. パーミッションの設定
+## パーミッションの設定
 
 F.O.X SDKでは下記3つのパーミッションを利用します。
 &lt;Manifest&gt;タグ内に次のパーミッションの設定を追加します。
@@ -91,7 +91,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 
 <div id="install_referrer"></div>
 
-## 3. インストールリファラ計測の設定
+## インストールリファラ計測の設定
 インストールリファラーを用いたインストール計測を行うために下記の設定を&lt;application&gt;タグに追加します。
 
 ```xml
@@ -106,7 +106,7 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 
 <div id="reengagement"></div>
 
-## 4. リエンゲージメント計測の設定
+## リエンゲージメント計測の設定
 
 リエンゲージメント計測（カスタムURLスキーム経由の起動を計測）するために必要な設定を&lt;application&gt;タグ内に追記します。
 
@@ -156,33 +156,11 @@ protected void onNewIntent(Intent intent)
 
 > リエンゲージメント広告の計測をするためには、`URLスキームが設定されている全てのActivity`のonResume()に`trackDeeplinkLaunch`メソッドが実装されてある必要があります。
 
-<div id="receive_callback"></div>
 
-## 5. インストール計測完了のコールバックを受け取る
-
-[![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/cyber-z/public-fox-android-sdk/releases/tag/4.1.1)
-
-組み込んでいるAndroidネイティブSDKがバージョン4.1.1以降においてインストール計測完了のコールバックを受け取る場合には<br>
-以下のように必ず`"アプリ起動時に最初に呼ばれるActivity"`(メインのアクティビティ)の onResume に Fox.trackDeeplinkLaunch メソッドを実装してください。`但し、[前項](#reengagement)の実装が行われている場合には不要です。`
-
-```java
-
-	@Override
-	protected void onResume()
-	{
-		super.onResume();
-		// FOX
-		Fox.trackDeeplinkLaunch(this);
-	}
-```
-
-> ※ アプリのインストール計測をCookie計測で行っている場合は、ブラウザからカスタムURLスキームでアプリに戻る際のActivityのonResumeに`Fox.trackDeeplinkLaunch`を実装してください。
-
-> ※ 本実装が行われていない場合、C++側にインストール計測完了が通知されません。
 
 <div id="proguard"></div>
 
-## 6. ProGuardを利用する場合
+## ProGuardを利用する場合
 
 ProGuard を利用してアプリケーションの難読化を行う際は F.O.X SDK のメソッドが対象とならないよう、以下の設定 を追加してください。
 
@@ -201,7 +179,33 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 <div id="other"></div>
 
-## 7. その他
+
+<div id="receive_callback"></div>
+
+## インストール計測完了のコールバックを受け取る（オプション機能）
+
+[![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/cyber-z/public-fox-android-sdk/releases/tag/4.1.1)
+
+オプション機能として、インストール計測完了のコールバックをアプリ側で受け取ることが可能です（コールバックが必要ない場合は実装不要です）。<br>
+組み込んでいるAndroidネイティブSDKがバージョン4.1.1以降においてインストール計測完了のコールバックを受け取る場合には<br>
+以下のように必ず`"アプリ起動時に最初に呼ばれるActivity"`(メインのアクティビティ)の onResume に Fox.trackDeeplinkLaunch メソッドを実装してください。`但し、[前項](#reengagement)の実装が行われている場合には不要です。`
+
+```java
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		// FOX
+		Fox.trackDeeplinkLaunch(this);
+	}
+```
+
+> ※ アプリのインストール計測をCookie計測で行っている場合は、ブラウザからカスタムURLスキームでアプリに戻る際のActivityのonResumeに`Fox.trackDeeplinkLaunch`を実装してください。
+
+> ※ 本実装が行われていない場合、C++側にインストール計測完了が通知されません。
+
+## その他
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
 
