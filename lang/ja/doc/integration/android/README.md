@@ -92,6 +92,21 @@ WRITE_EXTERNAL_STORAGE|Dangerous|任意|ストレージを利用した重複排�
 <div id="install_referrer"></div>
 
 ## 3. インストールリファラ計測の設定
+
+
+### F.O.X Cocos2d-x SDK 4.2.0 から 最新バージョンの場合
+
+Google Play Referrer APIでのInstallReferrer計測が可能です。以下の設定をbuild.gradleのdependencyに追加してください。
+
+```groovy
+dependencies {
+    implementation   	     'com.android.installreferrer:installreferrer:1.0'
+}
+```
+
+### F.O.X Cocos2d-x SDK 4.1.5までの古いバージョンの場合
+
+
 インストールリファラーを用いたインストール計測を行うために下記の設定を&lt;application&gt;タグに追加します。
 
 ```xml
