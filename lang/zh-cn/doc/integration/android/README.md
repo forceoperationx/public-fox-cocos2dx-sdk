@@ -45,7 +45,7 @@ APP为Android Studio内编译的场合，通过gradle进行安装，解压FOX_CO
 ```
 repositories {
     maven {
-        url "https://github.com/cyber-z/public-fox-android-sdk/raw/master/mavenRepo"
+        url "https://github.com/forceoperationx/public-fox-android-sdk/raw/master/mavenRepo"
     }
 }
 

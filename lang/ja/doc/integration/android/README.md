@@ -46,7 +46,7 @@ CYZCCFox.cppのJniHelper.hのincludeパスを開発環境に合わせる（以�
 ```
 repositories {
     maven {
-        url "https://github.com/cyber-z/public-fox-android-sdk/raw/master/mavenRepo"
+        url "https://github.com/forceoperationx/public-fox-android-sdk/raw/master/mavenRepo"
     }
 }
 
@@ -184,7 +184,7 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 ## インストール計測完了のコールバックを受け取る（オプション機能）
 
-[![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/cyber-z/public-fox-android-sdk/releases/tag/4.1.1)
+[![F.O.X](http://img.shields.io/badge/F.O.X%20SDK-4.1.1%20〜-blue.svg?style=flat)](https://github.com/forceoperationx/public-fox-android-sdk/releases/tag/4.1.1)
 
 オプション機能として、インストール計測完了のコールバックをアプリ側で受け取ることが可能です（コールバックが必要ない場合は実装不要です）。<br>
 組み込んでいるAndroidネイティブSDKがバージョン4.1.1以降においてインストール計測完了のコールバックを受け取る場合には<br>
