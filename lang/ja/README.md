@@ -7,7 +7,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 ## 目次
 
 * **[1. インストール](#install_sdk)**
-	* [SDKダウンロード](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+	* [SDKダウンロード](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/releases)
 	* [Cocos2d-x プラグインの導入手順](./doc/integration/README.md)
 	* [iOSプロジェクトの設定](./doc/integration/ios/README.md)
 	* [Androidプロジェクトの設定](./doc/integration/android/README.md)
@@ -44,7 +44,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 以下のページより最新のSDKをダウンロードしてください。
 
-[SDKリリースページ](https://github.com/cyber-z/public-fox-cocos2dx-sdk/releases)
+[SDKリリースページ](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/releases)
 
 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのマイグレーションについて](./doc/update/README.md)をご参照ください。
 
@@ -142,7 +142,7 @@ using namespace fox;
 CYZCCFox::trackInstall();
 ```
 
-* [インストール計測の詳細](./doc/track_install/README.md)
+* [インストール計測のオプション機能](./doc/track_install/README.md)
 
 <div id="tracking_reengagement"></div>
 
