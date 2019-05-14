@@ -99,7 +99,7 @@ Google Play Referrer APIでのInstallReferrer計測が可能です。以下の�
 
 ```groovy
 dependencies {
-    implementation   	     'com.android.installreferrer:installreferrer:1.0'
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 }
 ```
 
