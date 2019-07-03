@@ -222,8 +222,6 @@ ProGuard を利用してアプリケーションの難読化を行う際は F
 
 * [広告IDを利用するためのGoogle Play Services SDKの導入](./google_play_services/README.md)
 
-*	[AndroidManifest.xml 設定サンプル](./config_androidManifest/AndroidManifest.xml)
-
 * [（オプション）外部ストレージを利用した重複排除設定](./external_storage/README.md)
 
 * [（オプション）Android M オートバックアップ機能の利用](./auto_backup/README.md)
