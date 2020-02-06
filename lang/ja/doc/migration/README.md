@@ -73,7 +73,7 @@ dependencies {
 
 ## インストールリファラの削除
 
-manifest.xmlの以下の設定を削除してください。
+manifestファイルの以下の設定を削除してください。
 
 [インストールリファラ計測の設定 4.X](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/blob/4.x/lang/ja/doc/integration/android/README.md#fox-cocos2d-x-sdk-415%E3%81%BE%E3%81%A7%E3%81%AE%E5%8F%A4%E3%81%84%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E5%A0%B4%E5%90%88)
 
