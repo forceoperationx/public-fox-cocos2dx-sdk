@@ -71,6 +71,14 @@ dependencies {
 
 [Androidプロジェクトの設定 3.X](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/blob/3.x/lang/ja/doc/integration/android/README.md)
 
+## インストールリファラの削除
+
+manifest.xmlの以下の設定を削除してください。
+
+[インストールリファラ計測の設定 4.X](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/blob/4.x/lang/ja/doc/integration/android/README.md#fox-cocos2d-x-sdk-415%E3%81%BE%E3%81%A7%E3%81%AE%E5%8F%A4%E3%81%84%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E5%A0%B4%E5%90%88)
+
+[インストールリファラ計測の設定 3.X](https://github.com/forceoperationx/public-fox-cocos2dx-sdk/blob/3.x/lang/ja/doc/integration/android/README.md#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AA%E3%83%95%E3%82%A1%E3%83%A9%E8%A8%88%E6%B8%AC%E3%81%AE%E8%A8%AD%E5%AE%9A)
+
 ## コード/その他ファイル全体
 
 F.O.Xでの計測のために追加したコードを削除してください。
